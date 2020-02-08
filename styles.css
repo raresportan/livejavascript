@@ -1,0 +1,384 @@
+html, body, #container {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #fff;
+    color: #444;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.logo {
+    max-width: 60px;
+    margin: 0 auto 0 1rem;
+}
+
+body.dark, body.dark #container {
+    background: #282a36;
+    color: #fff;
+}
+
+.dark button {
+    color: #fff;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#container {
+    display: flex;
+    height: 100%;
+    position: relative;
+}
+
+#toolbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    border-bottom: 1px solid #ddd;
+    padding: 0.5rem 0;
+}
+
+.dark #toolbar {
+    border-bottom: 1px solid #44475a;
+}
+
+#toolbar button:not(#menuToggle) {
+    font-size: 14px;
+    border: 0;
+    background: transparent;
+    margin: 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+#nextLesson em {
+    font-size: 1.2em;
+    font-style: normal
+}
+
+#toolbar h1, #toolbar h2 {    
+    text-align: center;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: normal;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#toolbar button:not(#menuToggle).edited {
+    margin: 0 0 0 0.5rem;
+    height: 12px;
+    width: 12px;
+    border-radius: 12px;
+    background: darkcyan;
+    margin-left: 0.5rem;
+    padding: 0;
+    color: darkcyan;
+    font-size: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.dark #toolbar button:not(#menuToggle).edited {
+    background: #fff;
+    color: #fff;
+}
+
+.edited:hover, .edited:focus, .edited:active {
+    width: 4rem !important;
+    color: #fff !important;
+}
+
+.dark .edited:hover, .dark .edited:focus, .dark .edited:active {
+    color: #000 !important;
+}
+
+#toolbar div {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+#toolbar button:disabled {
+    opacity: 0;
+}
+
+#editor, #slide, #playground {
+    height: 100%;
+    flex-grow: 1;
+    width: 50%;
+    display: none;
+}
+
+#slide {
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    width: 100%;
+}
+
+#lessonSubtitle {
+    text-transform: initial;
+    font-style: italic;
+}
+
+#menuToggle {
+    position: relative;
+    display: block;
+    width: 20px;
+    height: 14px;
+    background: transparent;
+    border: 0;
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+    font-size: 0;
+    transition: all .25s ease-in-out;
+    margin-left: 20px;
+    cursor: pointer;
+    outline-offset: 3px;
+}
+
+.dark #menuToggle {
+    border-color: #fff;
+}
+
+#menuToggle:before, #menuToggle:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: currentColor;
+    transform: translate(-50%, -50%);
+    transition: transform .25s ease-in-out;
+}
+
+#menuToggle.isActive {
+    border-color: transparent;
+}
+
+#menuToggle.isActive:before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+#menuToggle.isActive:after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+#menu {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    z-index: 1000;
+    overflow: auto;
+    transform: translateY(-110%) translateZ(0);
+    will-change: transform;
+    transition: transform .36s ease-in-out;
+}
+
+#menu.isActive {
+    transform: translateY(0) translateZ(0);
+    box-shadow: 0 1px 20px 4px rgba(0, 0, 0, .2);
+}
+
+#menu header {
+    margin: 1rem 0 0.5rem 2rem;
+    border-bottom: 1px solid #ccc;
+    padding: 0.5rem 0;
+    font-size: larger;
+}
+
+.dark #menu header {
+    border-bottom: 1px solid #44475a;
+}
+
+#menu ol {
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    grid-gap: 10px;
+    grid-auto-rows: minmax(20px, auto);
+    margin-bottom: 3rem;
+}
+
+@media screen and (max-width: 900px) {
+    #menu ol {
+        grid-template-columns: 50% 50%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #menu ol {
+        grid-template-columns: 100%;
+    }
+}
+
+#menu ol>li {
+    margin: 0 1rem;
+    padding: 0;
+}
+
+#menu ol>li.selected {
+    background: #eee;
+}
+
+.dark #menu ol>li.selected {
+    background: darkcyan;
+}
+
+#menu a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    padding: 7px;
+    transition: all .3s ease-in-out;
+}
+
+#menu a:hover, #menu a:focus {
+    background: #eee;
+}
+
+.dark #menu a:hover, .dark #menu a:focus {
+    background: darkcyan;
+}
+
+#menu a>span {
+    display: block;
+    font-size: smaller;
+    color: #44475a;
+    pointer-events: none;
+}
+
+.dark #menu a>span {
+    color: #ccc;
+}
+
+#menu a:hover {
+    text-decoration: underline;
+}
+
+#settings {
+    margin: 0.5rem 1rem;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.switch-container {
+    position: relative;
+    outline: none;
+    background: transparent;
+    border: 0;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    font-family: inherit;
+    color: inherit;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 22px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    transition: all 0.3s;
+    margin-right: 0.5rem;
+    cursor: pointer;
+}
+
+.switch::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: white;
+    top: 2px;
+    left: 4px;
+    transition: all 0.3s;
+}
+
+.checkbox:checked+.switch::after {
+    left: 25px;
+}
+
+.checkbox:checked+.switch {
+    background-color: darkcyan;
+}
+
+.checkbox:focus+.switch, .checkbox:checked:focus+.switch {
+    box-shadow: 0 0 5px darkcyan;
+}
+
+.checkbox {
+    top: 2px;
+    left: 10px;
+    outline-color: transparent;
+    position: absolute;
+    opacity: 0;
+}
+
+.console-output {
+    position: absolute;
+    top: 0;
+    left: 775px;
+    animation: fadein 1.0s forwards;
+    font-family: Menlo, Consolas, Monaco, monospace;
+}
+
+.console-output span {
+    font-size: 20px;
+}
+
+.console-output.warn {
+    background-color: yellow;
+}
+
+.dark .console-output.warn {
+    color: #f1fa8c;
+    background-color: transparent;
+}
+
+.console-output.error {
+    background-color: red;
+    color: #fff;
+}
+
+.dark .console-output.error {
+    color: #ff79c6;
+    background-color: transparent;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.8;
+    }
+}
+
+.ace-dracula .ace_comment {
+    color: #6DCB77
+}
+
+.ace_dark .ace_gutter-cell.ace_info, .ace_gutter-cell.ace_warning {
+    background-image: none;
+}
+
+/* 
+.ace_gutter-cell.ace_error {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAQCAIAAACk6KkqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AEXDxE2JpBEFgAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAATSURBVBjTY/zPgB0wMYxKDIAEAKgQAR/qZwqpAAAAAElFTkSuQmCC');
+} */

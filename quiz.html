@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Quiz</title>
+    <meta charset="utf-8">
+    <link href="lib/prism/prism.css" rel="stylesheet" />
+    <link href="styles.css" rel="stylesheet" />
+</head>
+
+<body class="dark">
+
+    <div style="overflow:auto; height: 100%;">
+
+
+        <article class="quiz">
+            <header>Which code will print <b>false</b> three times?</header>
+            <div class="options">
+                <button>
+                    <pre>
+                        <code class="language-javascript">            
+console.log('' == 0);
+
+console.log(null == undefined);
+
+console.log(0 == false);
+                        </code></pre>
+                    <div class="no"></div>
+                </button>
+                <div class="or">OR</div>
+                <button>
+                    <pre><code class="language-javascript">   
+console.log('' === 0);
+
+console.log(null === undefined);
+
+console.log(0 === false);
+                    </code></pre>
+                    <div class="yes"></div>
+                </button>
+            </div>
+        </article>
+
+
+
+
+        <article class="quiz">
+            <header>In which case the pet will be "Dog"?</header>
+            <div class="options">
+                <button>
+                    <pre><code class="language-javascript">   
+
+const pet = "Cat" && "Dog";  
+
+console.log(`I have a cute ${pet}, named Bobby`);
+
+                    </code></pre>
+                    <div class="yes"></div>
+                </button>
+                <div class="or">OR</div>
+                <button>
+                    <pre><code class="language-javascript">   
+
+const pet = "Cat" || "Dog";                        
+
+console.log(`I have a cute ${pet}, named Bobby`);
+                    </code></pre>
+                    <div class="no"></div>
+                </button>
+            </div>
+        </article>
+
+
+
+
+        <article class="quiz">
+            <header>Which one detects correctly non-number arguments?</header>
+            <div class="options">
+                <button>
+                    <pre><code class="language-javascript">     
+// Accepts only numbers, 
+// throws error if argument is not number
+function circleArea (radius) {    
+    if (typeof radius !== "number" || isNaN(radius)) {
+        throw new Error('Incorrect radius, expecting number')
+    }
+
+    return Math.PI * radius * radius;
+}
+                    </code></pre>
+                    <div class="yes"></div>
+                </button>
+                <div class="or">OR</div>
+                <button>
+                    <pre><code class="language-javascript">   
+// Accepts only numbers, 
+// throws error if argument is not number
+function circleArea (radius) {    
+    if (!radius) {
+        throw new Error('Incorrect radius, expecting number')
+    }
+
+    return Math.PI * radius * radius;
+}                                            
+                    </code></pre>
+                    <div class="no"></div>
+                </button>
+            </div>
+        </article>
+
+
+
+        <article class="quiz">
+            <header>Which one tries to use a reserved word as binding name?</header>
+            <div class="options">
+                <button>
+                    <pre><code class="language-javascript">     
+// get a possible array from somewhere                        
+let possibleArray;
+
+// check if is realy an array
+const isArray = typeof possibleArray === 'array';  
+
+                    </code></pre>
+                    <div class="no"></div>
+                </button>
+                <div class="or">OR</div>
+                <button>
+                    <pre><code class="language-javascript">   
+// get a possible array from somewhere                        
+let possibleArray;
+
+// check if is realy an array
+const isArray = Array.isArray(possibleArray);  
+                        
+                    </code></pre>
+                    <div class="yes"></div>
+                </button>
+            </div>
+        </article>
+
+
+
+
+        <article class="quiz">
+            <header>Which one will output only "red" ?</header>
+            <div class="options">
+                <button>
+                    <pre><code class="language-javascript">    
+let color = 'red';
+
+switch (color) {
+    case "red":
+        console.log("red");
+    case "green":
+        console.log("green");
+    default:
+        console.log("yellow");        
+}
+                    </code></pre>
+                    <div class="no"></div>
+                </button>
+                <div class="or">OR</div>
+                <button>
+                    <pre><code class="language-javascript">   
+let color = 'red';
+
+switch (color) {
+    case "red":
+        console.log("red");
+        break;
+    case "green":
+        console.log("green");
+        break;
+    default:
+        console.log("yellow");        
+}                    
+                    </code></pre>
+                    <div class="yes"></div>
+                </button>
+            </div>
+        </article>
+
+
+
+        <article class="quiz">
+            <header>Which on prints a, b and c?</header>
+            <div class="options">
+                <button>
+                    <pre><code class="language-javascript">   
+const str = "abc";
+
+for(let char in str) {
+    console.log(char)
+}
+                    </code></pre>
+                    <div class="no"></div>
+                </button>
+                <div class="or">OR</div>
+                <button>
+                    <pre><code class="language-javascript">   
+const str = "abc";
+
+for(let char of str) {
+    console.log(char)
+}
+                    </code></pre>
+                    <div class="yes"></div>
+                </button>
+            </div>
+        </article>
+
+
+    </div>
+    <script src="lib/prism/prism.js"></script>
+    <script>
+        const buttons = document.querySelectorAll('.quiz > .options > button');
+        buttons.forEach(aButton => {
+            aButton.addEventListener('click', e => {
+                const target = e.target;
+                const parent = target.parentNode;
+                const allButtons = parent.querySelectorAll('button');
+                allButtons.forEach(aButton => aButton.classList.remove('selected'));
+
+                target.classList.add('selected');
+            })
+        })
+    </script>
+</body>
