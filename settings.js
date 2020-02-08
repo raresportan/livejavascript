@@ -1,6 +1,5 @@
-'use strict';
-
 (function () {
+    'use strict';
 
     const allSettings = {
         'darkMode': window.matchMedia('(prefers-color-scheme: dark)') && window.matchMedia('(prefers-color-scheme: dark)').matches,

@@ -1,6 +1,5 @@
-'use strict';
-
 (function () {
+    'use strict';
 
     /**
      * Reads the current URL (hash) and navigates accordingly.

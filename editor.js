@@ -1,7 +1,6 @@
-'use strict';
-
 (function () {
-
+    'use strict';
+    
     const info = `'use strict'; 
 
 /*

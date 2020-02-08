@@ -1,0 +1,6184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Live JavaScript Tutorial</title>
+    <meta name="description" content="Learn JavaScript. Live code. Total freedom and privacy.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+    <meta charset="utf-8">
+    <link rel='manifest' href='/manifest.webmanifest'>
+    <link rel="icon" type="image/x-icon" href="logo.svg">
+    <link rel="icon" type="image/png" href="logo32x32.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="icon" href="logo32x32.png" type="image/png" sizes="32x32">
+    <link rel="icon" href="logo16x16.png" type="image/png" sizes="16x16">
+    <link href="lib/prism/prism.css" rel="stylesheet" />
+    <link href="styles.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <!--- Lessons -->
+    <div style="display:none">
+
+
+        <pre class="lesson" data-title="What is JavaScript?"
+            data-subtitle="It's a Long Way to the Top (If You Wanna Rock 'n' Roll)" data-module='What is JavaScript?'>
+/*            
+
+    JavaScript is:
+
+    1. The language of the web browsers.
+    2. One of the most used programming languages of the world.
+    3. The world's most misunderstood programming language.
+    4. One of the most expressive languages ever created.
+    5. A language with some very frustrating parts which must be avoid.
+    
+
+    JavaScript programming paradigms:
+
+    1. OOP programming
+    2. Procedural programming
+    3. Functional programming
+
+
+    JavaScript is interpreted not compiled.
+
+    JavaScript can run:
+
+    1. In the browsers (&lt;script src="js/script.js"&gt;&lt;/script&gt;)
+    2. On node.js server ($ node script.js)
+
+*/    
+
+
+</pre>
+
+        <pre class="lesson" data-title="Just a bit of history" data-subtitle="The root of all evil">
+/*
+    
+    JavaScript was created in 1995 for Netscape Navigator by Brendan Eich.
+    It was implemented in 10 days. As you can guess it was not perfect.
+
+    It has almost nothing to do with Java.
+    The similar name is a marketing gimmick rather than good judgment.
+
+    Microsoft reversed engineered the language for Internet Explorer
+    - as it was at that time, with all the problems - adding their own little 
+    mutations like they always do. 
+    
+    Netscape tried to maintain control of the language changes by
+    standardizing it as ECMAScript. But it was too late, broken parts
+    could not be fixed anymore.   
+
+    It would take years to fix some of them.
+
+*/
+
+
+</pre>
+
+        <pre class="lesson" data-title="How it feels to write JavaScript?"
+            data-subtitle="The Good, the Bad and the Ugly">
+/*
+
+    Some will say terrible things about JavaScript. 
+    Many of these things are true. 
+    
+    When you write something in JavaScript for the first time, 
+    you can quickly despise it. 
+    
+    It will accept almost anything you typed but interpret it in a way 
+    that was completely different from what you meant. 
+    
+    This, of course, means that you don't have a clue what are you doing, 
+    but the real issue is that: 
+
+    -----------------------------------------------------
+    JavaScript is ridiculously liberal in what it allows. 
+    ------------------------------------------------------
+    
+    The idea was that it would make programming in JavaScript easier
+    for beginners. In reality, it makes finding problems harder 
+    because the system will not point them out to you. 
+    It will just try to make sense from what you tell it to do.
+
+    This flexibility also has its advantages, though. 
+    It leaves space for a lot of techniques that are impossible 
+    in more rigid languages.
+
+    After learning the language properly and working with it for a while, 
+    the chances are you will actually like JavaScript.
+
+*/
+
+
+
+</pre>
+
+        <pre class="lesson" data-title="use strict" data-subtitle="I Have No Mouth, and I Must Scream">
+'use strict';        
+
+/*
+
+    JavaScript's strict mode, introduced in ECMAScript 5, is a way 
+    to opt in to a restricted variant of JavaScript.
+
+    Strict mode:
+    - Eliminates some silent errors by changing them to errors.
+    - Fixes mistakes that make it difficult for JavaScript engines to 
+    perform optimizations: strict mode code can sometimes run faster 
+    than identical code that's not strict mode.
+    - Prohibits some syntax likely to be defined in the future.
+
+    To use the strict mode we need to add 
+
+    'use strict'; 
+
+    as the first line in the code.
+
+
+    ---------------------------------------------------------------------
+    WARNING: All the code presented here runs in strict mode.
+    Some parts will work differently if you run them in non strict mode !
+    ----------------------------------------------------------------------
+
+*/            
+
+
+</pre>
+
+        <pre class="lesson" data-title="Code Comments" data-subtitle="Can anybody tell me what's going on?">
+'use strict';            
+
+/*
+    Multi
+    line
+    comment
+*/
+
+// Single line comment
+
+
+
+</pre>
+
+        <pre class="lesson" data-title="Logging"
+            data-subtitle="One thing I do know, that though I was blind, now I see">
+'use strict';     
+/*
+
+    In JavaScript, we print out things using the "console" methods.
+
+    To see the console output in the browser, open the Developer Tools 
+    to the right and switch to "Console" tab. While following these lessons, 
+    you should keep the Developer Tools' Console open.
+
+    If you are using a nice browser like Chrome or Firefox, the console output 
+    is  displayed on the right side of the editor so you don't have to open
+    the Developer Tools' Console.
+
+*/
+
+// clears the console
+console.clear(); 
+
+// a simple log
+console.log("Welcome to the machine");
+
+// a warning
+console.warn("JavaScript ain't easy");
+
+// an error
+console.error("Task failed successfully");
+
+
+</pre>
+
+        <pre class="lesson" data-title="The Basics" data-module='Basic JavaScript'>
+/*
+
+888888b.                     d8b                                                    
+888  "88b                    Y8P                                                    
+888  .88P                                                                           
+8888888K.   8888b.  .d8888b  888  .d8888b                                           
+888  "Y88b     "88b 88K      888 d88P"                                              
+888    888 .d888888 "Y8888b. 888 888                                                
+888   d88P 888  888      X88 888 Y88b.                                              
+8888888P"  "Y888888  88888P' 888  "Y8888P                                           
+                                                                                    
+                                                                                    
+                                                                                    
+     888888                             .d8888b.                   d8b          888    
+       "88b                            d88P  Y88b                  Y8P          888    
+        888                            Y88b.                                    888    
+        888  8888b.  888  888  8888b.   "Y888b.    .d8888b 888d888 888 88888b.  888888 
+        888     "88b 888  888     "88b     "Y88b. d88P"    888P"   888 888 "88b 888    
+        888 .d888888 Y88  88P .d888888       "888 888      888     888 888  888 888    
+        88P 888  888  Y8bd8P  888  888 Y88b  d88P Y88b.    888     888 888 d88P Y88b.  
+        888 "Y888888   Y88P   "Y888888  "Y8888P"   "Y8888P 888     888 88888P"   "Y888 
+      .d88P                                                            888             
+    .d88P"                                                             888             
+   888P"                                                               888                     
+*/
+
+
+
+</pre>
+
+        <pre class="lesson" data-title="Values" data-subtitle="Let there be data">
+'use strict';
+
+/*
+
+    "When the creators built the machine, they put in the processor and the
+    memory. From these arise the two aspects of the program.
+    
+    The aspect of the processor is the active substance. It is called
+    Control. The aspect of the memory is the passive substance. It is
+    called Data."  -- Master Yuan-Ma, The Book of Programming
+
+    
+    The purpose of any program is to transform data. So any program needs
+    data. Data can have different roles or meanings, it can be of different 
+    types. A value is a piece of data of a specific type.
+
+    Here are some examples:
+
+    Type            Example Value
+    -----------------------------
+    number          1
+    string          "ABC"
+    boolean         true
+    null            null
+    undefined       undefined 
+    object          new Date()
+
+
+    Let's see how you can make values:
+
+*/
+
+// Need a number? Just type it and it will be summoned            
+7;
+
+// Want to do arithmetic? The result will be another number.
+// Here is how to add 7 with 3
+7 + 3;
+// Or how to multiply 5 with 5
+5 * 5;
+
+console.log( 7 + 3 )
+console.log( 5 * 5 )
+
+// Need to compare some numbers? The result will be a boolean, true or false
+7 >= 3; 
+5 < 5;
+
+console.log( 7 >= 3 )
+console.log( 5 < 5 )
+
+
+// Need a string? You can create it in different ways, using " ", ' ' or ` `:
+"Below the surface of the machine, the program moves.";
+'Without effort, it expands and contracts';
+`In great harmony, electrons scatter and
+regroup. The forms on the monitor are but ripples on the water. The
+essence stays invisibly below.
+ -- Master Yuan-Ma, The Book of Programming`;
+
+
+
+
+</pre>
+        <pre class="lesson" data-title="Bindings" data-subtitle="The Life of a Kraken">
+'use strict';        
+
+/*
+
+    You can bind a value to a name using "const" or "let". 
+    Later you can use the binding name to get the bound value.
+
+    You can assign a value to a binding using "=".
+    The same value can be bound to several names.
+
+    --------------------------------------------------------
+    NOTE: Bindings are also called variables. 
+    But calling a constant a variable is kind of confusing. 
+    So here we stick with bindings.
+    --------------------------------------------------------
+    
+    Think of a binding not as a box containing a value, 
+    but as a *tentacle* that grasps a value. 
+    
+    The same value can be bound to several names, 
+    meaning the same value can be grasped by several tentacles 
+    not that there are several boxes with the same value.
+
+    --------------------------------------------------------
+    NOTE: There is another, old way or binding a value, using 
+    "var" but nobody uses it anymore since it can cause some 
+    strange and unexepected behaviour. Please use instead "const" 
+    by default, and "let" only if you need to change the binding
+    -------------------------------------------------------
+    
+*/
+
+// Previously we had to repeat the 7 + 3 operation when we printed the result,
+// by binding the result of 7 + 3 to 'sum', we can print it using the binding
+const sum = 7 + 3;
+console.log(sum)
+
+
+// Bindings that never change are declared with "const"
+const person = "Dr. Cham";
+
+// Tip: If you attempt to change a const you will get an error
+
+// Bindings that change are declared with "let"
+let whatHeDid = "He did dynamite a retirement home";
+// Let's change it
+whatHeDid = "He did dynamite a retirement home full of grannies";
+
+// You can bind several values in a single line
+let born = 1894, missing = 1941;
+
+// Also you can just declare a "let" binding, without providing a value
+let died;
+// You need to provide a value to "const" or you'll get an error:
+//const wentMad;
+
+
+// Log a binding's value using console.log
+console.log("person:", person); 
+console.log("born, missing, died :", born, missing, died); 
+
+
+// -- Exercises -- 
+
+// Declare a binding that cannot be reasigned named "question" 
+// with value "But Was He Sick??"
+
+
+// Declare a binding that can be reasigned named "age" with value 50
+
+
+// Declare a binding that cannot be reasigned named "bookDescription" 
+// with value "A novel about time-travelling pheasant hunters"
+
+
+// Declare a binding that can be reasigned named "rating" with value 4.2
+
+
+
+</pre>
+
+        <pre class="lesson" data-title="Dynamic Types" data-subtitle="A Mind Forever Voyaging">
+'use strict';            
+
+/*
+
+    You don't specify the type of the value when you declare a binding.
+    The type of the value is determined at runtime.
+
+    You can even reassign 'let' bindings to values of another type.
+
+*/
+
+let thinkingOf = "Is this the real life?"; 
+console.log(thinkingOf);
+
+thinkingOf = "Is this just fantasy?"; 
+console.log(thinkingOf);
+
+thinkingOf = 1975;
+console.log(thinkingOf);
+
+
+// -- Exercises -- 
+
+// Declare a "x" binding with any value
+
+
+// Change the "x" value to something else
+
+
+
+</pre>
+
+        <pre class="lesson" data-title="Value is bound" data-subtitle="Obvious is not?">
+'use strict';   
+
+let x = 100;
+let y = x; // What is happening here?
+
+x = 0;
+// What is y? 
+// console.log(y)
+
+/*
+
+-------------|========|
+x     ->     |  100   |
+-------------|========|
+-------------|        |
+y     ->              |     
+----------------------| 
+
+*/
+
+
+</pre>
+        <pre class="lesson" data-title="Names" data-subtitle="Remember when everyone used to call you Stinky Pete?">
+'use strict';            
+
+/*
+
+    Bindings, classes, functions, methods, members etc. have names.
+
+    A name starts with a letter, optionally followed by one or more letters, 
+    digits, or underscore.
+
+    $ (dollar sign) and _ (underscore) can be used instead of a letter as
+    a name prefix.
+
+    By convention the name of all of the members, bindings, functions  
+    starts with lower case, only class and constructor names 
+    start with upper case.
+
+    camelCaseNotation is used for names composed from several words. 
+    JavaScript is case sensitive.       
+
+*/
+
+
+// Declare a binding that starts with a letter followed by a digit
+
+
+// Declare a binding that starts with _ followed by a digit
+
+
+// Declare a binding that starts with $ followed by a digit
+
+
+// Declare a binding for "Anyway the wind blows" 
+
+
+// Try to declare a binding that starts with a digit
+
+
+
+
+</pre>
+
+        <pre class="lesson" data-title="Keywords" data-subtitle="I want you to notice when I am around">
+'use strict';   
+
+/*            
+
+    Some of the keywords are not used by the language 
+    but might be in the future versions.
+
+    You cannot name a binding or parameter with a reserved word!
+    Worse, it is not permitted to use a keyword as the name of 
+    an object property in an object literal.
+
+    New keywords may be added by newer versions of JavaScript.
+
+
+    abstract	arguments	await	      boolean
+    break	    byte	    case	      catch
+    char	    class	    const	      continue
+    debugger	default	    delete	      do
+    double	    else	    enum	      eval
+    export      extends	    false	      final
+    finally	    float	    for           function
+    goto	    if	        implements    import
+    in	        instanceof	int	          interface
+    let 	    long	    native	      new
+    null        package	    private	      protected
+    public	    return	    short	      static
+    super	    switch	    synchronized  this
+    throw	    throws	    transient	  true
+    try	        typeof	    var	          void
+    volatile	while	    with	      yield	
+
+*/
+
+// -- Exercises -- 
+
+// Try to declare a binding using one of the reserved words as binding name
+
+
+
+</pre>
+
+
+
+        <pre class="lesson" data-title="Data types" data-subtitle="Royale with Cheese">
+'use strict';          
+
+/*
+
+    There are seven primitive types:
+    - number
+    - string
+    - boolean
+    - null
+    - undefined
+    - Symbol
+    - BigInt
+
+    Everything else is an object, including arrays.
+
+    We can use "typeof" operator to find the type of a value,
+    but sadly is not working very for some types, so in practice we use special
+    techniques to find the type.    
+
+    All primitive types are immutable, they cannot be changed once created.
+
+*/
+
+console.log("Type of a number:", typeof 1);
+console.log("Type of a string:", typeof "No!");
+console.log("Type of a boolean:", typeof false);
+console.warn("Type of null:", typeof null);
+console.log("Type of undefined:", typeof undefined);
+console.log("Type of a symbol:", typeof Symbol("π"));
+console.log("Type of an object:", typeof Math);
+console.log("Type of a function:", typeof function(){});
+console.warn("Type of an array:", typeof [1, 2, 3]);
+
+// NEW! Not supported by all browsers yet
+//console.log("Type of a bigint:", typeof (2n ** 53n));
+
+// in all cases typeof gives back a string with the actual type
+console.log("Type of typeof a number:", typeof(typeof 1));
+console.log("Type of typeof a string:", typeof(typeof "No!"));
+console.log("Type of typeof a boolean:", typeof(typeof false));
+console.log("Type of typeof null:", typeof(typeof null));
+console.log("Type of typeof undefined:", typeof(typeof undefined));
+console.log("Type of typeof a symbol:", typeof(typeof Symbol("π")));
+console.log("Type of typeof an object:", typeof(typeof Math));
+console.log("Type of typeof a function:", typeof(typeof function(){}));
+console.log("Type of typeof an array:", typeof(typeof [1, 2, 3]));
+
+// NEW! Not supported by all browsers yet
+// console.log("Type of typeof a bigint:", typeof(typeof (2n ** 53n)));
+
+// -- Exercises --
+
+// Declare a binding with any value and print out its type
+
+
+
+</pre>
+
+
+        <pre class="lesson" data-title="Numb3rs" data-subtitle="One-two-three-techno">
+'use strict';            
+
+/*
+
+    JavaScript has a two types for all the numbers, integers, 
+    floating point numbers, etc.:
+    1. Number - 64-bit floating point, safe integer
+    2. BigInt - double-precision floating point approximation of the integer values
+
+    Special numbers are NaN (Not a Number), Infinity and -Infinity.
+    Number.MAX_SAFE_INTEGER (2 ** 53 - 1) and Number.MIN_SAFE_INTEGER -(2 ** 53 - 1),
+    Number.MAX_VALUE (1.79E+308, or 2 ** 1024) and Number.MIN_VALUE (5E-324),
+    are the Number limits.
+    
+    +, -, *, / operators are used for arithmetic operations
+    % is the remainder operator
+    ** is the exponential operator
+
+    Math object provides additional math functions.
+
+*/
+
+const n = 1;
+const half = 0.5;
+const solarSystemAge = 4.568e9;
+
+// Math provides additional math functions
+const rnd = Math.random(); 
+
+// Problems with precision, don't use this for money calculations
+const dollars = 0.1 + 0.2;
+console.log("Dollars:", dollars); 
+
+// Numbers have some methods even if they are primitives
+console.log("Dollars with precision:", dollars.toPrecision(1));
+
+// Transform string to numbers
+const minutes = parseInt("08");
+console.log("Minutes:", minutes); // 0 NOT 8 in some browsers!
+
+const hours = parseInt("08", 10); // always set radix
+console.log("Hours:", hours); 
+
+// Another way to convert strings to numbers using Number function
+// (Yes, it's a function not a class even if it starts with capital N)
+const seconds = Number("08");
+console.log("Seconds:", seconds); 
+
+// And yet another way
+const millis = +'123';
+console.log("Millis:", millis); 
+
+// To create BigInts, you need to add 'n' after the number;
+// const bigInt = 2n ** 53n + 1n; 
+// console.log("Type of bigInt", typeof bigInt);
+// console.log("bigInt", bigInt);
+
+
+// When strings cannot be converted to numbers you get NaN
+const time = Number("01:02:08.123");
+console.log("Time:", time); 
+
+// NaN is supposed to denote the result of a nonsensical computation,
+// so it isn’t equal to the result of any other nonsensical computations.
+console.log("Nan === NaN?", NaN === NaN);
+
+// Check if value is number
+const isNotANumber = isNaN("abc");
+console.log("abc is not a number:", isNotANumber);
+
+console.log("0 < Infinity:", 0 < Infinity)
+console.log("-Infinity < 0:", -Infinity < 0)
+
+console.log("typeof NaN ¯\\_(ツ)_/¯:", typeof NaN)
+console.log("typeof Infinity:", typeof Infinity)
+console.log("typeof -Infinity:", typeof -Infinity)
+
+
+// Binary
+let five = 0b101
+console.log(five);
+
+// Hex
+let red = 0xFF0000
+console.log(red);
+
+
+
+// -- Exercises -- 
+
+// Calculate 1 + 2
+
+// Calculate 12 - 2
+
+// Calculate 2.2 * 3
+
+// Calculate 6 / 3
+
+// Calculate ((1 + 2) * (2 + 4)) / 3
+
+// Calculate the remainder of 10 / 4 using %
+
+// Raise 2 to power 3 using **
+
+
+
+</pre>
+
+        <pre class="lesson" data-title="A number is 64 bits" data-subtitle="9007199254740991">
+'use strict'; 
+
+/*
+
+    Decimal    Binary     Memory 
+    -----------------------------
+    0             0       1 bit     
+    1             1       1 bit
+    2            10       2 bits 
+    3            11       2 bits
+    4           100       3 bits
+    5           101       3 bits 
+    6           110       3 bits
+    7           111       3 bits
+    8          1000       4 bits
+    9          1001       4 bits
+
+    4 bits are used for each digit. 
+    A number can have maximum 64 / 4 = 16 digits 
+
+*/
+
+// Max int 11111 11111111 11111111 11111111 11111111 11111111 11111111 (2 ** 53 -1)
+console.log(Number.MAX_SAFE_INTEGER, (Number.MAX_SAFE_INTEGER+'').length);
+
+// Max int binary 
+console.log(BigInt('0b11111111111111111111111111111111111111111111111111111'));
+
+// So where are the remaining 64 - 53 = 11 bits used for?
+// 1 bit is used for sign
+// 10 bits are used for exponent 
+
+// sign(1) exponent(10)                                                    fraction(53)
+//  [.][..........][.........................................................................................................]
+
+// Max value in JS is 2 ** 1024 - as you can see is a fraction with an exponent
+console.log(Number.MAX_VALUE);
+
+// Or using big ints
+console.log(2n ** 1024n);
+
+/*
+1797693134862315907729305190789024733617976978942306572734300811577326758055009
+6313270847732240753602112011387987139335765878976881441662249284743063947412437
+7767893424865485276302219601246094119453082952085005768838150682342462881473913
+110540827237163350510684586298239947245938479716304835356329624224137216n
+*/
+
+console.log(Number.MAX_SAFE_INTEGER + 1); // should be 9007199254740992
+console.log(Number.MAX_SAFE_INTEGER + 2); // should be 9007199254740993
+console.log(Number.MAX_SAFE_INTEGER + 3); // should be 9007199254740994
+
+// If you need to work with bigger integers, use big int 
+console.log(Number.MAX_SAFE_INTEGER * 323234 );
+console.log(BigInt(Number.MAX_SAFE_INTEGER) * 323234n );
+
+
+
+
+
+</pre>
+
+        <pre class="lesson" data-title="Math" data-subtitle="It's the Final Countdown">
+'use strict';            
+
+/*
+
+    Math is a built-in object that has properties and methods for mathematical 
+    constants and functions. 
+
+    Here are some of them:
+
+    Math.PI
+    Math.abs(x) // Absolute value
+    Math.ceil(x) // Smallest integer greater than or equal to x.
+    Math.cos(x) // Cosine of x
+    Math.floor(x) // Largest integer less than or equal to x
+    Math.max([x[, y[, …]]]) // Largest of zero or more numbers.
+    Math.min([x[, y[, …]]]) // Smallest of zero or more numbers.
+    Math.random() // Pseudo-random number between 0 and 1
+    Math.round(x) // x rounded to the nearest integer
+    Math.sin(x) // Sine of x
+    Math.sqrt(x) // Positive square root of x
+    Math.trunc(x) // Integer part of x, removing any fractional digits.
+
+*/
+
+console.log(Math.PI);
+
+console.log(Math.ceil(8.15));
+console.log(Math.floor(8.15));
+
+console.log(Math.max(4, 8, 15, 16, 23, 42));
+console.log(Math.random());
+console.log(Math.sqrt(2));
+
+// -- Exercises -- 
+
+// Calculate the minium of 48, -1516, 2342
+
+// Generate a random number between 0 and 10
+
+
+</pre>
+
+        <pre class="lesson" data-title="Strings" data-subtitle="Words don't come easy">
+'use strict';            
+
+/*    
+
+    As the other primitive values, Strings are immutable.
+    16 bits per character.
+    You can compare similar strings with ==
+
+    Can use double quotes (" ") and single quotes (' ') for strings.
+    For multiline strings use back-ticks (` `).
+
+    A string has lots of useful methods like:
+    - length
+    - indexOf 
+    - substring 
+    - toLowerCase
+
+    There's no char type, but you can work with a string's chars.
+
+*/
+
+const fix = "Have you tried turning it off and on again?";
+console.log(fix);
+
+// strings have methods
+console.log(fix.toUpperCase()); 
+console.log(fix.length); 
+
+const stringFromNumber = 1 + ""; 
+console.log(stringFromNumber); 
+
+// another way to transform primitives to string using String function
+const stringFromSomething = String(123);
+
+const hiragana = "\u3041";
+console.log(hiragana);
+
+const specialChars = "One\nTwo";
+console.log(specialChars);
+
+const multiline = `
+    Roses are red
+    Violets are blue
+    Unexpected } on line 32
+`
+console.log(multiline);
+
+// Strings enclosed by the back-tick are called template literals 
+// Template literals allow string interpolation
+const lang = "Java";
+const interpolated = ` 
+    - Honey, I can't open the jar!
+    - You need to download ${lang}!`
+console.log(interpolated);
+
+
+// -- Exercises --
+
+// Format a phone number to a readable version: 0742552233 -> 0742.552.233
+
+// Black out word:
+// Given a phrase and a word, replace each word's chars with *, leave all other
+// words as they are.
+
+
+</pre>
+
+
+        <pre class="lesson" data-title="Working with strings"
+            data-subtitle="Tell me a story of whiskey and mystics and men">
+'use strict'; 
+
+/*
+   
+  Working with strings is relatively easy, the string API provides a lot 
+  of common operations.  
+
+  See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
+  for more details.
+
+*/ 
+
+const opinion = 'yikes';
+// access a char
+const firstChar = opinion[0];
+console.log(firstChar);
+
+const charOverLimit = opinion[10];
+console.log(charOverLimit);
+
+// string length
+const opinionLength = opinion.length;
+console.log(opinionLength);
+
+// transform string to upper case/ lowe case
+const upperCaseOpinion = opinion.toUpperCase();
+console.log(upperCaseOpinion);
+
+// get part of the string
+const partOfOpinion = opinion.substring(0, 4);
+console.log(partOfOpinion);
+
+
+// What do you think will happen when we try to change the string in place?
+//opinion[0] = 'l';
+console.log(opinion)
+
+// -- Exercises --
+
+// implement the capitalize function that will take a string and return 
+// the same string with the first letter uppercase
+const capitalize = (str) => {
+    let result = '';
+    // your code here
+
+
+    return result;
+}
+
+
+
+</pre>
+
+
+        <pre class="lesson" data-title="Boss request: Media duration" data-subtitle="That would be great!">
+'use strict'; 
+
+/* 
+
+    Hey mate! The following code is not working...
+    It should just format a duration to a human readable string? 
+
+    The format is "hh:mm:ss" where hh is number of hours, mm is number of minutes, ss 
+    is number of seconds. Easy, right?
+    
+    We need the fix ASAP.
+    If you could fix it before you go home... That would be great!
+    
+*/ 
+
+function formatDuration(duration) {    
+    const SECONDS_IN_MINUTE = 60;
+    const SECONDS_IN_HOUR = 60 * 60;
+
+    // find hours
+    const hours = 0; 
+
+    // find minutes
+    const minutes = 0;
+    
+    // find seconds
+    const seconds = 0; 
+
+    let result = '';
+
+    return result;
+}
+
+console.log(formatDuration(10)); // logs '00:00:10'
+console.log(formatDuration(60)); // logs '00:01:00'
+console.log(formatDuration(121)); // logs '00:02:01'
+console.log(formatDuration(3636)); // logs '02:00:36'
+
+</pre>
+
+        <pre class="lesson" data-title="Booleans" data-subtitle="The Truth, The Whole Truth and Nothing But The Truth">
+'use strict';            
+
+/*
+
+    Boolean is a logical data type that can have only the values:
+    - true 
+    - false
+
+    Boolean conditionals are used to decide which sections of code to execute 
+    (e.g. if statements) or repeat (e.g. for loops).
+
+*/
+
+if(false) console.log("This will never happen!");
+else console.log("This will always happen");
+
+if(true) console.log("You can't handle the truth!");
+else console.log("Never ever");
+
+
+/*
+    If you give a value that is neither true or false, in places where
+    JavaScript expects true or false, that value will be converted
+    to true or false.
+
+    A 'falsy' value is a value converted to false.
+    A 'truthy' value is a value converted to true.
+
+    Falsy values : false / null / undefined / 0 / "" (empty string) / NaN
+    Truthy values : everything else
+
+    If the result of an expression is one of the above falsy values,
+    a condition using that result will execute the 'false' block.
+*/
+
+if(null) console.log("null is truthy!");
+else console.log("null is falsy!");
+
+if(undefined) console.log("undefined is truthy!");
+else console.log("undefined is falsy!");
+
+if(0) console.log("0 is truthy!");
+else console.log("0 is falsy!");
+
+if("") console.log("empty string is truthy!");
+else console.log("empty strings is falsy!");
+
+if(NaN) console.log("NaN is truthy!");
+else console.log("NaN is falsy");
+                    
+if("0") console.log(" '0' string is truthy!");
+
+
+</pre>
+
+        <pre class="lesson" data-title="Empty values" data-subtitle="Butthole Surfers">
+'use strict';            
+
+/*         
+
+    There are two special values, 'null' and 'undefined', that are 
+    used to denote the absence of a meaningful value.   
+
+    'undefined' represents "not set" or "doesn't exist". 
+    'undefined' is the default value for bindings, parameters, 
+    function return value, object members, etc.
+
+    'null' represents intentional absence of value.
+
+    The difference in meaning between 'undefined' and 'null' is an accident 
+    of JavaScript’s design, and it doesn’t matter most of the time. 
+    Treat them as mostly interchangeable.
+
+    Both 'undefined' and 'null' are falsy.
+
+*/     
+
+// A variable that was not assigned, has undefined value.
+let notInitialized;
+console.log(notInitialized);
+
+// Sadly undefined is not a reserved word so you can use it as variable name
+// But please don't do this!
+//let undefined = 2; console.log('undefined:', undefined);
+
+// You can null or undefined when you want to clear a variable value
+// but I recommend to use undefined
+let name = "John Resig";
+name = undefined;
+console.log('name:',name);
+
+name = "John Resig"
+if(name !== null) console.log("Name not null")
+
+name = null
+if(name !== null && name !== undefined) {
+
+} else {
+    console.log("Name null or undefined")
+}     
+
+name = undefined
+if(name !== null && name !== undefined) {
+    console.log("Name not null or undefined")
+} else {
+    console.log("Name null or undefined")
+}
+
+
+// You can use != (with a single =) to use type coersion and check for
+// both null and undefined
+
+name = null
+if(name != null) console.log("Name is not null")
+
+name = undefined
+if(name != null) console.log("Name is not undefined")
+
+name = false
+if(name != null) console.log("Name false")
+
+name = 0
+if(name != null) console.log("Name 0")
+
+name = ''
+if(name != null) console.log("Name empty string")
+
+name = NaN
+if(name != null) console.log("Name NaN")
+
+
+</pre>
+
+        <pre class="lesson" data-title="Symbol" data-subtitle="No clones allowed">
+'use strict';            
+
+/*
+
+    This data type is used to make private properties, for the internal use.
+
+    All symbols are unique.
+
+    In some programming languages the symbol data type is referred to as 
+    an "atom."  
+
+*/
+
+
+const artistSymbol = Symbol("The Artist Formerly Known as Prince")
+console.log(artistSymbol);
+
+const songSymbol = Symbol("Purple Rain")
+
+console.log("artistSymbol === songSymbol", artistSymbol === songSymbol);
+
+
+const s1 = Symbol();
+console.log(s1);
+
+const s2 = Symbol();
+
+// Two symbols are never the same
+console.log("s1 === s2", s1 === s2);
+
+
+
+</pre>
+
+        <div class="lesson quiz-slide" data-title="Quiz Show" data-subtitle="Let the games begin!">
+            <div class="quiz-container">
+
+                <article class="quiz">
+                    <header>How we print information?</header>
+                    <div class="options">
+                        <button>
+                            <pre>
+                    <code class="language-javascript">            
+console.log("Welcome");
+
+console.warn("JavaScript");
+
+console.error("World");                        
+                </code></pre>
+                            <div class="yes"></div>
+                        </button>
+                        <div class="or">OR</div>
+                        <button>
+                            <pre><code class="language-javascript">   
+System.print("Welcome");
+
+System.printWarning("JavaScript");
+
+System.printError("World");         
+            </code></pre>
+                            <div class="no"></div>
+                        </button>
+                    </div>
+                </article>
+
+
+
+
+                <article class="quiz">
+                    <header>Which one creates strings correctly?</header>
+                    <div class="options">
+                        <button>
+                            <pre><code class="language-javascript">    
+%Below the surface%;
+``the program moves.``;
+// Without effort, 
+// it expands and contracts
+                </code></pre>
+                            <div class="no"></div>
+                        </button>
+                        <div class="or">OR</div>
+                        <button>
+                            <pre><code class="language-javascript">   
+"Below the surface";
+'the program moves.';
+`Without effort,
+it expands and contracts`;                        
+                </code></pre>
+                            <div class="yes"></div>
+                        </button>
+                    </div>
+                </article>
+
+
+
+
+                <article class="quiz">
+                    <header>Which one declares a binding that is reasigned?</header>
+                    <div class="options">
+                        <button>
+                            <pre><code class="language-javascript">     
+'use strict';      
+
+const sum = 7 + 3;
+sum = sum + 1;
+                </code></pre>
+                            <div class="no"></div>
+                        </button>
+                        <div class="or">OR</div>
+                        <button>
+                            <pre><code class="language-javascript">   
+'use strict';                        
+
+let sum = 7 + 3;
+sum = sum + 1;
+                </code></pre>
+                            <div class="yes"></div>
+                        </button>
+                    </div>
+                </article>
+
+
+
+                <article class="quiz">
+                    <header>Which one tries to use a reserved word as binding name?</header>
+                    <div class="options">
+                        <button>
+                            <pre><code class="language-javascript">     
+'use strict';      
+
+const delete = () => {};
+
+                </code></pre>
+                            <div class="no"></div>
+                        </button>
+                        <div class="or">OR</div>
+                        <button>
+                            <pre><code class="language-javascript">   
+'use strict';                        
+
+const remove = () => {};
+                </code></pre>
+                            <div class="yes"></div>
+                        </button>
+                    </div>
+                </article>
+
+
+
+                <article class="quiz">
+                    <header>Which is true and will never be fixed?</header>
+                    <div class="options">
+                        <button>
+                            <pre><code class="language-javascript">    
+'use strict';  
+
+typeof null === 'object';
+
+                </code></pre>
+                            <div class="yes"></div>
+                        </button>
+                        <div class="or">OR</div>
+                        <button>
+                            <pre><code class="language-javascript">   
+'use strict';                         
+
+typeof null === 'null';
+
+                </code></pre>
+                            <div class="no"></div>
+                        </button>
+                    </div>
+                </article>
+
+
+
+                <article class="quiz">
+                    <header>Which is true?</header>
+                    <div class="options">
+                        <button>
+                            <pre><code class="language-javascript">   
+const n = 42;                          
+typeof n === 'number';
+typeof(typeof n) === 'string';
+                </code></pre>
+                            <div class="yes"></div>
+                        </button>
+                        <div class="or">OR</div>
+                        <button>
+                            <pre><code class="language-javascript">   
+const n = 42;           
+typeof n === 'number';               
+typeof(typeof n) === 'number';                        
+                </code></pre>
+                            <div class="no"></div>
+                        </button>
+                    </div>
+                </article>
+
+
+                <article class="quiz">
+                    <header>How we find the maximum number?</header>
+                    <div class="options">
+                        <button>
+                            <pre>
+                    <code class="language-javascript">   
+'use strict'; 
+
+Math.max(4, 8, 15, 16, 23, 42);                  
+
+                </code></pre>
+                            <div class="yes"></div>
+                        </button>
+                        <div class="or">OR</div>
+                        <button>
+                            <pre><code class="language-javascript">   
+'use strict'; 
+
+(4, 8, 15, 16, 23, 42).max();
+
+                </code></pre>
+                            <div class="no"></div>
+                        </button>
+                    </div>
+                </article>
+
+
+                <article class="quiz">
+                    <header>How we interpolate a value in a string?</header>
+                    <div class="options">
+                        <button>
+                            <pre><code class="language-javascript">   
+const lang = "Java";
+const interpolated = ` 
+- Honey, I can't open the jar!
+- You need to download ${lang}!`                                          
+                </code></pre>
+                            <div class="yes"></div>
+                        </button>
+                        <div class="or">OR</div>
+                        <button>
+                            <pre><code class="language-javascript">   
+const lang = "Java";
+const interpolated = "
+- Honey, I can't open the jar!
+- You need to download ${lang}!"                   
+                </code></pre>
+                            <div class="no"></div>
+                        </button>
+                    </div>
+                </article>
+
+
+                <article class="quiz">
+                    <header>Which one will display output all caps?</header>
+                    <div class="options">
+                        <button>
+                            <pre><code class="language-javascript">   
+let fix = "Strange days";
+fix.toUpperCase();
+console.log(fix);
+                </code></pre>
+                            <div class="no"></div>
+                        </button>
+                        <div class="or">OR</div>
+                        <button>
+                            <pre><code class="language-javascript">   
+let fix = "Strange days";
+fix = fix.toUpperCase();
+console.log(fix);
+                </code></pre>
+                            <div class="yes"></div>
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        <pre class="lesson" data-title="Operators" data-subtitle="Paranoid androids">
+'use strict';            
+
+/* 
+
+    Operators can be grouped by the number of values they operate on: 
+    Unary: typeof, -, void, !
+    Binary: +, -, 
+    Tertiary: x ? y : z
+    
+    Most common operators, grouped by type:  
+    Arithmetic: + - / * % **
+    Assignment: = += -= *= /= ++ --
+    Comparison: < > <= >= == != === !==
+    Conditional: ? :
+    Logical: && || !
+    Grouping: ( )  
+    
+    There are many others. We'll talk about some of them later.  
+
+*/
+
+const result = (2 + 8 * 3 / 4) % 5 ** 6;
+console.log("result:", result);
+
+let i = 0;
+i += 1;
+i -= 1;
+i++;
+console.log("i:", i);
+
+1 < 2;
+3 > 5;
+5 >= 2;
+6 == 5;
+
+const yesOrNo = Math.random() < 0.5 ? "Yes" : "No";
+console.log("yesOrNo:", yesOrNo);
+
+const f = true && false;
+const t = true || false;
+const notTrue = !true;
+
+
+
+</pre>
+
+        <pre class="lesson" data-title="Automatic type conversion" data-subtitle="The principle of most astonishment">
+'use strict';            
+
+/*
+
+    When you use the right values with the right operators all is good.
+    But as we know, JavaScript is ridiculously liberal in what it allows.
+
+    It accepts almost any program you give it, even programs that do 
+    strange and weird things. 
+
+    When an operator is applied to the "wrong" type of values, JavaScript will 
+    quietly convert that value to the type it needs, using a set of rules that 
+    often aren't what you want or expect. 
+    
+    This is called "type coercion."
+
+*/
+
+// * requires number values
+console.log("8 * null:", 8 * null)
+console.log("8 * 0:", 8 * 0)
+
+// - requires number values
+console.log('"5" - 1:', "5" - 1)
+console.log('5 - 1:', 5 - 1)
+
+// + works with both number or strings
+console.log('"5" + 1:', "5" + 1)
+console.log('"5" + "1":', "5" + "1")
+
+// * works with numbers, but how to get a number from "five"?
+// so it tells you this doesn't make sense
+console.log('"five" * 2:', "five" * 2)
+
+// Uses a complicated and confusing set of rules to determine what to do
+console.log('false == 0:', false == 0)
+
+// When null or undefined occurs on both sides of the = operator, produces true
+console.log("null == undefined:", null == undefined);
+console.log("undefined == null:", undefined == null);
+
+// When null or undefined occurs on both sides of the != operator, produces false
+console.log("null != undefined:", null != undefined);
+console.log("undefined != null:", undefined != null);
+
+console.log("null == 0:", null == 0);
+console.log("0 == null:", 0 == null);
+console.log("0 == false:", 0 == false);
+
+
+
+
+
+///////////////// The lunatic is on the grass
+///////////////// Writing JS with only 6 chars
+console.log('\n====== !+()[] ======')
+
+
+// booleans
+const false_ = ![]; // Boolean([]) = true
+const true_ = !![]; // !false = true
+console.log(false_ , true_);
+
+// undefined
+const undefined_ = [][[]];
+console.log(undefined_);
+
+// numbers
+const zero = +[];
+const one = +!![]; // +true = 1,  Number(true) = 1
+const two = (+!![]) + (+!![]); // 1 + 1
+// ... and so on to 9
+console.log(zero, one, two);
+
+// strings
+const emptyString = [] + [];
+const trueString = !![] + [];
+const falseString = ![] + [];
+const undefinedString = [][[]] + [];
+console.log(trueString, falseString, undefinedString);
+
+// chars
+// so far we can get a, d, e, f, i, l, n, r, s, t, u from abcdefghijklmnopqrstuvwxyz
+const letterF = (![] + [])[+[]]; // "false"[0]
+const letterL = (![] + [])[(+!![]) + (+!![])]; // "false"[2]
+// "undefined"[5]
+const letterI = ([][[]] + [])[(+!![]) + (+!![]) + (+!![]) + (+!![]) + (+!![])];
+console.log(letterF, letterL, letterI);
+
+// letterF + letterI + letterL + letterL
+const fillString = (![] + [])[+[]] + 
+                    ([][[]] + [])[(+!![]) + (+!![]) + (+!![]) + (+!![]) + (+!![])] + 
+                    (![] + [])[(+!![]) + (+!![])] + (![] + [])[(+!![]) + (+!![])];
+console.log(fillString);
+
+// array has a fill method
+// calling []['fill'] + '' gives "function fill() { [native code] }"
+// which gives us more characters 
+const fillFunctionToString = [][
+            (![] + [])[+[]] +
+            ([][[]] + [])[(+!![]) + (+!![]) + (+!![]) + (+!![]) + (+!![])] +
+            (![] + [])[(+!![]) + (+!![])] + (![] + [])[(+!![]) + (+!![])]] + []
+console.log(fillFunctionToString);
+
+// so no we have a, c, d, e, f, i, l, n, o, r, s, t, u, v
+// which can be used to make "constructor" which is way to long.. in !+[]()
+
+// we can get the String's constructor using ''['constructor'] + '' 
+console.log(''['constructor'] + '')
+
+// now that we have access to 'S' we can create 'toString'
+// Number.toString(base) allows an optional base argument (between 2 and 36)
+const chars = []
+for(let i=0; i < 36; i++){
+    chars.push( i['toString'](36) )
+}
+console.log(chars.join(','))
+// now we cat get all lower case letters
+
+// calling functions
+// Function('code') creates a new function with the 'code' body
+const functionConstructor = []['fill']['constructor'];
+console.log(functionConstructor);
+
+const createNewFunction = functionConstructor('console.log("You are hacked!")');
+createNewFunction();
+
+
+
+
+</pre>
+
+        <pre class="lesson" data-title="Avoid automatic type conversion"
+            data-subtitle="All are equal, but some are more equal than others">
+'use strict';            
+
+/*
+
+    For two operators, the == (equality) and != (inequality) was clear 
+    from the beginning that it would be impossible to do good automatic 
+    type conversion.
+
+    So, JavaScript provides two operators === (strict equality) and 
+    !== (strict inequality) that compares the values without doing any type 
+    conversion.
+
+    That is why, the recommended way to check for equality / inequality is to
+    use these strict operators.
+
+*/
+
+const x = 1;
+const y = true;
+console.log(`${x} == ${y}:`, x == y); // WARNING : Type coercion
+console.log(`${x} === ${y}:`, x === y); // No Type coercion
+
+const z = "";
+const t = false;
+console.log(`${z} != ${t}:`, z != t); // WARNING : Type coercion
+console.log(`${z} !== ${t}:`, z !== t); // No Type coercion
+
+// string == number
+console.log("'5' == 5", '5' == 5)
+console.log("'5' === 5", '5' === 5)
+
+console.log("'5' == [5]", '5' == [5])
+console.log("'5' === [5]", '5' === [5])
+
+console.log("5 == ['0' + '5']", 5 == ['0' + '5'])
+console.log("5 === ['0' + '5']", 5 === ['0' + '5'])
+
+
+</pre>
+
+        <pre class="lesson" data-title="Logical operators" data-subtitle="I want it all, I want it now">
+'use strict';            
+
+/*
+
+    There are three logical operators:
+    && - logical and
+    || - logical or
+    ! - logical not
+
+    value1 && value2
+    Returns "value1" if it can be converted to false; otherwise, returns "value2".
+    When used with Boolean values, && returns true if both operands are true; 
+    otherwise, returns false.
+
+    value1 || value2
+    Returns "value1" if it can be converted to true; otherwise, returns "value2".
+    When used with Boolean values, || returns true if either operand is true;
+    if both are false, returns false.
+
+    !value
+    Returns false if its single operand can be converted to true; 
+    otherwise, returns true.
+
+    && and || are short circuit operators.
+    && stops at the first falsy value
+    || stops at the first truthy value
+
+*/
+
+// I want to drive, first I have to find the keys
+// If I don't find the keys, I stop
+// Otherwise, I'll try to use the car
+// If I can't drive the car for some reason, I do nothing
+// Otherwise I drive
+const findTheDamnKeys = "found";
+const driveCar = "drive";
+const whatToDo = findTheDamnKeys && driveCar;
+
+// I want a beer 
+// If you have beer, I get beer
+// Otherwise, I want a glass of wine
+// If you have wine, I get wine
+// Otherwise, I get nothing
+const aBeer = "beer";
+const aGlassOfWine = "wine";
+const wish = aBeer || aGlassOfWine;
+
+const a1 = "Cat" && "Dog"; 
+console.log("a1:", a1);
+
+const a2 = false && "Dog";
+console.log("a2:", a2);
+
+const b1 = "Cat" || "Dog"; 
+console.log("b1:", b1);
+
+let pet;
+const ifYouCantChooseIllGetADog = pet || "Dog";
+console.log("ifYouCantChooseIllGetADog:", ifYouCantChooseIllGetADog);
+
+
+
+const notTrue = !true; // false
+const notFalse = !false; // true
+
+// Double bang does type conversion to boolean
+const notNotTrue = !!true; // true;
+const notNotFalse = !!false; // false;
+
+const notNotCat = !!"Cat"; // true;
+const notNot0 = !!0; // false;
+
+let result;
+const notNotResult = !!result; // true if result is truty, false otherwise
+
+
+</pre>
+
+
+        <pre class="lesson" data-title="How to check for type" data-subtitle="What are you?">
+'use strict'; 
+
+/*
+    
+    A classic problem in JavaScript is to check if a binding is of a certain type.        
+    Since typeof returns unexepected values for some of the types, here is what
+    you need to use in practice:        
+
+*/
+
+let x;
+
+// check if string (works with new String() also)
+function isString (value) {    
+    return typeof value === 'string' || value instanceof String;
+}
+
+// check if number (excludes NaN, Infinity)
+function isNumber (value) {
+    return typeof value === 'number' && isFinite(value);
+}
+
+// check if boolean
+function isBoolean (value) {
+    return typeof value === 'boolean';
+}
+
+// check if function
+function isFunction (value) {
+    return typeof value === 'function';
+}
+
+// check if array:
+function isArray (value) {
+    return Array.isArray(value);
+}
+
+// check if null
+function isNull (value) {
+    return value === null;
+}
+
+// check if null or undefined, note == instead of ===
+function isNullOrUndefined (value) {
+    return tvalue == null;
+}
+
+// check if undefined
+function isUndefined (value) {
+    return typeof value === 'undefined';
+}
+
+// check if object
+function isObject (value) {
+    return value && typeof value === 'object' && value.constructor === Object;
+}
+
+// check if error
+function isError (value) {
+    return value instanceof Error;
+}
+
+// check if date
+function isDate (value) {
+    return value instanceof Date;
+}
+
+</pre>
+
+        <pre class="lesson" data-title="Flow control" data-subtitle="Shortcut this way">
+'use strict';            
+
+/*
+
+    A fragment of code that produces a value is called an "expression."
+    An expression can be composed from several expressions.
+
+    A "statement" is a piece of code made from one or more expressions 
+    ending with a (optional) semicolon (;).
+
+    A JavaScript program is a list of statements.
+    Normally, these statements are executed one after the other from top to bottom. 
+    But this flow can be changed.
+
+    Conditional execution is created with the "if" keyword in JavaScript. 
+    Executes some code if, and only if, a certain condition holds.
+
+*/
+
+const aNumber = Number("2");
+if (!Number.isNaN(aNumber)) {
+    console.log(`${aNumber} is the square root of ` + aNumber * aNumber);
+}
+
+const n = Number("one");
+if (!Number.isNaN(n)) {
+    console.log(`${n} is the square root of ` + n * n);
+} else {
+    console.log("Hey. Why didn't you give me a number?");
+}
+
+let num = 11;
+if (num < 10) { 
+    console.log("Small"); 
+} else if (num < 100) { 
+    console.log("Medium"); 
+} else { 
+    console.log("Large"); 
+}
+
+
+// When there are too many "else if" branches you can use "switch".
+// You need to put a "break" after each case, otherwise, the next case is also
+// executed! Regardless if the next case was matched or not!
+
+const wheater = "";
+switch (wheater) {
+    case "rainy":
+        console.log("Remember to bring an umbrella.");
+        break;
+    case "sunny":
+        console.log("Dress lightly.");
+    case "cloudy":
+        console.log("Go outside.");
+        break;
+    default:
+        console.log("Unknown weather type!");
+        break;
+}
+
+
+// -- Exercises --
+
+// The limited conversation of a teenager:
+// If you ask him a question he says "Sure."
+// If you yell at him he says "Woah, chill out!"
+// In all other cases he says "Whatever."
+
+
+
+</pre>
+
+        <pre class="lesson" data-title="Boss request: Random number" data-subtitle="That would be great!">
+'use strict'; 
+
+/* 
+
+    Hey mate! The following code is not working...
+    It should just generate a random int between 1 and 10, easy right?
+    
+    We need the fix ASAP.
+    If you could fix it before you go home... That would be great!
+    
+*/ 
+
+let max;
+let random;
+
+if (typeof max != number) {
+    // today is my last day, I don't have time to finish this
+    Math.random() * (max - minimum) + mininimum
+    
+} else {
+    throw new Error('Please provide a number')
+}
+
+// check if correct
+console.log('Random', random);
+if(random < 1 || random > 10 || !Number.isInteger(random)) {
+    throw new Error('Random should be an integer between 1 and ${max}!');
+} else {
+    console.log('It works!');
+}
+
+
+</pre>
+
+
+        <pre class="lesson" data-title="Checks" data-subtitle="Wait, who are you again?">
+'use strict';
+
+let array = [], string = '', something;
+
+// check if an array is empty
+if ( array.length ) { } // array not empty
+if ( !array.length ) { } // array empty
+
+
+// check if string is empty,
+if ( string ) { } // string not empty
+if ( !string ) { } // string empty
+
+// check if truthy, matches everything except falsy values
+if ( something ) { } 
+
+// check if falsy, matches all falsy values 
+if ( !something ) { } 
+
+// check if boolean false 
+if ( something === false ) { } 
+
+
+</pre>
+        <pre class="lesson" data-title="Loops" data-subtitle="99 bottles of beer on the wall">
+'use strict';            
+
+/*
+
+    There are several ways to do loops:
+    - while
+    - do while
+    - for
+
+    WARNING: 
+    If you fail to set correctly the end loop condition, 
+    you'll get an "infinite loop."
+
+*/
+
+let number = 1;
+while (number <= 5) { 
+    console.log(number); 
+    number += 1; 
+}
+
+number = 1;
+do {
+    console.log(number);
+    number +=1;
+} while (number <= 5);
+
+
+for (let number = 1; number <= 5; number++) { 
+    console.log(number); 
+}
+
+
+// break out of a loop using "break" or move to next iteration using "continue"
+for (let current = 20; ; current = current + 1) {
+    if (current % 7 == 0) {
+        console.log(current);
+        break;
+    }
+}
+
+
+
+/////// Iterables ////
+
+const str = "Hello";
+// You can get a char from a string using [] notation.
+console.log(`First char in "${str}":`, str[0]);
+
+// For...of lets you iterate over all Iterable types
+for(let c of str) {
+    console.log(c)
+}
+
+
+// For...in lets you iterate over all the indexes  
+for(let c in str) {
+    console.log(c)
+}
+
+
+// -- Exercises --
+// TIP : comment the above code if you need an empty console 
+
+/*
+Write a loop that produces the following console output:
+#
+##
+###
+####
+#####
+######
+#######
+*/
+
+
+// FizzBuzz
+// Write a program that uses console.log to print all the numbers from 1 to 100,
+// with two exceptions. For numbers divisible by 3, print "Fizz" instead of the
+// number, and for numbers divisible by 5 (and not 3), print "Buzz" instead.
+
+
+</pre>
+
+
+        <pre class="lesson" data-title="Bit level operators"
+            data-subtitle="When crazy fast is more important than maintenance">
+'use strict';
+
+/*
+ 
+   A classic implementation of tags
+ 
+*/
+
+const Operations = {
+    SPAWN:  'SPAWN',
+    MOVE:   'MOVE',
+    RUN:    'RUN',
+    // ... others
+}
+
+const _entity1 = {
+    name: 'E1',
+    tags: []
+}
+
+const _entity2 = {
+    name: 'E2',
+    tags: ['SPAWN']
+}
+
+const _entity100_000 = {
+    name: 'E100K',
+    tags: ['MOVE']
+}
+
+// setting an entity's tags 
+_entity1.tags = [Operations.RUN];
+
+// or updating
+_entity1.tags.push[Operations.RUN];    
+
+
+
+function _updateEntity(entity) {
+    const entityTags = entity.tags;
+
+    // has the SPAWN tag set?
+    if(entityTags.indexOf(Operations.SPAWN) !== -1) console.log('spawn');
+
+    // has the MOVE tag set?
+    if(entityTags.indexOf(Operations.MOVE) !== -1) console.log('move');
+
+    // has the RUN tag set?
+    if(entityTags.indexOf(Operations.RUN) !== -1) console.log('run');
+
+    // ..others
+}    
+
+_updateEntity(_entity1);
+_updateEntity(_entity2);
+_updateEntity(_entity100_000);
+
+
+
+
+
+
+/*
+ 
+  In rare cases, when you need to squize every bit of performance at the cost 
+  of maintenance and code readability, e.g. a game or a framework, you have 
+  bitwise operators.
+
+*/
+
+const EntityOperations = {
+    SPAWN:  0b00000001,
+    MOVE:   0b00000010,
+    RUN:    0b00000100,
+    // ... others
+}
+
+// the operations that needs to be performed on the entity, are encoded as a 
+// number, each bit representing a different operation.
+const entity1 = {
+    name: 'E1',
+    tags: 0b00000000
+}
+
+const entity2 = {
+    name: 'E2',
+    tags: 0b00000001
+}
+
+// lots of entities need to be processed fast
+const entity100_000 = {
+    name: 'E100K',
+    tags: 0b00000010
+}
+
+
+// setting an entity's tags (reset all and set one bit)
+entity1.tags = 0b0 | EntityOperations.RUN;    
+
+// call this many many times
+function updateEntity(entity) {
+    const entityTags = entity.tags;
+    // has the SPAWN bit set?
+    if(entityTags & EntityOperations.SPAWN) console.log('spawn');
+
+    // has the MOVE bit set?
+    if(entityTags & EntityOperations.MOVE) console.log('move');
+
+    // has the RUN bit set?
+    if(entityTags & EntityOperations.RUN) console.log('run');
+
+    //... others
+}
+
+updateEntity(entity1);
+updateEntity(entity2);
+updateEntity(entity100_000);
+
+
+
+
+
+
+</pre>
+
+        <div class="lesson quiz-slide" data-title="Quiz Show" data-subtitle="Let the games begin!">
+            <div class="quiz-container">
+
+                <article class="quiz">
+                    <header>Which code will print <b>false</b> three times?</header>
+                    <div class="options">
+                        <button>
+                            <pre>
+                        <code class="language-javascript">            
+console.log('' == 0);
+
+console.log(null == undefined);
+
+console.log(0 == false);
+                        </code></pre>
+                            <div class="no"></div>
+                        </button>
+                        <div class="or">OR</div>
+                        <button>
+                            <pre><code class="language-javascript">   
+console.log('' === 0);
+
+console.log(null === undefined);
+
+console.log(0 === false);
+                    </code></pre>
+                            <div class="yes"></div>
+                        </button>
+                    </div>
+                </article>
+
+
+
+
+                <article class="quiz">
+                    <header>In which case the pet will be "Dog"?</header>
+                    <div class="options">
+                        <button>
+                            <pre><code class="language-javascript">   
+
+const pet = "Cat" && "Dog";  
+
+console.log(`I have a ${pet}`);
+
+                    </code></pre>
+                            <div class="yes"></div>
+                        </button>
+                        <div class="or">OR</div>
+                        <button>
+                            <pre><code class="language-javascript">   
+
+const pet = "Cat" || "Dog";                        
+
+console.log(`I have a ${pet}`);
+                    </code></pre>
+                            <div class="no"></div>
+                        </button>
+                    </div>
+                </article>
+
+
+
+
+                <article class="quiz">
+                    <header>Which one detects correctly non-number arguments?</header>
+                    <div class="options">
+                        <button>
+                            <pre><code class="language-javascript">     
+// Accepts only numbers, 
+// throws error if argument is not number
+if (typeof radius !== "number" || 
+    isNaN(radius)) {
+    throw new Error('Expecting number')
+}
+
+return Math.PI * radius * radius;
+
+                    </code></pre>
+                            <div class="yes"></div>
+                        </button>
+                        <div class="or">OR</div>
+                        <button>
+                            <pre><code class="language-javascript">   
+// Accepts only numbers, 
+// throws error if argument is not number
+if (!radius) {
+    throw new Error('Expecting number')
+}
+
+
+return Math.PI * radius * radius;
+                                            
+                    </code></pre>
+                            <div class="no"></div>
+                        </button>
+                    </div>
+                </article>
+
+
+
+                <article class="quiz">
+                    <header>Which one detects an array?</header>
+                    <div class="options">
+                        <button>
+                            <pre><code class="language-javascript">     
+// get array from somewhere                        
+let possibleArray;
+
+// check if is really an array
+typeof possibleArray === 'array';  
+
+                    </code></pre>
+                            <div class="no"></div>
+                        </button>
+                        <div class="or">OR</div>
+                        <button>
+                            <pre><code class="language-javascript">   
+// get array from somewhere                        
+let possibleArray;
+
+// check if is really an array
+Array.isArray(possibleArray);  
+                        
+                    </code></pre>
+                            <div class="yes"></div>
+                        </button>
+                    </div>
+                </article>
+
+
+
+
+                <article class="quiz">
+                    <header>Which one will output only "red" ?</header>
+                    <div class="options">
+                        <button>
+                            <pre><code class="language-javascript">    
+let color = 'red';
+
+switch (color) {
+    case "red":
+        console.log("red");
+    case "green":
+        console.log("green");
+    default:
+        console.log("yellow");        
+}
+                    </code></pre>
+                            <div class="no"></div>
+                        </button>
+                        <div class="or">OR</div>
+                        <button>
+                            <pre><code class="language-javascript">   
+let color = 'red';
+
+switch (color) {
+    case "red":
+        console.log("red");
+        break;
+    case "green":
+        console.log("green");
+        break;
+    default:
+        console.log("yellow");        
+}                    
+                    </code></pre>
+                            <div class="yes"></div>
+                        </button>
+                    </div>
+                </article>
+
+
+
+                <article class="quiz">
+                    <header>Which on prints a, b and c?</header>
+                    <div class="options">
+                        <button>
+                            <pre><code class="language-javascript">   
+const str = "abc";
+
+for(let char in str) {
+    console.log(char)
+}
+                    </code></pre>
+                            <div class="no"></div>
+                        </button>
+                        <div class="or">OR</div>
+                        <button>
+                            <pre><code class="language-javascript">   
+const str = "abc";
+
+for(let char of str) {
+    console.log(char)
+}
+                    </code></pre>
+                            <div class="yes"></div>
+                        </button>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+
+
+        <pre class="lesson" data-title="Functions" data-subtitle="Below the surface of the machine, the program moves">
+'use strict';            
+
+/*
+
+    A function is a subprogram wrapped in a value.
+    The function is the most important concept in JavaScript.
+
+    A function can take zero or more parameters.
+    A function has a body.
+    A function can return or not a value.
+
+    A function can be used as a parameter to another function.
+    A function can be returned from a function.
+
+    To invoke a function use the function name followed by ().
+    Pass the parameters between the (), separated by ,
+
+*/
+
+// Function definition
+
+// Defining a function with a parameter "x" 
+// and a body "return x + 1"
+const increment = function (x) {
+    return x + 1;   
+}
+console.log("typeof increment:", typeof increment);
+
+// Call the function
+const two = increment(1);
+console.log("Two:", two);
+
+
+// A function without parameters 
+const rnd = function () {
+    return Math.random();
+}
+
+// A function that doesn't return a value, returns undefined
+const log = function(str) {
+    console.log(str);
+}
+const logResult = log("Captain's log, stardate 41153.7");
+console.log("logResult:", logResult);
+
+
+// Functions ignore the extra parameters
+console.log("increment(4, 8, 15, 16, 23, 42):", increment(4, 8, 15, 16, 23, 42));
+
+
+// If the function is called without parameters, they are undefined
+console.log("increment():", increment());
+
+
+// We can set default values for parameters
+const decrement = function(x = 1) {
+    return x - 1;
+}
+console.log("decrement():", decrement());
+// But default values are used only for missing arguments
+console.log("decrement(null):", decrement(null));
+
+const decrement2 = function(x = 1) {
+    x = x || 1;
+    return x - 1;
+}
+console.log("decrement2(null):", decrement2(null));
+
+
+
+
+// Use function as parameter
+const repeat = function(fun, times) {
+    for (let i=0; i < times; i++){
+        console.log(fun());
+    }
+}
+repeat(rnd, 10);
+
+// Return function from function
+const operation = function(simbol) {
+    if(simbol === '+') return increment
+    else if(simbol === '-') return decrement;
+    else return undefined;
+}
+const plus = operation('+');
+const minus = operation('-');
+
+// get the functions
+console.log("plus:", plus);
+
+//minus function
+console.log("minus:", minus);
+
+// using the functions
+console.log("plus(1):", plus(1));
+console.log("minus(1):", minus(1));
+
+
+</pre>
+
+        <pre class="lesson" data-title="Declaration notation" data-subtitle="The hoist of the century">
+'use strict';            
+
+/*
+
+    Another way to create functions is with the "Declaration notation."
+    When functions are created this way they behave a little differently.
+
+    Function declarations are not part of the regular top-to-bottom 
+    flow of control. It's like they are declared at the top.
+
+    This rearrangement is called "function hoisting".
+
+*/
+
+// Call the function before it's declaration
+const five = increment(4);
+console.log("Five:", five);
+
+// Function declaration
+function increment(x) {
+    return x + 1;   
+}
+
+// Functions that are invoked when declared are called Immediate functions.
+(function (){
+    console.log('Immediate!')
+})()
+
+// -- Exercises --
+
+// Make two functions with two parameters a and b and returns the sum of a and b
+// First use a function definition and then use a function declaration
+
+
+
+</pre>
+
+
+        <pre class="lesson" data-title="Arrow functions" data-subtitle="Take me down to the Paradise city">
+'use strict';            
+
+/*
+
+    The best way to create functions is to use the "arrow notation."    
+    In this case we don't use "function" keyword but "=>" instead.
+
+    Functions declared this way behave a little differently also.
+
+*/
+
+// With parameters
+const increment = (x) => {
+    return x + 1;
+}
+
+// If the function body is just a line, you can write it like this:
+const decrement = x => x - 1; 
+
+// With no parameters
+const rnd = () => Math.random();
+
+// With default parameters
+const square = (x = 1) => x * x;
+
+// With no return
+const double = x => { x * 2 }
+
+// -- Exercises --
+
+// Implement an arrow function with 1 parameter that returns the square root
+
+// Implement an arrow function with 2 parameter that returns the square root
+
+// Implement an arrow function with parameters a, b, c with the logic a + b - c
+
+
+
+</pre>
+
+
+        <pre class="lesson" data-title="Function arguments" data-subtitle="Careful with that axe, Eugene">
+'use strict';            
+
+/*
+
+    When you define a function you specify the function *parameters*.
+    When you call a function you specify the function *arguments*.
+
+    The number of parameters and the number of arguments can be different.
+    Functions can use unlimited number of arguments.
+
+    If you pass too many arguments, the extra ones are ignored. 
+    If you pass too few, the missing parameters get assigned to 'undefined'.
+
+*/
+
+// Function has 'x' parameter
+const adder = function(x) {
+    return x + 1;
+}
+
+// Called with argument '1', x = 1
+adder(1); 
+
+// When the function is called, the arguments are matched with parameters
+// as if they were declared as regular bindings
+function adderWhenExecuted() {
+    let x = 1;
+    return x + 1;
+}
+
+
+////////// Remaining arguments ////////////
+
+// The way to get the remaining arguments is by prefixing the 
+// last parameter with '...' 
+const sum = function (x = 0, y = 0, ...rest) {
+    let result = x + y;
+
+    for (let i = 0; i < rest.length; i += 1) {
+        result += rest[i];
+    }  
+    
+    return result;
+};
+
+console.log(sum()); 
+console.log(sum(1)); 
+console.log(sum(1, 2)); 
+console.log(sum(1, 2, 3, 10, 20, 100)); 
+
+// "rest" will always be an array, even if it's empty. 
+// It will not include values that are assigned to the x, y, and z parameters, 
+// only anything else that's passed in beyond those first three values:
+function test(x, y, z, ...rest) {
+    console.log( x, y, z, rest );
+}
+
+test();                  // undefined undefined undefined []
+test( 1, 2, 3 );         // 1 2 3 []
+test( 1, 2, 3, 4 );      // 1 2 3 [ 4 ]
+test( 1, 2, 3, 4, 5 );   // 1 2 3 [ 4, 5 ]
+
+
+
+
+</pre>
+
+
+
+
+
+        <pre class="lesson" data-title="Project: Hangman">
+'use strict';            
+
+`
+------
+|  0
+| /|\\
+|  |
+| / \\
+|
+_a_a_____
+`
+
+let wordToGuess = 'hangman';
+let badGuesses = '';
+let goodGuesses = '';
+
+const hangman = (numberOfMistakes) => {
+    let line1, line2, line3, line4;
+    line1 = line2 = line3 = line4 = '|  ';
+    
+    if(numberOfMistakes > 0) line1 +=' 0';
+    
+    if(numberOfMistakes > 1) line2 += '/';
+    if(numberOfMistakes > 2) line2 += '|';
+    if(numberOfMistakes > 3) line2 += '\\';
+    
+    if(numberOfMistakes > 4) line3 +=' |';
+    
+    if(numberOfMistakes > 5) line4 +='/';
+    if(numberOfMistakes > 6) line4 +=' \\';
+    
+    return `
+-----
+${line1}
+${line2}
+${line3}
+${line4}
+|
+    `;
+}
+
+const guesses = (wordToGuess, goodGuesses) => {
+    let result = '';
+    for (let i = 0, max = wordToGuess.length; i < max; i++){
+        if (goodGuesses.indexOf(wordToGuess[i]) !== -1) {
+            result += wordToGuess[i];
+        } else {
+            result += ' _ ';
+        }
+    }
+    return result;
+}
+
+
+const guess = (l) => {
+    console.clear();
+    if(wordToGuess.indexOf(l) !== -1) {
+        goodGuesses += l;
+    } else {
+        badGuesses += l;
+    }
+
+    const h = hangman(badGuesses.length);
+    const g = guesses(wordToGuess, goodGuesses);
+    return `${h}\n${g}`;
+}
+console.log(guess(''));
+
+// play
+console.log(guess('a'));
+console.log(guess('b'));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+
+        <pre class="lesson" data-title="Objects"
+            data-subtitle="From the small and trivial, the large and complex arise.">
+'use strict';            
+
+/*
+
+    So far we've seen primitive data types:
+    - numbers
+    - strings
+    - booleans
+    - empty values : null & undefined
+    - Symbols
+
+    From these primitive types we can create complex types, called objects.
+
+    An "object" is written as a list of properties between braces, 
+    separated by commas. A property is a key / value pair. 
+    Keys must be strings but values can be any type.
+
+*/
+
+const spaceXcom = {
+    "name" : "SpaceX",
+    "headquarters" : "Hawthorne, California",
+    "founded" : 2002,
+    "defunct" : undefined
+}
+console.log(spaceXcom);
+
+// Accessing properties
+const companyName = spaceXcom.name;
+console.log('companyName:', companyName);
+
+const founded = spaceXcom['founded'];
+console.log('founded:', founded);
+
+// Accessing properties that don't exist return undefined
+const owner = spaceXcom.owner;
+console.log('owner:', owner);
+
+
+const droneShip = {
+    "name" : "Of Course I Still Love You",
+    "landings": 16,
+    "active": true,
+    "operator" : spaceXcom,
+    updateStatus : function(status) { this.status = status; }
+}
+console.log(droneShip);
+
+// Functions attached to objects are called "methods"
+// Methods have access to "this" which is the object they are attached on
+
+let currentStatus = droneShip.status;
+console.log('currentStatus:', currentStatus);
+
+droneShip.updateStatus('On the move');
+currentStatus = droneShip.status;
+console.log('currentStatus:', currentStatus);
+
+
+// -- Exercises --
+
+//Space age: calculate your age if you would live on another planet
+const planets = {
+    'Mercury': 0.2408467,
+    'Venus': 0.61519726,
+    'Mars': 1.8808158,
+    'Jupiter': 11.862615,
+    'Saturn': 29.447498,
+    'Uranus': 84.016846,
+    'Neptune': 164.79132,
+    'Earth': 1
+}
+const ageOnPlanet = (age, planet) => age / (planets[planet] || 1)
+
+const myage = 40;
+const myageOnMars = ageOnPlanet(myage, 'Mars');
+const myageOnEarth = ageOnPlanet(myage, 'Earth');
+const myageOnJupiter = ageOnPlanet(myage, 'Jupiter');
+const myageOnMercury = ageOnPlanet(myage, 'Mercury');
+
+console.log('On Mars', myageOnMars);
+console.log('On Earth', myageOnEarth);
+console.log('On Jupiter', myageOnJupiter);
+console.log('On Mercury', myageOnMercury);
+
+
+
+
+</pre>
+
+        <pre class="lesson" data-title="Objects are mutable" data-subtitle="Fire Walk with Me">
+'use strict';            
+
+/*
+
+    Primitive types are immutable. They cannot be changed. 
+    If you need an updated value, you need to create a new one.
+    And we are fine with that.
+
+    But objects are mutable. They can be changed. 
+    You can change any piece of an object any time.
+    Even when you bind the object in a 'const'.
+    And we expect that also. 
+
+    Being unable to modify an object is unacceptable for many people.
+
+*/
+
+const spaceXcom = {
+    "name" : "SpaceX",
+    "headquarters" : "Hawthorne, California",
+    "founded" : 2002,
+    "defunct" : undefined
+}
+console.log(spaceXcom.name)
+
+spaceXcom.name = "Solaris";
+console.log(spaceXcom.name)
+
+spaceXcom['defunct'] = 2030;
+
+// You can even delete properties 
+delete spaceXcom.name;
+console.log(spaceXcom.name)
+
+// You can make an object immutable using Object.freeze()
+Object.freeze(spaceXcom);
+// spaceXcom.name = "x"; // throws error
+
+// Shallow object cloning
+var copy = Object.assign({}, spaceXcom);
+console.log(copy); 
+
+// Merging objects
+const position = {
+    x: 100,
+    y: 200
+}
+const shape = {
+    name: "square"
+}
+const square = Object.assign({}, position, shape, { side: 10 })
+
+// Define properties as functions
+Object.defineProperty(square, 'area', {
+    get() { return this.side * this.side; },
+    set(area) { this.side = Math.sqrt(area) },
+    enumerable: true,
+    configurable: true
+    });
+console.log(`Area: ${square.area}, side: ${square.side}`);
+
+square.area = 400;
+console.log(`Area: ${square.area}, side: ${square.side}`);
+
+
+
+
+</pre>
+
+
+
+        <pre class="lesson" data-title="Working with mutable objects is hard" data-subtitle="Burning down the house">
+'use strict'; 
+
+/*
+
+    Is very easy to introduce suble bugs, by mutating inner objects.  
+    A good practice is avoid mutating the objects.
+
+*/
+
+// from previously
+let x = 100;
+let y = x;
+x = 0; 
+console.log(y);
+
+// using objects
+let xx = { a: 1, b : 2}
+let yy = xx;
+let zz = xx;
+xx = null;
+console.log(yy);
+
+yy.a = 3; // changing yy changes zz!
+console.log(yy);
+console.log(zz);
+
+
+
+
+// Bad Example
+
+function copyDoc(originalDoc) {
+  if (!originalDoc) {
+    throw new Error('You need to provide a doc.');
+  }  
+
+  let copy = {
+    author: originalDoc.author,
+    metadata: originalDoc.metadata,
+  };
+
+  copy.metadata.title = 'Copy of ' + originalDoc.metadata.title;
+  return copy;
+}
+
+
+const doc = {
+    author: 'Suzie Q',
+    metadata: {
+        title: 'Green River Earnings'
+    }
+}
+
+const docCopy = copyDoc(doc);
+
+console.log(doc);
+console.log(docCopy);
+
+
+
+</pre>
+
+        <pre class="lesson" data-title="Primitive types are not objects"
+            data-subtitle="Looks like a duck, and quacks like a duck, still not a duck">
+'use strict';
+
+/*
+    
+    Primitive types are not objects although they have properties.
+    You can use those properties but cannot add new ones.
+
+    Except for null and undefined, all primitive values have object equivalents 
+    that wrap around the primitive values:
+    1. String for the string primitive.
+    2. Number for the number primitive.
+    3. BigInt for the bigint primitive.
+    4. Boolean for the boolean primitive.
+    5. Symbol for the symbol primitive.
+
+    Everytime you use a method on a primitive, what happens is this:
+    a. the primitive is wrapped in the correspoding object, 
+    b. the method is called on object
+    c. the result of the method call, the new primitive, is returned
+    d. the wrapper object is destroyed
+*/
+
+const s = 'Big Brother is watching';
+s.trim();
+// s.status = 'active'; // throws error 
+
+const n = 1984;
+n.toPrecision(1);
+// n.status = 'captive'; // throws error
+
+const b = true;
+b.toString();
+// b.status = 'afraid'; // throws error
+
+
+
+</pre>
+
+        <pre class="lesson" data-title="Use objects as primitives" data-subtitle="I have a use for you">
+'use strict';
+
+/*
+
+    Let's say you have a custom object. And, strange enough, you think that 
+    obj1 + obj2 or obj1 - obj2 should do something resonable.       
+        
+    You can convert your object to a primitive if it implements 
+    Symbol.toPrimitive function.       
+
+    [Symbol.toPrimitive] = function(hint) {
+        // hint = one of "string", "number", "default"
+    }
+*/
+
+
+let user = {
+    name: "John",
+    money: 1000,
+    
+    // hint will be one of "string", "number", "default" based on 
+    // what operator is used on the object
+    [Symbol.toPrimitive](hint) {      
+        return hint == "string" ? `${this.name}, money: ${this.money}` : this.money;
+    }
+};
+
+
+console.log(`${user}`);
+console.log(user + user);
+console.log(user - user);
+console.log(user * user);
+console.log(+user);
+
+
+console.log(user);
+
+
+
+</pre>
+
+        <pre class="lesson" data-title="Functions are objects" data-subtitle="Here we are now, entertain us">
+'use strict';
+
+/*
+
+    Just as any other object, a function can have properties.
+    You can set and reset properties as you like.  
+    You can set other functions as properties of a function.
+    
+*/
+
+const adder = function(x) {
+    return x + 1;
+}
+console.log(adder);
+
+// set a string property to a function
+adder.label = 'Adder';
+console.log(adder.label);
+
+// set a function property to a function
+adder.sayHi = () => console.log('Hi!');
+adder.sayHi();
+
+
+
+</pre>
+
+
+        <pre class="lesson" data-title="Maps" data-subtitle="Alternative to plain objects">
+'use strict';
+
+/*
+    Map holds key-value pairs just like a plain object. 
+    
+    The differences between Map and objects are:
+    * Map is iterable
+    * Map provides a 'size' property, for objects you have to calculate it.
+    * Map remembers the original insertion order of the keys, objects not.
+    * Unlike objects, where only strings and symbols can be used as keys, any 
+    value may be used as key or value in a Map.
+*/
+
+const obj = {
+    'a string' : "A value for 'a string'",
+    'another string' : "A value for 'another string'",
+}
+
+// calculate size 
+let size = Object.keys(obj).length;
+
+// setting value
+obj['a string'] = "A NEW value for 'a string'";
+
+// getting value
+console.log(`obj value for 'a string'`, obj['a string'] );
+
+
+const map = new Map();
+
+const keyString = 'a string',
+        keyObj = {},
+        keyFunc = function() {};
+
+// Setting values
+map.set(keyString, "A value for 'a string'");
+map.set(keyObj, 'A value for keyObj');
+map.set(keyFunc, 'A value for keyFunc');
+
+map.size; // 3
+
+// getting the values
+console.log(`Value for ${keyString}`, map.get(keyString));    
+console.log(`Value for ${keyObj}`, map.get(keyObj));       
+console.log(`Value for ${keyFunc}`, map.get(keyFunc));      
+
+const mapAsArray = [...map];
+console.log(mapAsArray);
+
+map.forEach( elem => {
+    console.log('Value:', elem);
+})
+
+map.forEach( (elem, key) => {
+    console.log('Key:', key, 'Value:', elem);
+})
+
+
+// creating a Map from an array
+const mapFromArray = new Map([ [1, "uno"], [2, "due"], [3, "tre"] ]);
+mapFromArray.forEach( (elem, key) => {
+    console.log(`${key}: ${elem}`);
+})
+
+
+
+</pre>
+
+
+        <pre class="lesson" data-title="Arrays" data-subtitle="If I have a bag of rocks to carry as I go">
+'use strict';
+
+/*
+
+    JavaScript provides a data type specifically for storing sequences of values. 
+    It is called an "array" and is written as a list of values between square 
+    brackets, separated by commas.
+
+    Arrays are mutable. You can add, remove or replace any value anytime.
+
+*/
+
+// Array with 3 number values: a, b & c
+const a = ['a', 'b', 'c'];
+console.log('Array:', a);
+
+// Type
+console.log('type of a',typeof a);
+console.log('better check if array', Array.isArray(a));
+
+// To access a specific value, you need to know it's index
+const first = a[0]; // index starts from 0
+
+// Another way to get values from array with "destructuring assignment"
+const [val0, val1] = a;
+console.log('First two values:', val0, val1);
+
+// We can even set default values if the array is too short
+const [uno = 'X', due = 'Y'] = [];
+console.log('First two values:', uno, due);
+
+// Iterate over all elements
+for(let i=0; i < a.length; i++){
+    console.log(a[i]);
+}
+
+console.log('Simpler iteration:')
+for(let elem of a) {
+    console.log(elem);
+}
+console.log('Index iteration:')
+for(let elem in a) {
+    console.log(elem);
+}
+
+
+// To replace a specific value, assing a new value at an index
+a[1] = "B";
+console.log('Array:', a);
+
+// To find how many values are in an array use length property
+const length = a.length;
+console.log('Length', length);
+
+// To add a new value (at the end) use "push"
+a.push('d');
+console.log('Array after push:', a);
+
+// To remove the last value use "pop"
+a.pop();
+console.log('Array after pop:', a);
+
+// To add a new value (at the beginning) use "unshift"
+a.unshift('e');
+console.log('Array after unshift:', a);
+
+// To remove the first value use "shift"
+a.shift();
+console.log('Array after shift:', a);
+
+// To remove elements at a specific index
+a.splice(1, 2);
+console.log('Array after splice:', a);
+
+// Sort 
+const arr = ['b', 'c', 'd', 'a']
+arr.sort( (a, b) => {
+    if (a < b) return -1;    
+    if (a > b) return 1;
+    return 0;
+})
+console.log(arr);
+
+// Merging arrays
+const tobe = ['To', 'Be'];
+const question = tobe.concat(['Or', 'Not']).concat(tobe);
+console.log(question);
+
+// Iterating over objects
+const spaceXcom = {
+    "name" : "SpaceX",
+    "headquarters" : "Hawthorne, California",
+    "founded" : 2002
+}
+const keys = Object.keys(spaceXcom);
+for(let key of keys) {
+    console.log(key)
+}
+
+for(let key in spaceXcom) {
+    console.log(key)
+}
+
+const entries = Object.entries(spaceXcom);
+for(let entry of entries) {
+    console.log(entry)
+}
+
+
+
+</pre>
+
+        <pre class="lesson" data-title="Immutable array operations" data-subtitle="Can you give me sanctuary?">
+'use strict';
+
+/*
+
+    A good programming practice is to not mutate existing data but to create 
+    new data based on existing data.
+
+    Arrays provide a set o methods that create new arrays instead of mutating
+    the existing array.
+
+*/
+
+//
+// How to make a sandwich
+//
+const ingredients = ['🍅', '🥬', '🥓', '🧀'];
+console.log(ingredients);
+
+// Cut all ingredients 
+const ingredientsInPieces = ingredients.map( x =>  x + 'pcs')
+console.log(ingredientsInPieces);
+
+// Put all ingredients together
+const sandwich = ingredientsInPieces.reduce( ( acc, item ) => {
+    return acc + ' ' + item;
+}, '🥪 = Put between two slices of 🍞:');
+console.log(sandwich)
+
+// Filter 
+const vegetarianIngredients = ingredients.filter ( x => x !== '🥓')
+console.log('Vegetarian ingredients:', vegetarianIngredients)
+
+// Find first veggie
+const veggie = ingredients.find( x =>  x !== '🥓');
+console.log('First veggie:', veggie)
+
+
+// -- Exercises --
+console.log('EXERCISES');
+
+// Implement your version of 'map' using a for loop
+const map = function(array, transform) {
+    const result = [];
+    for (let elem of array) {
+        // Implement me
+    }
+    return result;
+}
+const mapped = map( [1, 2, 3], x => x * x ) 
+console.log('Mapped:', mapped); // should be [1, 4, 9]
+
+
+
+// Implement your version of 'reduce' using a for loop
+const reduce = function(array, combine, start) {
+    const result = start;
+    for (let elem of array) {
+        // Implement me
+    }
+    return result;
+}
+const reduced = reduce( [1, 2, 3], (a, b) => a + b , 0) 
+console.log('Reduced:', reduced); // should be 6
+
+
+
+// Implement your version of 'filter' using a for loop
+const filter = function(array, predicate) {
+    const result = [];
+    for (let elem of array) {
+        // Implement me
+    }
+    return result;
+}
+const filtered = filter( [1, 2, 3], (x) => x > 1 ) 
+console.log('Filtered:', filtered); // should be [2, 3] 
+
+
+
+// Doubles 
+const doubles = [1, 2, 3].map( x => 0 /* Implement me */);
+console.log('Doubles:', doubles); // should be [2, 4, 6]
+
+
+
+// Sum
+const sum = [1, 2, 3].reduce( (a, b) => 0 /* Implement me */, 0);
+console.log('Sum:', sum)
+
+
+
+// Caesar code
+const encode = (str, key) => {
+    const letters = 'abcdefghijklmnopqrstuvwxyz';
+    const code = letters.substring(key) + letters.substring(0, key);
+    const map = letters.split('').reduce( (acc, current, index) => {
+        acc[current] = code[index]
+        acc[current.toUpperCase()] = code[index].toUpperCase()
+        return acc;
+    }, {})
+
+    return str.split('').map( a => map[a] || a).join('')
+}
+
+const decode = (str, key) => {
+    return encode(str, 26 - key);
+}
+
+const key = 11;
+const encoded = encode("Et tu, Brute?", key);
+const decoded = decode(encoded, key);
+console.log(encoded);
+console.log(decoded)
+
+
+</pre>
+
+        <pre class="lesson" data-title="Spread arrays" data-subtitle="Who Let The Dogs Out?">
+'use strict';
+
+/*
+
+    It can be useful for a function to accept any number of arguments.
+    You can pass arrays to these functions using the "spread syntax".
+
+*/
+
+const sum = (...numbers) => {
+    return numbers.reduce( (total, current) => total + current, 0)
+}
+console.log(sum(1,2));
+console.log(sum(1,2,3));
+
+const numbersToAdd = [5, 6, 7];
+const result = sum(...numbersToAdd);
+console.log(result);
+
+
+// Merging arrays
+const words = ["never", "fully"];
+const sentence = ["will", ...words, "understand"]
+console.log(sentence);
+
+// Creating new array from elements of another array
+const otherNumbers = [...numbersToAdd];
+console.log(otherNumbers);
+
+// -- Exercises --
+
+// High scores
+// Given a list of scores, sorted by date, most recent first, show a report with
+// 1. latest score
+// 2. latest === best ? "This is your best" : "This is only {diff} from your best"
+
+const scores = [99, 90, 26, 67, 100, 13];
+const latest = scores[0];
+const best = Math.max(...scores);
+const diff = best - latest;
+
+const report =`
+    Latest score: ${latest}
+    This is${diff > 0 ? ' only ' + diff + ' from' : ''} your best
+`
+console.log(report);
+
+
+
+</pre>
+        <pre class="lesson" data-title="Strings to arrays and back"
+            data-subtitle="One of these days, I'm going to cut you into little pieces">
+'use strict';
+
+/*
+
+    It's common to transform strings in arrays, make some operations on the array
+    and transform the string back to an array.
+
+*/
+
+const chars = 'JavaScript'.split('');
+console.log(chars);
+
+const words = 'JavaScript: The Good Parts'.split(' ');
+console.log(words);
+
+const w = ['Now', 'I', 'am', 'become', 'Death', 'the', 'destroyer', 'of', 'worlds']
+const sentence = w.join(' ');
+console.log(sentence);
+
+const formatted = '__a_a___'.split('').join(' ');
+console.log(formatted);
+
+const reversed = 'JavaScript'.split('').reverse().join('');
+console.log(reversed);
+
+
+</pre>
+
+        <pre class="lesson" data-title="Arrays are objects"
+            data-subtitle="Sometimes I feel I'm gonna break down and cry">
+'use strict';
+
+/*
+
+    It's important to know that the arrays are objects. 
+    
+    Things are a bit confusing in this case because the [ ] are used 
+    not only to get or set array elements but also array properties.   
+    
+    Please don't do this, ok?
+
+*/
+
+const samsonite = [];
+
+// All good
+samsonite[0] = "Zero";
+
+// Wait what
+samsonite[-1] = "Minus One";
+
+// Objects have properties, right?
+samsonite['color'] = 'rebeccapurple';
+
+// Objects can have function properties, no?
+samsonite.sayHi = () => "Hi!";
+
+console.log(samsonite);
+
+// Can you guess the length?
+// console.log('Length:', samsonite.length);
+
+samsonite[9] = 'Nine';
+
+// Can you guess the length?
+// console.log(samsonite.length);
+
+// console.log('9th:',samsonite[8]);
+// console.log('777th:',samsonite[776]);
+
+// And of course if you are tired to guessing the length
+// you can set it to whatever you want and be done with it
+// samsonite.length = 5;
+// console.log(samsonite.length);
+
+
+
+</pre>
+
+        <pre class="lesson" data-title="Sets" data-subtitle="Holding unique values">
+'use strict';
+
+/*
+
+    Sets are collections of values. You can iterate through the elements of a 
+    set in insertion order. A value in the Set may only occur once; it is 
+    unique in the Set's collection.
+
+    When you need a collection of unique values consider using a Set instead of
+    an array.
+*/
+
+const array = [1, 2, 3];
+
+// length
+console.log( array.length );
+
+// add element
+array.push(4)
+
+// update element 
+array[0] = 11;
+
+// get element 
+console.log( array[0] );
+
+
+const set = new Set();
+
+set.add(1); 
+set.add(2); 
+set.add(3); 
+
+// size 
+console.log( set.size )
+
+// add element
+set.add(4)
+
+// remove element 
+set.delete(4);
+
+// has element 
+console.log( set.has(1) );
+
+const setElements = [...set];
+console.log(setElements)
+
+// iterate elements
+set.forEach(elem => console.log(elem));
+
+
+
+
+
+</pre>
+
+        <pre class="lesson" data-title="Regular expressions" data-subtitle="A language inside a language">
+'use strict';
+
+/*
+
+    Regular expressions are both terribly awkward and extremely useful. 
+    Their syntax is cryptic but they are a powerful tool for inspecting and 
+    processing strings.     
+
+    You can make regular expressions using the RegExp class or the / / notation.
+    RegExp class is used when you need to make dynamic expressions.
+    Since the / / notation is shorter, we'll use it in most cases.
+
+*/
+
+const v1 = new RegExp("abc");
+const v2 = /abc/;
+
+// Testing strings
+let hasPass = /pass/.test('What happened in the Dyatlov Pass?');
+console.log('has "pass":', hasPass);
+
+hasPass = /Pass/.test('The Harrowing Mystery Of The Dyatlov Pass Incident');
+console.log('has "Pass":', hasPass);
+
+const hasAnyDigit = /[0-9]/.test(`
+    In January 1959, nine Soviet college students were killed 
+    under mysterious circumstances while hiking through the 
+    Ural Mountains in what's now known as the Dyatlov Pass incident.`);
+
+console.log('hasAnyDigit:', hasAnyDigit);
+
+
+const text = `
+    One night, at -25, the hikers fled their tents while
+    partially clothed and without shoes. 
+    None of the hikers were ever seen alive again.
+`
+
+// Find a match
+const match = text.match(/the/);
+console.log('match:', match);
+
+const allMatches = text.match(/the/g);
+console.log('all matches:', allMatches);
+
+// Replace substrings
+const replaced = text.replace(/the/g, "THE")
+console.log('replaced:', replaced);
+
+// Regular expressions also have an exec (execute)
+// method that will return null if no match was found
+// and return an object with information about the match otherwise
+const m = /the/.exec(text);
+console.log('exec match:', m);
+
+// Using exec for iterating over all matches
+const pattern = /the/g;
+let aMatch;
+while (aMatch = pattern.exec(text)) {
+    console.log("Found", aMatch[0], "at", aMatch.index);
+}
+
+// Parse and evaluate simple math word problems returning the answer as an integer.
+// What is 5 plus 13 plus 6? 24
+const parse = (str) => {   
+    const operators = str.match(/minus+|plus+|multiplied+|divided+/g)
+    const numbers = (str.match(/[-]\d+|\d+/g) || []).map(aMatch => Number(aMatch));
+
+    if(!operators || operators.length !== numbers.length - 1) {
+        throw new Error(`I don't understand the question: ${str}`);
+    }
+
+    const operations = {
+        plus: (a, b) => a + b,
+        minus: (a, b) => a - b,
+        multiplied: (a, b) => a * b,
+        divided: (a, b) => a / b,
+    }
+
+    return numbers.reduce((acc, number) => {
+        const op = operators.shift();
+        const fun = operations[op];
+        return fun ? fun(acc, number) : acc;
+    });
+}
+let question = "What is 2 multiplied by -2 multiplied by 3?";
+let result = parse(question);
+console.log(question, result);
+
+question = "What is -12 divided by 2 divided by -3?";
+result = parse(question);
+console.log(question, result);
+
+question = "What is 20 minus 4 minus 13?";
+result = parse(question);
+console.log(question, result);
+
+
+
+</pre>
+
+
+        <pre class="lesson" data-title="JSON" data-subtitle="Message in a bottle">
+'use strict';
+
+/*
+
+    JavaScript objects can be serialized as JSON strings to be 
+    send over the network or saved somewhere.
+
+    JSON strings can be transformed back in JavaScript objects.
+    - only " " are allowed for strings (no ' ' or ` `)
+    - keys don't have to be enclosed in " " unless they have multiple words
+    - functions cannot be serialized
+
+*/
+
+const unsolvedCase = {
+    name : "Dyatlov Pass Incident",
+    date : "February 2nd, 1959",
+    "case solved" : false,
+    location: {
+        country: "USSR",
+        place: "Northern Ural Mountains"
+    },
+    victims: [
+        { name: "Igor Dyatlov", born: 1936 },
+        { name: "Yuri Doroshenko", born: 1938 },
+        { name: "Lyudmila Dubinina", born: 1938 },
+        { name: "Yuri (Georgiy) Krivonischenko", born: 1935 },
+        { name: "Alexander Kolevatov", born: 1934 },
+        { name: "Zinaida Kolmogorova", born: 1937 },
+        { name: "Rustem Slobodin", born: 1936 },
+        { name: "Nicolai Thibeaux-Brignolles", born: 1935 },
+        { name: "Semyon (Alexander) Zolotariov", born: 1921 }        
+    ],
+    survivors: []
+}
+
+const jsonString = JSON.stringify(unsolvedCase);
+console.log(jsonString);
+
+const obj = JSON.parse(jsonString);
+console.log(obj);
+
+const pretty = JSON.stringify(unsolvedCase, null, '\t');
+console.log('Pretty print:','\n', pretty);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+
+        <pre class="lesson" data-title="Dates" data-subtitle="Never seem to find the time">
+'use strict';  
+
+/*
+
+    The Date object is a built-in object in JavaScript that stores the date 
+    and time. It provides a number of built-in methods for formatting and 
+    managing that data.
+
+*/
+
+const aDate = new Date('December 17, 1995 03:24:00');
+console.log(aDate);
+
+const now = new Date();
+console.log(now);
+
+
+// time
+const hours = now.getHours()
+const minutes = now.getMinutes();
+const time = (hours < 10 ? '0' + hours : hours) + 
+                ':' +   
+                (minutes < 10 ? '0' + minutes : minutes) 
+console.log('What time it is?', time);
+
+
+// day
+function whatDayIsToday() {
+    const day = now.getDay(); // Sunday - Saturday : 0 - 6
+    let dayName;
+    switch(day){
+        case 0: dayName = 'Sunday'; break;
+        case 1: dayName = 'Monday'; break;
+        case 2: dayName = 'Tuesday'; break;
+        case 3: dayName = 'Wednesday'; break;
+        case 4: dayName = 'Thursday'; break;
+        case 5: dayName = 'Friday'; break;
+        case 6: dayName = 'Saturday'; break;
+    }
+    return dayName;
+}
+console.log(`Enjoy the rest of your ${whatDayIsToday()}!`);
+
+
+// dates are mutable 
+function whatDayIsOn(dayOfTheMonth) {
+    // now
+    const date = new Date();
+    // set new day 
+    date.setDate(dayOfTheMonth);
+    const day = date.getDay(); // Sunday - Saturday : 0 - 6
+    let dayName;
+    switch(day){
+        case 0: dayName = 'Sunday'; break;
+        case 1: dayName = 'Monday'; break;
+        case 2: dayName = 'Tuesday'; break;
+        case 3: dayName = 'Wednesday'; break;
+        case 4: dayName = 'Thursday'; break;
+        case 5: dayName = 'Friday'; break;
+        case 6: dayName = 'Saturday'; break;
+    }
+    return dayName;
+}
+const dayOfMonth = 2;
+console.log(
+    `What day is on ${dayOfMonth} from now? 
+    It's a ${whatDayIsOn(now.getDate() + dayOfMonth)}`);
+
+
+// save dates as timestamp so that can be displayed correctly
+// in different time zones
+const timestamp = Date.now(); // new Date().getTime();
+console.log('timestamp', timestamp);
+
+console.log('Local time:', new Date(timestamp).toLocaleString());
+const nyTime = new Date(timestamp).toLocaleString("en-US", {timeZone: "America/New_York"})
+console.log('New York time:', nyTime);
+const tokyo = new Date().toLocaleString("ja-JP", {timeZone: "Asia/Tokyo"});
+console.log('Tokyo time:', tokyo);
+
+
+
+</pre>
+
+        <pre class="lesson" data-title="Errors" data-subtitle="Uh, Houston, we've had a problem">
+'use strict';
+
+/*
+
+    JavaScript is single threaded. When an error occurs, it is propagated 
+    all the way to the top and the program stops.
+
+    It's a good idea to check function arguments and prevent errors 
+    if the function can work correctly with bad arguments. 
+
+    You can throw errors yourself if you can't continue with bad arguments.
+    You can use try/catch blocks to handle errors, so the program can continue.
+
+*/
+
+// v.1 Default implementation of a "sum" function
+const sum1 = (a, b) => {
+    return a + b
+}
+console.log('1 + 2:', sum1(1, 2) );
+console.log('1 + undefined:', sum1(1) );
+console.log('null + undefined:', sum1(null) );
+console.log('1 + a:', sum1(1, 'a') );
+
+
+// v.2 We can use default arguments
+// that are used only if the argument is not provided
+const sum2 = (a = 0, b = 0) => {
+    return a + b
+}
+console.log('1 + 2:', sum2(1, 2) );
+console.log('1 + 0:', sum2(1) );
+console.log('null + 0:', sum2(null) );
+console.log('1 + a:', sum2(1, 'a') );
+
+
+// v.3 Throw errors and handle them
+const sum3 = (a = 0, b = 0) => {
+    if(typeof a !== 'number' || typeof b !== 'number') {
+        throw new Error('Invalid argument, expecting a number');
+    }
+    return a + b
+}
+console.log('1 + 2:', sum3(1, 2) );
+console.log('1 + 0:', sum3(1) );
+
+try {
+    console.log('null + 0:', sum3(null) );
+    console.log('1 + a:', sum3(1, 'a') );
+}
+catch(e) {
+    console.error(e);
+}
+
+
+// v.4 There is no "assert" in JavaScript 
+// but we can implement it very easy
+
+function assert(condition, message) {
+    if(!condition) {
+        throw new Error(message || 'Assertion failed');
+    }
+}
+
+const sum4 = (a = 0, b = 0) => {
+    assert(typeof a === 'number', 'Expecting a number');
+    assert(typeof b === 'number', 'Expecting a number');
+
+    return a + b
+}
+console.log('1 + 2:', sum4(1, 2) );
+console.log('1 + 0:', sum4(1) );
+
+try {
+    console.log('null + 0:', sum4(null) );
+    console.log('1 + a:', sum4(1, 'a') );
+}
+catch(e) {
+    console.error(e);
+}
+
+
+// JSON.parse throws error for bad input
+const parseData = str => {
+    try {
+        return JSON.parse(str);
+    }
+    catch(e) {
+        console.warn('JSON Error', e);
+        return null; 
+    }
+}
+console.log( parseData() );
+console.log( parseData('') )
+console.log( parseData('[1,2,3]') )
+console.log( parseData('[1,2,3') )
+
+
+window.onerror = function (msg, url, lineNo, columnNo, error) {
+    console.log('Worst case scenario error', msg, url, lineNo, columnNo, error);
+}
+
+throw Error('Boom!');
+
+
+</pre>
+
+
+
+        <pre class="lesson" data-title="Asynchronicity"
+            data-subtitle="Waiting... Waiting... Waiting for you to come along">
+'use strict';
+
+/*
+
+    Normally, things happen one at a time. When you call a function you wait
+    for it to return. The program will not execute other code until
+    the current returns.
+
+    Asynchronous code allows multiple things to happen at the same time. 
+    When you start an async action, your program continues to run. 
+    When the async action finishes, the program is informed and gets access 
+    to the result (for example, the data read from network).
+
+*/
+
+// console.time and console.timeEnd can be used to calculate time difference 
+// between two code points. Just provide the same label to both time and timeEnd
+console.time('diff');
+console.timeEnd('diff');
+
+
+/////// Callbacks /////
+
+// setTimeout(func, numberOfMillisToWait) is a function that allows us to
+// call a function later
+
+console.time('timeout');
+const callback = () => { console.timeEnd('timeout') };
+const after = 1000;
+// execute 'callback' function after 1000 ms
+setTimeout(callback, after);
+
+
+/////// Promises //////
+// function executor(success, fail) {}
+// const promise = new Promise(executor);
+// promise.then(callback) // callback(result)
+// promise.catch(callback) // callback(error)
+
+console.time('promise');
+const promise = new Promise( (resolve, reject) => {
+    const yesOrNo = Math.random() < 0.5;
+    setTimeout( () => { 
+        yesOrNo? resolve('Success') : reject('Error')
+    }, 2000)
+});
+promise.then( result => { 
+    // then is called on success (resolved)
+    console.log(result);
+    console.timeEnd('promise');
+}).catch( err => {
+    // catch is called on error (rejected)
+    console.error(err);
+    console.timeEnd('promise');
+}).finally( () => {
+    // called in both cases
+    console.log('Done');
+}) 
+
+
+/*
+    - Daddy, are there any people in space?
+    - I don't know know honey, but I *promise* you I'll find out.
+    A bit later..
+    - Honey, I found them!
+    - Really? What did you find?
+    - There are some people on the International Space Station.
+*/
+
+// dad
+const Dad = (function() {    
+    const promise = new Promise( (infoFound, cannotFindInfo) => {
+        const fetchPromise = fetch('http://api.open-notify.org/astros.json')
+
+        fetchPromise
+            .then( (data) => { infoFound(data.json());})
+            .catch( err => cannotFindInfo(err));
+    });
+
+    return {
+        makesPromise : () => promise
+    }
+}());
+
+
+// honey
+const dadPromise = Dad.makesPromise();
+dadPromise
+    .then( whatDaddyFound => {
+        console.log('whatDaddyFound', whatDaddyFound);
+        console.log('People in space:\n', whatDaddyFound.people);
+    })
+    .catch( error => {
+        console.log('Daddy couldn\'t find if there are people in space :( ');
+    })
+
+
+
+/////// async / await //////
+
+
+// Who is in space right now ?
+async function getSpacePeople() {
+    const data = await fetch('http://api.open-notify.org/astros.json')
+        .then(response => response.json());
+    
+    const people = data.people;
+    const result = people.map(x => x.name + ' aboard ' + x.craft)
+    console.log(' Who is space right now?\n =======================');
+    console.log('\n', result.join('\n '));   
+}
+
+try {
+    getSpacePeople();
+} 
+catch(err) {
+        console.log(err)
+}     
+
+
+
+</pre>
+
+
+        <pre class="lesson" data-title="Modules" data-subtitle="Brothers In Arms">
+'use strict';
+
+/*
+
+    A module is a piece of program that can group related functions,
+    or that can hide state and functions providing access to its 
+    functionality through a public interface.
+
+*/
+
+
+const utils = (function() {
+
+    const random = (min = 0, max = 1) => Math.random() * (max - min) + min;
+    const hashCode = (s) => {
+        let h;
+        for(let i = 0; i < s.length; i++) {
+                h = Math.imul(31, h) + s.charCodeAt(i) | 0;
+        }    
+        return h;
+    }
+
+    return {
+        rnd: random,
+        hash: hashCode
+    }
+}())
+console.log( utils.rnd())
+console.log( utils.hash('Hello'));
+
+
+//////  Hiding state /////
+
+const counter = (function(){
+
+    let count = 0;
+
+    return {
+        increase: () => count++,
+        decrease: () => count--,
+        getCounter: () => count
+    }
+
+}())
+
+console.log(counter.increase())
+console.log(counter.increase())
+console.log(counter.decrease())
+console.log(counter.getCounter())
+
+
+///// Hiding state and functionality /////
+
+const todoApp = (function(){
+
+    let id = 123; 
+    let todos = []; 
+    const makeTodo = (str, done) => ({ text: str, done: done, id: id++ })
+
+    const addTodo = (str, done = false) => {
+        const newTodo = makeTodo(str, done);
+        todos.push(newTodo);
+    }
+
+    const removeTodo = (id) => {
+        todos = todos.filter(aTodo => aTodo.id !== id);
+    }
+
+    const completeTodo = (id) => {        
+        const todo = todos.find(aTodo => aTodo.id === id);
+        if(todo) {
+            todo.done = true;
+        }
+    }
+
+    return {
+        add : addTodo,
+        remove: removeTodo,
+        complete: completeTodo,
+        list: () => [...todos],
+        prettyPrint: () => console.table(todos)     
+    }
+}())
+
+console.log('Initial');
+todoApp.prettyPrint();
+
+// add todos
+todoApp.add('Buy food');
+todoApp.add('Buy beer');
+todoApp.add('Drink beer');
+
+// prettyPrint todos
+console.log('All set:');
+todoApp.prettyPrint();
+
+// complete todo
+const currentTodos = todoApp.list();
+todoApp.complete(currentTodos[1].id);
+
+console.log('Some completed:');
+todoApp.prettyPrint();
+
+// remove todos
+todoApp.remove(currentTodos[0].id);
+
+// list todos again
+console.log('Remaining:');
+todoApp.prettyPrint();
+
+
+
+
+
+</pre>
+
+        <pre class="lesson" data-title="Classes" data-subtitle="Music for the Masses">
+'use strict';            
+
+/*
+
+    Most of the time you'll create objects using the object literal notation. 
+    But you can also use classes to make new types.
+
+    There are no private properties.
+    There are not abstract classes in JavaScript.
+    There are no interfaces in JavaScript.
+
+*/
+
+// object literal
+const song = {
+    "name": "Eye of the Tiger",
+    "artist" : "Survivor",    
+    "genre" : "Rock"
+}
+
+////// Defining a class ///////
+
+class Song {
+
+    // Cannot declare props other then functions
+    // writer = ''
+
+    constructor(name, artist = '', genre = '') {
+        this.name = name;
+        this.artist = artist;
+        this.genre = genre;
+    }
+
+    info() {
+        return `Name: ${this.name} \nArtist: ${this.artist} \nGenre: ${this.genre}`
+    }
+
+    static fromJSON({name, artist, genre}) {
+        return new Song(name, artist, genre);
+    }
+}
+
+const eyeOfTheTiger = new Song("Eye of the Tiger", "Survivor", "Rock");
+console.log(eyeOfTheTiger);
+console.log(eyeOfTheTiger.info());
+
+const somebodyToLove = new Song("Somebody to Love", 
+                            "Jefferson Airplane", "Psychedelic rock");
+
+                                
+console.log(somebodyToLove.info());
+
+// Objects are mutable, of course 
+somebodyToLove.genre = "Rock";
+console.log(somebodyToLove.info());
+
+
+// Static methods
+const songFromJSON = Song.fromJSON({name:'The End', 
+                                    artist:'The Doors', 
+                                    genre:'Rock'})
+console.log(songFromJSON.info());
+
+
+// Find out what is it
+console.log('Type:',typeof somebodyToLove);
+console.log('Song?', somebodyToLove instanceof Song);
+
+
+//////  Extending another class /////
+
+
+class Single extends Song {
+    
+    constructor(label, name, artist = '', genre = '') {
+        // must call super 
+        super(name, artist, genre);
+        this.label = label;
+    }
+
+    // extending methods
+    info() {
+        let songInfo = super.info();
+        return `${songInfo} \nLabel: ${this.label}`
+    }
+
+    // new methods
+    tagline() {
+        return `${this.label} presents ${this.name} by ${this.artist}`
+    }
+}
+
+const bohemianRhapsodySingle = new Single("EMI", "Bohemian Rhapsody", "Queen", "Rock");
+
+// new method
+console.log(bohemianRhapsodySingle.tagline());
+
+// overriden method
+console.log(bohemianRhapsodySingle.info());
+
+
+
+
+console.log('Single?', bohemianRhapsodySingle instanceof Single)
+console.log('Song?', bohemianRhapsodySingle instanceof Song)
+
+
+
+///////// Private members with Closures /////////
+
+
+const Album = (function() {
+
+    const nameSymbol = Symbol("name");
+    const artistSymbol = Symbol("artist");
+
+    class Album {
+
+        constructor(name, artist) {
+            this[nameSymbol] = name;
+            this[artistSymbol] = artist
+        }
+
+        get name(){ return this[nameSymbol] }
+        get artist(){ return this[artistSymbol] }
+    }
+
+    return Album;
+}())
+
+const theWallAlbum = new Album('The Wall', 'Pink Floyd');
+const ummagummaAlbum = new Album('Ummagumma', 'Pink Floyd');
+
+console.log(theWallAlbum.name, theWallAlbum.artist)
+console.log(ummagummaAlbum.name, ummagummaAlbum.artist)
+
+// Cannot change name anymore
+// theWallAlbum.name = 'X';
+
+// Symbols are unique, so you cannot "recreate" the nameSymbol
+console.log(theWallAlbum[Symbol("name")])
+
+
+
+
+
+</pre>
+
+
+
+        <pre class="lesson" data-title="Advanced JavaScript" data-module='Advanced JavaScript'>
+/*
+
+       d8888      888                                                  888          
+      d88888      888                                                  888          
+     d88P888      888                                                  888          
+    d88P 888  .d88888 888  888  8888b.  88888b.   .d8888b .d88b.   .d88888          
+   d88P  888 d88" 888 888  888     "88b 888 "88b d88P"   d8P  Y8b d88" 888          
+  d88P   888 888  888 Y88  88P .d888888 888  888 888     88888888 888  888          
+ d8888888888 Y88b 888  Y8bd8P  888  888 888  888 Y88b.   Y8b.     Y88b 888          
+d88P     888  "Y88888   Y88P   "Y888888 888  888  "Y8888P "Y8888   "Y88888          
+                                                                                    
+                                                                                    
+                                                                                    
+  888888                             .d8888b.                   d8b          888    
+    "88b                            d88P  Y88b                  Y8P          888    
+     888                            Y88b.                                    888    
+     888  8888b.  888  888  8888b.   "Y888b.    .d8888b 888d888 888 88888b.  888888 
+     888     "88b 888  888     "88b     "Y88b. d88P"    888P"   888 888 "88b 888    
+     888 .d888888 Y88  88P .d888888       "888 888      888     888 888  888 888    
+     88P 888  888  Y8bd8P  888  888 Y88b  d88P Y88b.    888     888 888 d88P Y88b.  
+     888 "Y888888   Y88P   "Y888888  "Y8888P"   "Y8888P 888     888 88888P"   "Y888 
+   .d88P                                                            888             
+ .d88P"                                                             888             
+888P"                                                               888             
+
+*/
+
+
+
+
+</pre>
+
+        <pre class="lesson" data-title="Scopes" data-subtitle="All in all it's just another brick in the wall">
+'use strict';            
+
+/*
+
+    Bindings and parameters are visible only in some parts of a program.
+    The part of a program where a binding is visible is called a "scope."
+
+    Bindings declared outside any scope belong to the global scope.
+    Blocks of code create new scopes.
+    Functions create new scopes.
+
+*/
+
+const globalVar = "Global variable";
+const x = 1;
+
+const castle=`
+                                    |~
+                                |  King |
+                    | Noblemen |.......|..Spies..|
+Enemy | Poor people |..........|.......|.........|.......|
+
+`;
+console.log(castle);
+
+const outside = "Enemies at the gates";
+
+{
+    const behindOuterWalls = "Poor people";
+    console.log('Poor people see', outside);
+    console.log('> Poor people see', hiddenSomewhere);
+    //console.log('Poor people don\'t see', behindInnerWalls);
+    //console.log('Poor people don\'t see', behindPalaceWalls);
+
+    {
+        const behindInnerWalls = "Noblemen";        
+        var hiddenSomewhere = "Spies";
+
+        console.log('Noblemen see', outside);
+        console.log('Noblemen see', behindOuterWalls);
+        console.log('> Noblemen see', hiddenSomewhere);
+        //console.log('Noblemen don\'t see', behindPalaceWalls);
+
+        {
+            const behindPalaceWalls = "King";        
+            console.log('King sees', outside);
+            console.log('King sees', behindOuterWalls);
+            console.log('King sees', behindInnerWalls);
+            console.log('> King sees', hiddenSomewhere);            
+        }
+    }
+}
+
+console.log('Enemies see', hiddenSomewhere);
+
+
+function makeScope(bindings, outerScope) {
+    return {
+        ...bindings,
+        _outer: outerScope
+    }
+}
+
+// Let's make scopes
+console.log('Scopes\n======')
+
+const outsideScope = makeScope({ outside: "Enemy"});
+console.log(outsideScope);
+
+const outerWallScope = makeScope({ behindOuterWalls: "Poor people"}, outsideScope);
+console.log(outerWallScope);
+
+const innerWallsScope = makeScope({ behindInnerWalls: "Noblemen"}, outerWallScope)
+console.log(innerWallsScope);
+
+const palaceWallsScope = makeScope({ behindPalaceWalls: "King"}, innerWallsScope)
+console.log(palaceWallsScope);
+
+
+function findValue(bindingName, scope) {
+    return scope[bindingName] || findValue(bindingName, scope._outer);
+}
+
+const key = 'outside';
+console.log(`King see '${key}':`, findValue(key, palaceWallsScope));
+console.log(`Noblemen see '${key}':`, findValue(key, innerWallsScope));
+console.log(`Poor people see '${key}':`, findValue(key, outerWallScope));
+
+
+// Temporal dead zone
+// Referencing the variable in the block before the initialization results 
+// in a ReferenceError
+{
+    console.log(y);
+    var y = 2;
+    
+    // console.log(x);
+    let x = 2;
+}
+
+
+
+</pre>
+
+        <pre class="lesson" data-title="Function scope" data-subtitle="Through the Looking Glass">
+'use strict';               
+
+/*
+
+    Functions create scope.     
+
+    The difference is that in the function scope we also have the parameters.
+    Also the "var" bindings do not escape the function scope.
+
+    Let's just say that normal scopes are like wood walls, but function scopes
+    are like stone walls, impenetrable.
+
+*/
+
+const castle=`
+                                    |~
+                                |  King |
+                    | Noblemen |.......|..Spies..|
+Enemy | Poor people |..........|.......|.........|.......|
+
+`;
+
+const outside = "Enemies at the gates";
+
+function outerWalls() {
+    const behindOuterWalls = "Poor people";
+    console.log('Poor people see', outside);
+
+    // This is not working anymore
+    //console.log('> Poor people see', hiddenSomewhere);
+
+    //console.log('Poor people don\'t see', behindInnerWalls);
+    //console.log('Poor people don\'t see', behindPalaceWalls);
+
+    function innerWalls() {
+        const behindInnerWalls = "Noblemen";        
+        var hiddenSomewhere = "Spies";
+
+        console.log('Noblemen see', outside);
+        console.log('Noblemen see', behindOuterWalls);
+        console.log('> Noblemen see', hiddenSomewhere);
+        //console.log('Noblemen don\'t see', behindPalaceWalls);
+
+        function palaceWalls () {
+            const behindPalaceWalls = "King";        
+            console.log('King sees', outside);
+            console.log('King sees', behindOuterWalls);
+            console.log('King sees', behindInnerWalls);
+            console.log('> King sees', hiddenSomewhere);            
+        }
+
+        palaceWalls();
+    }
+    innerWalls();
+}
+
+// This is not working anymore
+//console.log('Enemies see', hiddenSomewhere);
+
+// Execute
+outerWalls(); 
+
+        </pre>
+
+        <pre class="lesson" data-title="Execution context and the call stack" data-subtitle="Welcome to the machine">
+'use strict';    
+
+/*
+
+    By default, the JavaScript engine creates an execution context and a scope 
+    to hold all the bindings you make. This default execution context is called 
+    the "Global execution context" and the default scope is called "Global scope".
+
+    Every piece of code has access to the Global scope and can modify the things
+    saved on the Global scope. So keeping things on Global scope is a bad idea.
+
+    Every time a function is *executed*, the JavaScript engine creates a new 
+    execution context, called "Local execution context" and a new scope, 
+    called "Local scope." This local scope can be used by the function to
+    hold bindings used by the function.
+    
+    The execution context is added on the "Call stack" - that works like a 
+    "Last in, First out" queue. This way the execution context has access 
+    to the Local scopes of all the functions on Call stack plus the Global scope.
+
+    When the function has finished executing, it is removed from the Call stack
+    and its Local execution context and Local scope is destroyed.  
+
+*/
+
+////// Call stack mock //////
+const CallStack = (function(){
+    const stack =['global'];
+
+    function show() {
+        let str = `Call stack:\n============================\n`;
+        str += [...stack].reverse().map(aFun => '{ ' + aFun + ' }').join('\n')
+        console.log(str);
+    }  
+
+    return {
+        push: (f) => { stack.push(f); show()},
+        pop: () => { stack.pop(); show() },
+        show
+    }
+}())
+
+
+////
+//// Global Execution Context + Global Memory (aka Global Scope)
+//// 
+
+const castle=`
+                                    |~
+                                |  King |
+                    | Noblemen |.......|..Spies..|
+Enemy | Poor people |..........|.......|.........|.......|
+
+`;
+
+// Saved on Global memory
+const outside = "Enemies at the gates"; 
+
+// Saved on Global memory
+function outerWalls() {
+    // 'outerWalls' execution context + 'outerWalls' local memory
+
+    // Saved on 'outerWalls' local memory
+    const behindOuterWalls = "Poor people";
+    
+    // Saved on 'outerWalls' local memory
+    function innerWalls() {
+        // 'innerWalls' execution context + 'innerWalls' local memory
+        
+        // Saved on 'innerWalls' local memory
+        const behindInnerWalls = "Noblemen";        
+
+        // Saved on 'innerWalls' local memory
+        function palaceWalls () {
+            // 'palaceWalls' execution context + 'palaceWalls' local memory
+            
+            // Saved on 'palaceWalls' local memory
+            const behindPalaceWalls = "King";    
+            
+            // palaceWalls done
+            CallStack.pop();
+        }
+
+        // Execute palaceWalls
+        
+        // Get "palaceWalls" from local memory
+        // Execute palaceWalls: A new Local execution context + Local memory(scope) is created
+        CallStack.push('palaceWalls');
+        palaceWalls();
+        
+        // innerWalls done
+        CallStack.pop();
+    }
+
+    // Get "innerWalls" from local memory
+    // Execute innerWalls: A new Local execution context + Local memory(scope) is created
+    CallStack.push('innerWalls');
+    innerWalls();
+    
+    // outerWalls done
+    CallStack.pop();
+}
+
+CallStack.show();
+
+// Get "outerWalls" from Global memory
+// Execute outerWalls: Local execution context + Local memory(scope) is created
+CallStack.push('outerWalls');
+outerWalls();
+                                                        
+
+// The Call stack is not unlimited,
+// is possible to fill it using recursive functions
+// and then you'll get "Maximum call stack size exceeded" error
+let callStackSize = 0;
+function recursive() {
+    callStackSize++;
+    console.log(callStackSize);
+    return recursive();
+}
+//recursive();
+
+        </pre>
+
+
+        <pre class="lesson" data-title="Closures" data-subtitle="Dragged by the force of some inner tide">
+'use strict';   
+/*
+
+    When a function uses outside bindings, a *closure* is created.
+
+    A closure is a function that has access to the parent scope, 
+    even after the scope has closed.
+
+*/
+
+const castle=`
+                                    |~
+                                |  King |
+                    | Noblemen |.......|..Spies..|
+Enemy | Poor people |..........|.......|.........|.......|
+
+`;
+
+const outside = "Enemies at the gates";
+
+function outerWalls() {
+    const behindOuterWalls = "Poor people";
+    console.log('Poor people see', outside);
+
+    // This is not working anymore
+    //console.log('> Poor people see', hiddenSomewhere);
+
+    //console.log('Poor people don\'t see', behindInnerWalls);
+    //console.log('Poor people don\'t see', behindPalaceWalls);
+    
+    function innerWalls() {
+        const behindInnerWalls = "Noblemen";        
+        var hiddenSomewhere = "Spies";
+
+        console.log('Noblemen see', outside);
+        console.log('Noblemen see', behindOuterWalls);
+        console.log('> Noblemen see', hiddenSomewhere);
+        //console.log('Noblemen don\'t see', behindPalaceWalls);
+
+        function palaceWalls () {
+            const behindPalaceWalls = "King";        
+            console.log('King sees', outside);
+            console.log('King sees', behindOuterWalls);
+            console.log('King sees', behindInnerWalls);
+            console.log('> King sees', hiddenSomewhere);            
+        }
+
+        // Return, not execute
+        return palaceWalls;
+    }
+
+    // Return, not execute
+    return innerWalls;
+}
+
+
+// Execute outerWalls
+const innerWalls = outerWalls(); 
+// outerWalls has finished executing, 
+// its local execution context and local scope should be gone!
+
+const palaceWalls = innerWalls();
+// innerWalls has finished executing, 
+// its local execution context and local scope should be gone!
+
+// Somehow when we execute palaceWalls, we can still see the bindings
+// from innerWalls and outerWalls
+palaceWalls();
+
+
+</pre>
+        <pre class="lesson" data-title="Dissection of a closure" data-subtitle="">
+/*
+    Let's debug a simple example    
+*/
+
+/////////// A simpler example ////////
+
+debugger;
+const outside = "Enemy";
+
+// Saved on Global scope
+function outer() {
+
+    // use outside
+    console.log(outside);
+
+    // Saved on 'outer' scope
+    const noblemen = "Noblemen";        
+    const unused = "unused";
+    
+    // Saved on 'outer' scope
+    function inner () {
+        console.log('Inner uses', noblemen);
+        debugger;
+    }
+
+    debugger;
+
+    // Return 'inner'
+    // 'inner' uses bindings from 'outer' scope
+    // so it "packs" the bindings it needs in a new scope called "closure"
+    // and takes that pack with it
+    return inner;
+}
+
+// Get 'outer' from Global memory
+// Execute outer: Local execution context + Local memory(scope) is created
+const inner = outer();
+
+debugger;
+
+inner();
+
+
+
+</pre>
+
+        <pre class="lesson" data-title="Other closure examples" data-subtitle="">
+'use strict';            
+
+/*            
+
+    Bindings saved in closure are LIVE!!!
+    When the binding value changes, the new value is available in function.
+
+*/
+
+function makeBot() {
+    //////// makeBot starts, a new scope is created
+
+    // makeBot's scope binding
+    const name = 'Bot';
+
+    // returns a function
+    return function simpleton() {
+        //////// simpleton starts, a new scope is created
+
+        // inside the returned function we use the parent scope 'name' binding
+        console.log('Hi, I\'m', name);
+
+        //////// simpleton ends, scope should be destroyed
+    }
+
+    ////// makeBot has finished, scope should be destroyed
+}
+let bot = makeBot();
+// in this moment makeBot has finished executing
+// and all it's scope should be gone
+
+bot(); // still, the 'name' is found
+
+// The only way to destroy the makeBot() scope is by destroying every
+// reference to it, meaning to destroy references to simpleton()
+bot = null;
+
+
+
+
+////////////// Inner bindings can change ///////////////
+console.log('\n')
+
+function makeAdjustableBot() {
+    ///////// makeAdjustableBot starts, a new scope is created
+
+    // makeAdjustableBot's scope binding
+    let name = 'Adjustable Bot';
+
+    // returns an object
+    return {
+        getName: function() {
+            //////// getName starts, a new scope is created
+
+            // inside we use the parent scope 'name' binding
+            return name;
+
+            ////// getName ends, scope should be destroyed
+        },
+        setName: function(newName) {
+            //////// setName starts, a new scope is created
+            
+            // inside we use the parent scope 'name' binding
+            name = newName; 
+
+            ////// setName ends, scope should be destroyed
+        }  
+    } 
+
+    ///////// makeAdjustableBot has finished, scope should be destroyed
+}
+let adjustableBot = makeAdjustableBot();
+// in this moment makeAdjustableBot has finished executing
+
+let botName = adjustableBot.getName();
+console.log(botName);
+
+// name from the makeBot() scope can be modified
+adjustableBot.setName('Simpleton');
+
+botName = adjustableBot.getName();
+console.log(botName);
+
+
+
+
+//////////// Works for parameters also /////////////////
+console.log('\n')
+
+
+function makeBotWithName(name) {
+    // returns an object
+    return {
+        getName: function() {
+            // inside we use the parent 'name' parameter
+            return name;
+        },
+        setName: function(newName) {
+            // inside we use the parent 'name' parameter
+            name = newName;
+        }
+    }
+}
+let botWithCustomName = makeBotWithName('The Best Bot Ever');
+
+botName = botWithCustomName.getName();
+console.log(botName);
+
+// name from the botWithCustomName() paramater can be modified
+botWithCustomName.setName('The Worst Bot Ever');
+
+botName = botWithCustomName.getName();
+console.log(botName);
+
+
+
+
+//////////// Each function has it's own scope /////////////////
+console.log('\n')
+
+
+let botOne = makeBotWithName('Bot One');
+let botTwo = makeBotWithName('Bot Two');
+
+let botOneName = botOne.getName();
+let botTwoName = botTwo.getName();
+console.log('BotOne:', botOneName, ', BotTwo:', botTwoName);
+
+// change the bot names 
+botOne.setName('Android One');
+botTwo.setName('Drone Two');
+
+botOneName = botOne.getName();
+botTwoName = botTwo.getName();
+console.log('BotOne:', botOneName, ', BotTwo:', botTwoName);
+
+
+/////////// Closures and loops /////////////////
+console.log('\n')
+
+// Don't use var in loops, they will cause your closures to behave unexpectedly
+for(var i = 0;  i < 3; i++) {
+    setTimeout( function() {
+        console.log('Closure see var index:', i);
+    }, 100)
+}
+
+// Use 'let' instead 
+for(let i = 0;  i < 3; i++) {
+    setTimeout( function() {
+        console.log('Closure see let index:', i);
+    }, 100)
+}
+
+// Remember that that the closure has a 'live' reference to the bindings
+let x = 0;
+for(let i = 0;  i < 3; i++) {
+    x++;
+    setTimeout( function() {
+        console.log('Closure see x:', x);
+    }, 100)
+}
+
+// Create a local binding and use that inside the closure
+let y = 0;
+for(let i = 0;  i < 3; i++) {
+    let z = y++;
+    setTimeout( function() {
+        console.log('Closure see z:', z);
+    }, 100)
+}
+
+
+
+</pre>
+
+        <pre class="lesson" data-title="Project: No more secrets" data-subtitle="">
+'use strict';            
+
+/*            
+    Let's try to recreate the famous data decryption effect seen in 
+    the 1992 movie Sneakers.
+
+    https://www.youtube.com/watch?v=F5bAa6gFvLs&t=35
+*/
+
+const noMoreSecrets = (secret = "No more secrets") => {
+    
+    // make a module with all shuffle related stuff
+    const shuffle = (function() {
+        
+            // chars to use for shuffle
+        const chars = "○◘◙•♂♀☼▲►▼◄↨↕↔¶¡‼§▬↑↓←→!\"#$%&'()*+,-./0123456789:;=?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~⌂ÇâäàåáèéêëíîïÄÅÉæÆòóôöùúûüÿÖÜ¢£¥₧ƒñÑªº¿⌐¬¡»«¼½─│┌┐└┘├┤┬┴┼═║╒╓╔╕╖╗╘╙╚╛╜╝╞╟╠╡╢╣╤╥╦╧╨╩╪╫╬▀▄█▌▐■⌠⌡ΓΘΣΦΩαδεπστφ∙√∞∟∩≈≡≤≥";
+    
+        // test if white space
+        const isWhiteSpace = (s) => /^\s+$/.test(s);
+    
+        // get random int from min...max range
+        const random = (min = 0, max = 1) =>  Math.floor(Math.random() * (max - min) + min);
+        
+        // get random item from array    
+        const randomItem = (chars) => chars[random(0, chars.length - 1)];
+    
+    
+        /**
+        * Shuffles the string into random chars. 
+        * @param {string} plainText The string to shuffle
+        * @param {number} index The index of the string to shuffle from
+        */
+        const shuffleText = (plainText, index = 0) => {
+            let shuffledChars = [];
+            for (var i = 0; i < plainText.length; i++) {
+                let char = plainText[i];
+                shuffledChars[i] = isWhiteSpace(char) || i <= index ? plainText[i] : randomItem(chars);
+            }
+            return shuffledChars.join('');
+        }
+        
+        return shuffleText;
+    }());
+    
+    
+    
+    //use a function that wraps loop related stuff
+    const doLoop = (func, startStep, steps) => {
+        let currentStep = startStep;
+        
+        // animation speed
+        const speed = 100;
+        
+        function loop() {
+            func(currentStep)
+    
+            currentStep++; 
+            if(currentStep < steps) {
+                // call loop again
+                setTimeout(loop, speed);
+            }
+        }
+        loop();
+    }
+    
+
+    ////// Loop to simulate animation ////
+
+    
+    // how many loops to do before starting to show plain text
+    const loopsWithNoPlainText = 10;
+    const startStep = -loopsWithNoPlainText;
+    const steps = secret.length;
+    
+    const functionToLoop = (step) => {
+        let shuffled = shuffle(secret, step);
+
+        console.clear();
+        console.log(`%c${shuffled}`, 'font-size: 50px');
+    }
+    doLoop(functionToLoop, startStep, steps);
+}
+
+noMoreSecrets();
+
+
+</pre>
+
+        <pre class="lesson" data-title="Constructors and Prototypes" data-subtitle="The secret life of objects">
+'use strict';
+
+/*
+
+    All objects have a 'constructor' property which is a reference to
+    the *function* that created the object. In JavaScript functions are used
+    to create objects.
+
+    'contructor' functions have a 'prototype' property which is a reference to
+    another *object*. The prototype contains functions that your object will
+    get for free.
+
+    Object.prototype is the prototype of all objects.
+
+*/
+
+// the way to create an object
+let planet = {};
+console.log('Planet', planet);
+
+// all objects have a bunch of built-in methods
+console.log('constructor', planet.constructor);
+console.log('hasOwnProperty', planet.hasOwnProperty);
+console.log('toString', planet.toString);
+
+// all those methods come from the 'prototype'
+console.log('prototype', planet.constructor.prototype);
+console.log('prototype', Object.getPrototypeOf(planet));
+
+///// Data types Prototypes
+console.log('\n');
+
+console.log('Number.prototype', Object.getPrototypeOf(123));
+console.log('Boolean.prototype', Object.getPrototypeOf(true));
+console.log('String.prototype', Object.getPrototypeOf("abc"));
+console.log('Array.prototype', Object.getPrototypeOf(['a','b','c']));
+console.log('Function.prototype', Object.getPrototypeOf(console.log));
+
+
+///// Using custom prototypes
+console.log('\n');
+
+const protoPlanet = {
+    toString: () => 'I\'m a planet',
+}
+console.log('Proto toString', protoPlanet.toString());
+
+let aPlanet = {};
+console.log('Object.getPrototypeOf(aPlanet) === Object.prototype?', Object.getPrototypeOf(aPlanet) === Object.prototype )
+console.log('Default toString:', aPlanet.toString());
+
+// create an object with a specific prototype
+aPlanet = Object.create(protoPlanet);
+console.log('Object.getPrototypeOf(aPlanet) === Object.prototype?', 
+            Object.getPrototypeOf(aPlanet) === Object.prototype )
+
+console.log('Object.getPrototypeOf(aPlanet) === protoPlanet?',  
+            Object.getPrototypeOf(aPlanet) === protoPlanet )
+
+console.log('Proto toString:', aPlanet.toString());
+
+
+
+//////////// Using function constructors ////////////
+
+const AU = 149597900;
+
+function Planet(name, distanceFromSun = 1) {
+    this.name = name;
+    this.distanceFromSun = distanceFromSun;
+}
+Planet.prototype.toString = function() { 
+    return `I'm ${this.name}, ${this.distanceFromSun * AU}km from Sun`
+}
+Planet.prototype.distanceTo = function(planet) {
+    return Math.abs(this.distanceFromSun - planet.distanceFromSun);
+}
+
+
+// Use "new" with a function to use it as a constructor
+let earth = new Planet('Earth');
+
+// "new" makes the function behave differently: it will create a new object
+// and return it, even if you don't specify a return
+let mars = new Planet('Mars', 1.52);
+
+// using a prototype method
+const distanceFromEarthToMars = earth.distanceTo(mars);
+
+console.log(earth);
+console.log(mars);
+console.log('earth.toString:', earth.toString());
+console.log('mars.toString:', mars.toString());
+
+console.log('Distance from Earth to Mars:', 
+            distanceFromEarthToMars + 'AU',
+            (distanceFromEarthToMars * AU)+'km');
+
+
+// when a function is called with "new"
+function Satellite() {
+    // this = Object.create(Satellite.prototype)
+    // return this
+}
+Satellite.prototype = {    
+    orbit: function() { return 'Earth' }     
+}
+const moon = new Satellite();
+console.log(moon);
+
+// if you forget to use "new" with the constructor, no object will be created,
+// the function will work as a regular function
+// let jupiter = Planet('Jupiter', 5.2);
+// console.log(jupiter);
+
+
+/////// Warning: Changing prototypes affects all objects using the prototype
+
+function SolarBody(type) {
+    this.type = type; 
+    this.props = [];   
+}
+
+function Asteroid(name) {
+    this.name = name;
+}
+Asteroid.prototype = new SolarBody('asteroid');
+
+let ceres = new Asteroid('Ceres');
+let vesta = new Asteroid('Vesta');
+
+console.log(ceres, ceres.type, ceres.props);
+console.log(vesta, vesta.type, vesta.props);
+
+// All are affected
+Object.getPrototypeOf(ceres).type = 'Dwaft Planet';
+
+console.log(ceres, ceres.type, ceres.props);
+console.log(vesta, vesta.type, vesta.props);
+
+// Never use arrays in prototypes
+console.log('\n This might be unexpected by some:');
+
+ceres.props.push('945km diameter');
+ceres.props.push('largest in the belt');
+
+vesta.props.push('525km diameter');
+
+console.log(ceres, ceres.type, ceres.props);
+console.log(vesta, vesta.type, vesta.props);
+
+
+
+
+
+</pre>
+
+        <pre class="lesson" data-title="Prototype based Inheritance" data-subtitle="The tree of life">
+'use strict';
+
+/*
+
+    "Classical" inheritance found in other languages can be implemented in
+    JavaScript using prototypes.
+
+*/
+
+function SolarBody(type) {
+    this.type = type;
+    this.toString = function(){ return 'SolarBody' };
+}
+SolarBody.prototype.constructor = SolarBody;
+
+
+function Asteroid(name) {
+    this.name = name;
+    this.toString = function(){ return 'Asteroid' };
+}
+Asteroid.prototype = new SolarBody('asteroid');
+Asteroid.prototype.constructor = Asteroid;
+
+
+function DwarfPlanet(diameter) {
+    this.diameter = diameter;
+    this.toString = function(){ return 'DwarfPlanet'};
+}
+DwarfPlanet.prototype = new Asteroid('Ceres');
+DwarfPlanet.prototype.constructor = DwarfPlanet;
+
+// create a planet
+const planet = new DwarfPlanet(945);
+
+console.log(planet);
+console.log('DwarfPlanet?', planet instanceof DwarfPlanet);
+console.log('Asteroid?', planet instanceof Asteroid);
+console.log('SolarBody?', planet instanceof SolarBody);
+
+console.log(planet.constructor);
+console.log('\n');
+
+
+function findProperty(prop, object) {
+    console.log(`Looking for '${prop}' on`, object.toString());
+    if (object.hasOwnProperty(prop)) {
+        console.log(`Found '${object[prop]}'!\n\n`)
+    } else {
+        const proto = Object.getPrototypeOf(object);
+        return proto && findProperty(prop, proto);
+    }
+}
+
+findProperty('diameter', planet);
+findProperty('name', planet);
+findProperty('type', planet);
+findProperty('age', planet);
+
+
+
+</pre>
+
+        <pre class="lesson" data-title="Syntactic Sugar over Prototypes" data-subtitle="Awww that's so sweet">
+'use strict';
+
+/*
+
+    Since using prototypes feels weird for some people, by popular request,
+    classes and class based inheritance were introduced in JavaScript.         
+
+*/
+
+class SolarBody {
+
+    constructor(type) {
+        this.type = type;        
+    }
+
+    toString(){ return 'SolarBody' };
+    aSolarBodyFunction() {}
+}
+
+class Asteroid extends SolarBody {
+
+    constructor(name) {
+        super('asteroid');
+        this.name = name;
+    }
+
+    toString(){ return 'Asteroid' };
+    anAsteroidFunction() {}
+}
+
+class DwarfPlanet extends Asteroid {
+
+    constructor(diameter) {
+        super('Ceres');
+        this.diameter = diameter;
+    }
+
+    toString(){ return 'DwarfPlanet'};
+    aDwarfPlanetFunction(){}
+}
+
+// create a planet
+const planet = new DwarfPlanet(945);
+
+console.log(planet);
+console.log('DwarfPlanet?', planet instanceof DwarfPlanet);
+console.log('Asteroid?', planet instanceof Asteroid);
+console.log('SolarBody?', planet instanceof SolarBody);
+
+console.log(planet.constructor);
+console.log('\n');
+
+
+function findProperty(prop, object) {
+    console.log(`Looking for '${prop}' on`, object.toString());
+    if (object.hasOwnProperty(prop)) {
+        console.log(`Found '${object[prop]}'!\n\n`)
+    } else {
+        const proto = Object.getPrototypeOf(object);
+        return proto && findProperty(prop, proto);
+    }
+}
+findProperty('diameter', planet);
+findProperty('name', planet);
+findProperty('type', planet);
+findProperty('age', planet);
+
+findProperty('aDwarfPlanetFunction', planet);
+findProperty('anAsteroidFunction', planet);
+findProperty('aSolarBodyFunction', planet);
+
+        </pre>
+
+        <pre class="lesson" data-title="Cloning objects" data-subtitle="Hail to the hordes">
+'use strict'; 
+
+/*
+
+    A good practice is to make copies of objects and to mutate the copies 
+    leaving the original objects untouched.
+    
+    However deep cloning objects correctly is very difficult.        
+    In practice I recommend using a libray, like deepClone from lodash 
+    or immer.js
+
+    Let's see how we can clone an object in different ways and what are the 
+    drawbacks of each.
+
+    There are two types of cloning:
+    1) Shallow cloning 
+    2) Deep cloning
+
+*/
+
+const original = {
+    a: new Date(),
+    b: NaN,
+    c: new Function(),
+    d: undefined,
+    e: function() {},
+    f: Number,
+    g: false,
+    h: Infinity,
+    i: {
+        color: 'red'
+    }
+}
+
+// SHALLOW
+// If an object references other objects, when performing a shallow copy of the
+// object, you copy the references to the external objects.
+
+const copy1 = Object.assign({}, original)
+copy1.i.color = 'blue';
+console.log(original.i.color, 'vs', copy1.i.color);
+
+const copy2 = {...original};
+copy2.i.color = 'lime';
+console.log(original.i.color, 'vs', copy2.i.color);
+
+// we care, this can be used in practice (this is what I personally use)
+const copy3 = {
+    ...original,
+    i: {
+        ...original.i,
+        color: 'black'
+    }
+}
+console.log(original.i.color, 'vs', copy3.i.color);
+
+
+// DEEP
+// When performing a deep copy, those external objects are copied as well, so
+// the new, cloned object is completely independent from the old one.
+
+const deepClone = JSON.parse(JSON.stringify(original))
+console.log(deepClone);
+
+// But this method has some issues which might be important in some cases:
+
+// 1. Functions are not cloned
+console.log(original.e, 'vs', deepClone.e);
+
+// 2. undefined properties are not copied
+console.log(original.hasOwnProperty('d'), 'vs', deepClone.hasOwnProperty('d'));
+
+// 3. Dates are copied as string
+console.log(typeof(original.a), 'vs', typeof(deepClone.a));
+
+// 4. NaN, Infinity are copied as null
+console.log(original.b, 'vs', deepClone.b);
+console.log(original.h, 'vs', deepClone.h);
+
+        
+        
+</pre>
+
+        <pre class="lesson" data-title="Function context" data-subtitle="'This' is a problem">
+'use strict';
+
+/*
+
+    One of the most confusing problems in JavaScript is 'this', the function's 
+    context. The context depends on how the function is *used* not on how the 
+    function is declared.
+
+    Inside a function, you get access to the context using the 'this' keyword.
+    PRO TIP: Avoid using 'this' as much as possible, make functions pure as 
+    much as possible.
+
+    A function in JavaScript can be *used* in several ways:
+    * regular function
+    * constructor
+    * method of an object   
+    * called with 'call' and 'apply'
+
+*/
+
+console.log('REGULAR FUNCTIONS\n')
+
+// regular function 
+function area(width, height) {
+    console.log('area function context:', this);
+    return width * height;
+}
+let areaAsFunction = area(10, 20);
+console.log('Area as function:', areaAsFunction);
+
+
+const perimeter = (width, height) => width + height;
+let perimeterAsArrowFunction = perimeter(10, 20);
+console.log('Perimeter as arrow function:', perimeterAsArrowFunction);
+
+console.log('\n\nMETHODS\n')
+
+// method of an object
+const rectangle = {
+    name: 'rectangle',
+    width : 20,
+    height : 10,
+    area: function() {
+        console.log('area method context:', this);
+        return this.width * this.height
+    },
+    perimeter: () => {
+        console.log('perimeter method context:', this);
+        return this? this.width + this.height : 0
+    }         
+}
+let areaAsMethod = rectangle.area();
+console.log('Area as method:', areaAsMethod);
+
+let perimeterAsArrowMethod = rectangle.perimeter();
+console.log('Perimeter as arrow method:', perimeterAsArrowMethod);
+
+console.log('\n\nCONSTRUCTOR\n')
+
+// constructor
+function Area(width, height) {
+    // this is created automatically if 'new Area()' is called
+    this.width = width;
+    this.height = height;    
+}
+Area.prototype.area = function() {
+    console.log('Area constructor context:', this);
+    return this.width * this.height
+}
+let areaAsConstructor = (new Area(10, 20)).area();
+console.log('Area as constructor:', areaAsConstructor);
+
+
+console.log('\n\nCALL & APPLY\n')
+
+// call() and apply() 
+const square = { name: 'square', width: 10, height: 10}
+// we can 'borrow' the area method from the rectangle object and call it 
+// on another object
+let areaFromCall = rectangle.area.call(square);
+console.log('Area from call():', areaFromCall);
+
+let areaFromApply = rectangle.area.apply(square, []);
+console.log('Area from apply():', areaFromApply);
+
+// the difference between call and apply is only in how to pass arguments
+// when we call a regular function and it doesn't need a context we can pass 
+// null as context
+
+areaFromCall = area.call(null, 10, 20);
+console.log('area.call():', areaFromCall);
+
+areaFromApply = area.apply(null, [10, 20]);
+console.log('area.apply():', areaFromApply);
+
+// Since they don't need a context, the same works for arrow function
+let perimeterFromCall = perimeter.call(null, 10, 20);
+console.log('perimeter.call():', perimeterFromCall);
+
+let perimeterFromApply = perimeter.apply(null, [10, 20]);
+console.log('perimeter.apply():', perimeterFromApply);
+
+
+// Who is this?
+
+const robot = {
+    moving: false,
+    move: function() {
+        
+        this.moving = true;
+        setTimeout(function() {
+            console.log('Who is this?', this );
+            this.moving =false;
+        }, 100);
+    }
+}
+robot.move();
+setTimeout( function() {
+    console.log('Robot moving?', robot.moving)
+}, 400)
+
+
+// This is not what you think it is
+const engine = {
+    started: false,
+    start: function() {
+        this.started = true
+    },
+    stop : function() {
+        console.log('Who is this?', this );
+        this.started = false;
+    }
+}
+
+const car = {
+    engine : engine,
+    move: function() {
+        console.log('Who is this?', this );
+        
+        this.engine.start()
+        setTimeout(this.engine.stop, 100);
+    }
+}
+car.move();
+setTimeout( function() {
+    console.log('Car engine started?', car.engine.started)
+}, 500)
+
+
+console.log('\n\nBIND TO CONTEXT\n')
+// Prevent context change by binding the function
+// to a context
+
+const cube = {
+    width: 10, 
+    height: 10,
+    length: 10
+}
+
+// uses 'this' => designed to be called with a context
+function volume() {
+    console.log('volume context:', this);
+    return this.width * this.height * this.length
+}
+
+// bind volume to cube object
+cube.volume = volume.bind(cube);
+console.log('Volume:', cube.volume())
+
+// try to use it on another object
+let squareVolume = cube.volume.call(square);
+console.log('Square Volume:', squareVolume)
+
+let rectangleVolume = cube.volume.call(rectangle);
+console.log('Rectangle Volume:', rectangleVolume)
+
+
+// Fixed robot move 
+robot.move = function() {        
+    this.moving = true;
+    let that = this;
+    setTimeout(function() {
+        console.log('Who is this?', this );
+        that.moving =false;
+    }, 100);
+}
+setTimeout( function() {
+    robot.move();
+    setTimeout( function() {
+        console.log('Fixed Robot moving?', robot.moving)
+    }, 300)    
+}, 300)
+
+
+// Fixed car move 
+car.move = function() {
+    console.log('Who is this?', this );
+    
+    this.engine.start()
+    setTimeout(this.engine.stop.bind(engine), 100);
+}
+setTimeout( function() {
+    car.move();
+    setTimeout( function() {
+        console.log('Bound Car engine started?', car.engine.started)
+    }, 200)
+}, 200)
+
+
+// -- Exercises -- 
+
+// Implement the loop function 
+function loop(array, fn){
+    for ( var i = 0; i < array.length; i++ ) {
+        // Implement me!
+    }
+}
+
+let num = 0;
+loop([0, 1, 2], function(value) {
+    if(value !== num++) console.log("Make sure the contents are what we expect.");
+    if(!(this instanceof Array)) console.log("The context should be the array.");
+
+    console.log('Value:', value, 'Context:', this);
+});
+
+
+// Modify the code so that the cat is not able to borrow dog's speak function
+const dog = { sound:'Woof' }
+dog.speak = function() {
+    return this.sound + '!'
+}
+
+const cat = { sound:'Meow' }
+const catSpeak = dog.speak.call(cat);
+if(catSpeak !== dog.sound) {
+    //console.log(`${catSpeak} Don't let the cat hijack dog's speak function!`);
+} else {
+    //console.log(`Good job!`);
+}
+        </pre>
+
+
+
+        <pre class="lesson" data-title="Iterators" data-subtitle="One by one, step by step">
+'use strict';
+
+/*
+    
+    Iterability is a way an object specifies how to access its data 
+    programmatically. Specifically, how the JavaScript engine will access 
+    values using:
+    * for...of loops
+    * the ... (spread) operator
+    * Array.from()
+    
+    By using 'Symbol.iterator' as the name of a method in an object, we can 
+    create a function that will specify the behavior for traversing the object.
+
+    [Symbol.iterator]() {   
+        return {
+            next() {
+                return hasNext 
+                    ? { done: false, value: nextValue } 
+                    : { done: true };
+            }
+        }
+    }
+
+*/
+
+
+// Some JavaScript objects have iterability built in:
+const str = "abc";
+for (const letter of str) {
+    console.log(letter); 
+}
+
+const arr = [ 1, 2, 3 ];
+for (const elem of arr) {
+    console.log(elem);
+}
+
+const map = new Map();
+map.set("first", 1);
+map.set("second", 2);
+for (const mapping of map) {
+    console.log(mapping); 
+}
+
+const set = new Set();
+set.add("first");
+set.add("second");
+for (const elem of set) {
+    console.log(elem); 
+}
+
+
+console.log('\n\nCUSTOM OBJECT ITERATOR\n')
+
+const unsolvedCase = {
+    name : "Dyatlov Pass Incident",
+    date : "February 2nd, 1959",
+    "case solved" : false,
+    location: {
+        country: "USSR",
+        place: "Northern Ural Mountains"
+    },
+    victims: [
+        { name: "Igor Dyatlov", born: 1936 },
+        { name: "Yuri Doroshenko", born: 1938 },
+        { name: "Lyudmila Dubinina", born: 1938 },
+        { name: "Yuri (Georgiy) Krivonischenko", born: 1935 },
+        { name: "Alexander Kolevatov", born: 1934 },
+        { name: "Zinaida Kolmogorova", born: 1937 },
+        { name: "Rustem Slobodin", born: 1936 },
+        { name: "Nicolai Thibeaux-Brignolles", born: 1935 },
+        { name: "Semyon (Alexander) Zolotariov", born: 1921 }
+    ],
+    survivors: []
+}
+
+// This will throw error
+//for (const elem of unsolvedCase) {
+//    console.log(elem);
+//}
+
+unsolvedCase[Symbol.iterator] = function() {
+    let i = 0;
+    const keys = Object.keys(this);
+
+    return {
+        next: () => {
+            const aKey = keys[i++];
+            return aKey
+                ? { done: false, value: [ aKey, this[aKey] ]}
+                : { done: true };
+            }
+    }
+}
+
+// Now this will work
+for (const elem of unsolvedCase) {
+    console.log(elem);
+}
+
+console.log('\n\nLINKED LIST\n')
+
+////// Linked List /////
+/*
+    Adding 
+    [ 1, null ]
+    [ 1, next--]--->[ 2, null ]
+    ...
+    [ 1, next--]--->[ 2, next--]--->[ 3, next--]---> ... --->[ 9, null ]
+
+    Removing 
+    [ 1, next--]--->[ 2, next--]--->[ 3, null]
+    [ 1, next--]------------------->[ 3, null]
+
+*/
+
+const LinkedList = ( function() {
+
+    const head = Symbol('head');
+
+    class Node {
+        constructor(value, next) {
+            this.value = value;
+            this.next = next;
+        }
+    }
+
+    class LinkedList {
+
+        constructor() {}
+
+        add(value) {
+            const newNode = new Node(value, null);
+            if (this.head) {
+                let currentNode = this.head;
+                // find the last node
+                while (currentNode.next) {
+                    currentNode = currentNode.next
+                }
+                currentNode.next = newNode;
+            } else {
+                this.head = newNode;
+            }
+        }
+
+        remove(value) {
+            if (this.head) {
+                let currentNode = this.head;
+                let previousNode = null;
+
+                while (currentNode.value !== value && currentNode.next) {
+                    previousNode = currentNode;
+                    currentNode = currentNode.next
+                }
+                if(currentNode && currentNode.value === value) {
+                    if (previousNode) {
+                        previousNode.next = currentNode.next;
+                    } else {
+                        // remove head
+                        this.head = this.head.next;
+                    }                    
+                }
+            }
+        }
+
+        [Symbol.iterator]() {
+            let currentNode = this.head;
+
+            return {
+                next() {
+                    // handle current
+                    let result = currentNode
+                        ? { done: false, value: currentNode.value }
+                        : { done: true };
+                    
+                    // set current to next    
+                    currentNode = currentNode? currentNode.next : null;    
+                    return result;
+                }
+            }
+        }
+    }
+
+    return LinkedList;
+}())
+
+const list = new LinkedList();
+list.add(1);
+list.add(2);
+list.add(3);
+list.remove(2);
+console.log([...list]);
+
+
+        </pre>
+
+
+
+        <pre class="lesson" data-title="Generators" data-subtitle="Don't stop me now ('cause I'm having a good time)">
+'use strict';
+
+/*
+
+    A generator is a function that can stop midway and then continue from where it stopped.
+    A generator returns an iterable object that:
+        * has a next() method that is used to get the next value
+        * produces values like this: { value: any, done: boolean }
+
+    Generators are declared using 'function*', not the regular 'function'.
+    When you want to stop the generator, use 'yield'.
+
+*/
+
+
+// Declare generator function
+function* saySomething() {
+    yield 'Hello';
+    yield 'Generator';
+}
+
+// Get iterator from generator
+const saySomethingIterator = saySomething();
+console.log(saySomethingIterator.next())
+console.log(saySomethingIterator.next())
+console.log(saySomethingIterator.next())
+
+
+
+// Declare generator function
+function* countdown(n) {
+    while (n > 0){
+        yield n--;
+    }
+}
+
+// Get iterator from generator
+const iterator = countdown(3);
+
+// Iterate on it
+for (const value of iterator) {
+    console.log(value);
+}
+
+// Or use spread operator 
+const [...values] = countdown(5);
+console.log(values);
+
+
+////// Infinite counter /////////////
+function* plusOne() {
+    let index = 1;
+    while(true) {
+        yield index++;
+    }
+}
+const counter = plusOne();
+for(let i=0 ; i < 5; i++){
+    console.log(counter.next().value)
+}
+
+
+////// Fibonacci Generator /////
+
+function* fib(n) {
+    n = Math.max(1, parseInt(''+(n+1), 10))
+    let current = 0;
+    let next = 1;
+    
+    while (n--) {
+        if (current > Number.MAX_SAFE_INTEGER) console.error(`${current} out of range`)
+
+        yield current;
+        [current, next] = [next, current + next];
+    }
+}
+
+// instant calculation might block the CPU
+const [...n] = fib(10);
+console.log(n);
+
+// we can compute each value, one by one, using a timer
+const fibonacciGenerator = fib(10);
+(function loop() {
+    const next = fibonacciGenerator.next();
+    //if(!next.done) setTimeout(() => { console.log(next.value); loop()}, 10);
+    })();
+
+
+
+        
+        </pre>
+
+        <pre class="lesson" data-title="Project: Sprite map generator" data-subtitle="">
+'use strict';
+
+/*
+
+    The sprites(images) used by games are usually grouped together in a single
+    big image, called sprite sheet. The sprites have different sizes, and they 
+    are put in the sprite sheet in a way to make the sprite sheet as small as 
+    possible.
+    
+    Here is a representation of the algorithm we'll implement:
+
+    x,y
+    --------------- w
+    |......|      |
+    |......|   A  |
+    |-------------|
+    |             |
+    |       B     |
+    |             | 
+    |             |
+    ---------------     
+                    h
+*/
+
+const images = [
+        { id: 1, width: 3, height: 2 },
+        { id: 2, width: 1, height: 7 },
+        { id: 3, width: 4, height: 4 },
+        { id: 4, width: 1, height: 1 },
+        { id: 5, width: 8, height: 2 },
+        { id: 6, width: 2, height: 2 },
+        { id: 7, width: 5, height: 5 },
+        { id: 8, width: 8, height: 2 },
+        { id: 9, width: 1, height: 1 }
+]
+
+
+
+class PackNode {
+    
+    constructor(x, y, w, h) {
+        this.x = x;
+        this.y = y;
+        this.width = w;
+        this.height = h;
+        this.a = null;
+        this.b = null;
+    }
+
+    insert(id, width, height) {
+        //console.log('Insert', id,  width, height, 'in', this);
+        
+        if(width <= this.width && height <= this.height) {
+            if (this.a && this.b) {
+                // try to insert in a
+                let inserted = this.a.insert(id, width, height);
+                // try to insert in b
+                if(!inserted) {
+                    inserted = this.b.insert(id, width, height);
+                }
+                return inserted;
+            } else {
+                this.a = new PackNode(this.x + width, this.y, this.width - width, height );
+                this.b = new PackNode(this.x, this.y + height, this.width, this.height - height);
+                
+                // return used area
+                return {id,  x: this.x, y: this.y, w: width, h: height};
+            }    
+            
+        } else {
+            // cannot insert
+            return null;
+        }
+    }
+}
+
+
+function createNaiveSpriteSheet(images, width, height) {
+    const ssSize = { width, height };
+
+    // first we create a Node for the entire area
+    const root = new PackNode(0, 0, ssSize.width, ssSize.height);
+    const inserts = [];
+    // next we insert all image areas in it
+    images.forEach( (image, index) => {
+        let res = root.insert(image.id, image.width, image.height);
+        if(!res) throw new Error('Cannot insert :' + index);
+        else inserts.push(res);
+    });
+    
+    return inserts;
+}
+
+
+function createSpriteSheet(images, width, height) {
+    const ssSize = { width, height };
+
+    // first we create a Node for the entire area
+    const root = new PackNode(0, 0, ssSize.width, ssSize.height);
+    const inserts = [];
+    // next we insert all image areas in it
+    images.forEach( (image, index) => {
+        let res = root.insert(image.id, image.width, image.height);
+        if(!res) throw new Error('Cannot insert :' + index);
+        else inserts.push(res);
+    });
+    
+    return inserts;
+}
+
+
+try {
+    let width = 17;
+    let height = 7;
+    
+    let sortedImaged = images.sort( (a,b) => a.height > b.height ? -1 : 1);
+    //let sortedImaged = images.sort( (a,b) => a.height*a.width > b.height*b.width ? -1 : 1);
+    const inserts = createSpriteSheet(sortedImaged, width, height);
+    
+    let v = [];
+    for(let i= 0; i < height; i++) {
+        v[i] = [];
+        for (let j=0; j < width; j++) {
+            v[i][j]='.';
+        }
+    }
+    
+    inserts.forEach(anInsert => {        
+        for(let i = anInsert.y; i < anInsert.h + anInsert.y; i++) {
+            for (let j = anInsert.x; j < anInsert.w + anInsert.x; j++) {
+                v[i][j] = anInsert.id;
+            }
+        }
+    })
+    
+        // make a big string from all data
+    let string = '';
+    for(let i= 0; i < height; i++) {
+        string += v[i].join('') + '\n';
+    }
+    console.log(string)
+    
+    // minimum area required by images
+    const minimumArea = images.reduce( (total, anImage) => total + anImage.width * anImage.height, 0);
+    const usedArea = width * height;
+    const used = Math.floor(100 * minimumArea / usedArea);
+    console.log(minimumArea, usedArea, used + '%');
+    
+} catch(err) {
+    console.error(err);
+}
+
+
+        </pre>
+
+        <pre class="lesson" data-title="Proxies" data-subtitle="It's a trap!">
+'use strict';
+
+/*
+
+    A proxy is an object that serves as a stand-in between the code being 
+    executed and the actual object being accessed. 
+
+    [ Code ] --> [ Proxy ] --> [ Object ]
+    
+    The main purpose for proxies is to expose an interface which intercepts 
+    operations performed on the object, and modify the default behavior of 
+    that operation to produce an outcome we would not normally get.
+
+*/
+
+// super secret db
+const db = [
+    {
+        name: 'Area 51',
+        lastModified: Date.now(),
+        lastAccessed: Date.now()
+    },
+    {
+        name: 'Hangar 18',
+        lastModified: Date.now(),
+        lastAccessed: Date.now()
+    },
+    {
+        name: 'Dulce Base',
+        lastModified: Date.now(),
+        lastAccessed: Date.now()
+    }
+];
+
+// create a Proxy with
+// a) The object to be proxied
+// b) A handler object, that specifies what to trap
+let dbProxy = new Proxy(db, {});
+
+
+// Let's allow negative indexes for our db array
+// db[-1] -> last element
+// db[0] -> first element
+// db[1] -> second element
+
+// Trap 'get' only
+let handler = {
+    // target = db, prop = -1, receiverProxy = dbProxy
+    get(target, prop, receiverProxy) {
+        const _prop = +prop; // cast to number
+
+        let value;
+        if (Number.isInteger(_prop)) {
+            value = _prop >= 0 ? target[_prop] : target[target.length + _prop]
+            if(value) value.lastAccessed = Date.now();
+        } else {
+            value = target[prop];
+        }
+        return value;
+    }
+}
+dbProxy=new Proxy(db,handler); 
+
+let last = dbProxy[-1]; 
+console.log('Proxy Last', last);
+
+
+// Trap 'get' and 'set'
+handler = {
+    get(target, prop, receiverProxy) {
+        const _prop = +prop; // cast to number
+        
+        let value;
+        if (Number.isInteger(_prop)) {
+            value = _prop >= 0 ? target[_prop] : target[target.length + _prop]
+            if(value) value.lastAccessed = Date.now();
+        } else {
+            value = target[prop];
+        }
+        return value;
+    },
+
+    // target = db, prop = -1, val = object, receiverProxy = dbProxy
+    set(target, prop, val, receiverProxy) {
+        const _prop = +prop; // cast to number
+        
+        if (Number.isInteger(_prop)) {
+            val = val || {};
+            val.lastModified = Date.now();
+
+            // get current value using the proxy
+            const currentValue = receiverProxy[prop];            
+            if(currentValue) {
+                val.lastAccessed = currentValue.lastAccessed;
+            }
+
+            if(_prop >= 0) {
+                target[_prop] = val;
+            } else {      
+                target[target.length + _prop] = val;
+            }    
+        } else {
+            target[prop] = val
+        }
+
+        return true;
+    }
+}
+dbProxy = new Proxy(db,handler);
+
+const updatedLast = {...last, name: 'Plant 42' }
+console.log('Updated Proxy Last', updatedLast);
+dbProxy[-1] = updatedLast;
+console.log('Updated DB Last', db[db.length-1]);
+
+dbProxy[-1] = null;
+console.log('DB Last after set to null', db[db.length-1]);
+
+dbProxy.push({'name': 'Mount Weather'})
+last = dbProxy[-1];
+console.log('Proxy Last after push', last);
+
+        
+        </pre>
+
+
+    </div>
+    <!--- End Lessons -->
+    <div id="main">
+        <div id="toolbar">
+            <button id="previousLesson" disabled="disabled" accesskey="p"><u>P</u>revious</button>
+            <div>
+                <h1 id="lessonTitle">Loading...<span class='edited'></span></h1>
+                <h2 id="lessonSubtitle"></h2>
+            </div>
+            <button id="nextLesson" disabled="disabled" accesskey="n"><u>N</u>ext</button>
+        </div>
+        <div id="container">
+            <div id="slide"></div>
+            <div id="editor"></div>
+        </div>
+    </div>
+
+
+    <script defer src="lib/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script defer src="lib/ace/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
+    <script defer src="lib/prism/prism.js"></script>
+
+    <script defer src="editor.js" type="text/javascript" charset="utf-8"></script>
+
+</body>
+
+</html>

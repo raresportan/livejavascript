@@ -1,6 +1,6 @@
-'use strict';
-
 (function () {
+    'use strict';
+
     let currentLesson = 0;
     let allLessons = 0;
     let lessons;

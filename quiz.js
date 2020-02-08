@@ -1,6 +1,5 @@
-'use strict';
-
 (function () {
+    'use strict';
 
     const listener = e => {
         const target = e.target;

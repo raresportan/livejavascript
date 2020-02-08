@@ -1,6 +1,5 @@
-'use strict';
-
 (function () {
+    'use strict';
 
     const MAX_CODE_RUN_MILLIS = 3000;
     const DEBOUNCE_MILLIS = 1000;
