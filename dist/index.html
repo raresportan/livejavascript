@@ -14,13 +14,60 @@
     <link rel="icon" href="logo16x16.png" type="image/png" sizes="16x16">
     <link href="lib/prism/prism.css" rel="stylesheet" />
     <link href="styles.css" rel="stylesheet" />
+    <meta name="google-signin-client_id"
+        content="331476770739-vehj7vv507vm8nevca46jh7rilppgfrf.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 
 <body>
     <div style="display: flex; flex-direction: column; margin-top: 3rem; align-items: center; justify-content: center;">
         <img src="logo128x128.png" alt="Live JavaScript" />
         <h1>Live JavaScript Tutorial</h1>
+        <div class="signInFailure" style="display:none;color:red; margin: 1rem auto;">
+            Currently this tutorial is available only to 3PG employees. <br />
+            If you are a 3PG employee please login with your 3PG account.
+        </div>
+        <div id="my-signin2"></div>
     </div>
+
+    <script>
+
+        function renderButton() {
+            gapi.signin2.render('my-signin2', {
+                'scope': 'profile email',
+                'width': 240,
+                'height': 50,
+                'longtitle': true,
+                'theme': 'dark',
+                'onsuccess': onSignIn,
+                'onfailure': onSignInFailure
+            });
+        }
+
+
+        function onSignIn(googleUser) {
+            const profile = googleUser.getBasicProfile();
+            const email = profile.getEmail();
+            if (email && /3pillarglobal.com/g.test(email)) {
+                window.location.href = './lessons.html';
+            } else {
+                onSignInFailure();
+            }
+        }
+
+        function onSignInFailure() {
+            console.log('Sign in failed');
+            document.querySelector('.signInFailure').style.display = 'block'
+
+            const auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+                console.log('User signed out.');
+            });
+        }
+
+        window.onload = renderButton;
+
+    </script>
 </body>
 
 </html>

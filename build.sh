@@ -6,6 +6,7 @@ rm -R dist/*
 
 cp -R lib dist/
 
+cp *.svg dist/
 cp *.png dist/
 
 minify styles.css > dist/styles.css
