@@ -15,7 +15,13 @@
     <link href="lib/prism/prism.css" rel="stylesheet" />
     <link href="styles.css" rel="stylesheet" />
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-
+    <script>
+        if ("serviceWorker" in navigator) {
+            if (!navigator.serviceWorker.controller) {
+                navigator.serviceWorker.register("./sw.js", { scope: "./" })
+            }
+        }
+    </script>
 </head>
 
 <body>
