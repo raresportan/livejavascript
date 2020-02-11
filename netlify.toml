@@ -20,7 +20,7 @@
     Content-Security-Policy = "frame-ancestors https://apis.google.com/ https://accounts.google.com"
 
 	cache-control = '''
-    public
+  public
 	max-age=2600640'''   
 
 
@@ -33,5 +33,5 @@
     Content-Security-Policy = "frame-ancestors https://apis.google.com/ https://accounts.google.com"
 
 	cache-control = '''
-    public
+  public
 	max-age=2600640'''        
