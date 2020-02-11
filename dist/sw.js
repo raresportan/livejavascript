@@ -47,6 +47,7 @@ function fromCache(request) {
 }
 
 function update(request) {
+    console.log(/apis.google.com/.test(request.url), request.url);
     if (!/apis.google.com/.test(request.url)) {
         return caches.open(CACHE).then(function (cache) {
             return fetch(request).then(function (response) {
@@ -54,6 +55,7 @@ function update(request) {
             });
         });
     } else {
+        console.log('IGNORE', request.url);
         return Promise.resolve();
     }
 }
