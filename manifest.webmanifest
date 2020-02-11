@@ -1,0 +1,18 @@
+{
+    "name": "Live JavaScript Tutorial",
+    "short_name": "LiveJS",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#282a36",
+    "description": "Learn JavaScript. Live code. Total freedom and privacy.",
+    "icons": [
+        {
+            "src": "logo180x180.png",
+            "sizes": "180x180"
+        },
+        {
+            "src": "logo512x512.png",
+            "sizes": "512x512"
+        }
+    ]
+}

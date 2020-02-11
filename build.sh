@@ -9,6 +9,9 @@ cp -R lib dist/
 cp *.svg dist/
 cp *.png dist/
 
+cp manifest.webmanifest dist/
+cp sw.js dist/
+
 minify styles.css > dist/styles.css
 
 minify sandbox.html > dist/sandbox.html
