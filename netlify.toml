@@ -1,0 +1,11 @@
+[[headers]]
+  for = "/lib/*"
+
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Content-Security-Policy = "frame-ancestors https://apis.google.com/ https://accounts.google.com"
+
+	cache-control = '''
+	max-age=864000,
+	immutable'''
