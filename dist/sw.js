@@ -7,7 +7,7 @@ self.addEventListener('install', function (evt) {
 
 self.addEventListener('fetch', function (evt) {
     console.log('The service worker is serving the asset.');
-    evt.respondWith(fromCache(evt.request));
+    evt.respondWith(fromCacheOrNetwork(evt.request));
     evt.waitUntil(update(evt.request));
 });
 
@@ -38,10 +38,10 @@ function precache() {
     });
 }
 
-function fromCache(request) {
+function fromCacheOrNetwork(request) {
     return caches.open(CACHE).then(function (cache) {
         return cache.match(request).then(function (matching) {
-            return matching || Promise.reject('no-match');
+            return matching || fetch(request);
         });
     });
 }
