@@ -1,12 +1,10 @@
 const CACHE = 'cache-and-update';
 
 self.addEventListener('install', function (evt) {
-    console.log('The service worker is being installed.');
     evt.waitUntil(precache());
 });
 
 self.addEventListener('fetch', function (evt) {
-    console.log('The service worker is serving the asset.');
     evt.respondWith(fromCacheOrNetwork(evt.request));
     evt.waitUntil(update(evt.request));
 });
@@ -47,7 +45,6 @@ function fromCacheOrNetwork(request) {
 }
 
 function update(request) {
-    console.log(/apis.google.com/.test(request.url), request.url);
     if (!/apis.google.com/.test(request.url)) {
         return caches.open(CACHE).then(function (cache) {
             return fetch(request).then(function (response) {
@@ -55,7 +52,6 @@ function update(request) {
             });
         });
     } else {
-        console.log('IGNORE', request.url);
         return Promise.resolve();
     }
 }
