@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    
+
     const info = `'use strict'; 
 
 /*
@@ -71,6 +71,8 @@ while(1) { }
         }
     }
 
+    //const isObject = (value) => value && typeof value === 'object' && value.constructor === Object;
+
     const consoleDataChangedCallback = data => {
         const { lineNumber, type, params } = data;
         const elId = 'co' + lineNumber;
@@ -87,6 +89,8 @@ while(1) { }
             formattedParams = params.map(aParam => {
                 if (Array.isArray(aParam)) {
                     return `[${aParam.join(', ')}]`
+                    // } else if (isObject(aParam)) {
+                    //     return JSON.stringify(aParam, null, ' ');
                 } else if (aParam === undefined) {
                     return "undefined";
                 } else if (aParam === null) {
@@ -100,7 +104,7 @@ while(1) { }
         if (!consoleValueElement) {
             consoleValueElement = document.createElement('div');
             consoleValueElement.className = `console-output ${type} ${elId}`;
-            consoleValueElement.innerHTML = (styles ? firstParam : formattedParams);
+            consoleValueElement.innerHTML = (styles ? firstParam : `<p>${formattedParams}</p>`);
             consoleValueElement.style.top = ((lineNumber - 1) * aLineHeight) + 'px';
             if (styles) {
                 consoleValueElement.style.animation = 'none';
@@ -114,7 +118,7 @@ while(1) { }
             editorElement.appendChild(consoleValueElement);
         } else {
             // update element
-            consoleValueElement.innerHTML += '<br/>' + formattedParams
+            consoleValueElement.innerHTML += `<p>${formattedParams}</p>`
         }
     }
 

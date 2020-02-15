@@ -2347,7 +2347,7 @@ console.log("logResult:", logResult);
 
 
 // Functions ignore the extra parameters
-console.log("increment(4, 8, 15, 16, 23, 42):", increment(4, 8, 15, 16, 23, 42));
+console.log("increment(4, 8, 15):", increment(4, 8, 15));
 
 
 // If the function is called without parameters, they are undefined
@@ -2676,6 +2676,8 @@ const spaceXcom = {
 }
 console.log(spaceXcom);
 
+
+
 // Accessing properties
 const companyName = spaceXcom.name;
 console.log('companyName:', companyName);
@@ -2697,9 +2699,13 @@ const droneShip = {
 }
 console.log(droneShip);
 
+
+
+
+
+
 // Functions attached to objects are called "methods"
 // Methods have access to "this" which is the object they are attached on
-
 let currentStatus = droneShip.status;
 console.log('currentStatus:', currentStatus);
 
@@ -2834,8 +2840,13 @@ let zz = xx;
 xx = null;
 console.log(yy);
 
+
+
 yy.a = 3; // changing yy changes zz!
 console.log(yy);
+
+
+
 console.log(zz);
 
 
@@ -2844,17 +2855,17 @@ console.log(zz);
 // Bad Example
 
 function copyDoc(originalDoc) {
-  if (!originalDoc) {
+    if (!originalDoc) {
     throw new Error('You need to provide a doc.');
-  }  
+    }  
 
-  let copy = {
+    let copy = {
     author: originalDoc.author,
     metadata: originalDoc.metadata,
-  };
+    };
 
-  copy.metadata.title = 'Copy of ' + originalDoc.metadata.title;
-  return copy;
+    copy.metadata.title = 'Copy of ' + originalDoc.metadata.title;
+    return copy;
 }
 
 
@@ -2868,10 +2879,16 @@ const doc = {
 const docCopy = copyDoc(doc);
 
 console.log(doc);
+
+
+
+
+
 console.log(docCopy);
 
 
 
+            
 </pre>
 
         <pre class="lesson" data-title="Primitive types are not objects"
@@ -3354,7 +3371,9 @@ console.log(chars);
 const words = 'JavaScript: The Good Parts'.split(' ');
 console.log(words);
 
-const w = ['Now', 'I', 'am', 'become', 'Death', 'the', 'destroyer', 'of', 'worlds']
+const w = ['Now', 'I', 'am', 'become', 'Death', 
+           'the', 'destroyer', 'of', 'worlds'];
+
 const sentence = w.join(' ');
 console.log(sentence);
 
@@ -3539,7 +3558,8 @@ while (aMatch = pattern.exec(text)) {
     console.log("Found", aMatch[0], "at", aMatch.index);
 }
 
-// Parse and evaluate simple math word problems returning the answer as an integer.
+// Parse and evaluate simple math word problems 
+// returning the answer as an integer.
 // What is 5 plus 13 plus 6? 24
 const parse = (str) => {   
     const operators = str.match(/minus+|plus+|multiplied+|divided+/g)
@@ -3603,37 +3623,28 @@ const unsolvedCase = {
         place: "Northern Ural Mountains"
     },
     victims: [
-        { name: "Igor Dyatlov", born: 1936 },
-        { name: "Yuri Doroshenko", born: 1938 },
-        { name: "Lyudmila Dubinina", born: 1938 },
-        { name: "Yuri (Georgiy) Krivonischenko", born: 1935 },
-        { name: "Alexander Kolevatov", born: 1934 },
-        { name: "Zinaida Kolmogorova", born: 1937 },
-        { name: "Rustem Slobodin", born: 1936 },
-        { name: "Nicolai Thibeaux-Brignolles", born: 1935 },
-        { name: "Semyon (Alexander) Zolotariov", born: 1921 }        
+        "Igor Dyatlov", 
+        "Yuri Doroshenko", 
+        "Lyudmila Dubinina",
+        "Yuri (Georgiy) Krivonischenko",
+        "Alexander Kolevatov",
+        "Zinaida Kolmogorova",
+        "Rustem Slobodin",
+        "Nicolai Thibeaux-Brignolles",
+        "Semyon (Alexander) Zolotariov"
     ],
     survivors: []
 }
 
+// obj -> string
 const jsonString = JSON.stringify(unsolvedCase);
-console.log(jsonString);
 
+// string -> obj
 const obj = JSON.parse(jsonString);
-console.log(obj);
 
+// pretty print
 const pretty = JSON.stringify(unsolvedCase, null, '\t');
 console.log('Pretty print:','\n', pretty);
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -3732,11 +3743,14 @@ console.log(
 // in different time zones
 const timestamp = Date.now(); // new Date().getTime();
 console.log('timestamp', timestamp);
-
 console.log('Local time:', new Date(timestamp).toLocaleString());
-const nyTime = new Date(timestamp).toLocaleString("en-US", {timeZone: "America/New_York"})
+
+const nyTime = new Date(timestamp)
+                .toLocaleString("en-US", {timeZone: "America/New_York"})
 console.log('New York time:', nyTime);
-const tokyo = new Date().toLocaleString("ja-JP", {timeZone: "Asia/Tokyo"});
+
+const tokyo = new Date()
+                .toLocaleString("ja-JP", {timeZone: "Asia/Tokyo"});
 console.log('Tokyo time:', tokyo);
 
 
@@ -3945,7 +3959,6 @@ const dadPromise = Dad.makesPromise();
 dadPromise
     .then( whatDaddyFound => {
         console.log('whatDaddyFound', whatDaddyFound);
-        console.log('People in space:\n', whatDaddyFound.people);
     })
     .catch( error => {
         console.log('Daddy couldn\'t find if there are people in space :( ');
@@ -4060,12 +4073,15 @@ const todoApp = (function(){
         remove: removeTodo,
         complete: completeTodo,
         list: () => [...todos],
-        prettyPrint: () => console.table(todos)     
+        prettyPrint: () => {
+            const formatTodo = t => t.done ? `[${t.text} DONE]`: t.text;
+            const formatted = todos.map(formatTodo).join(' + ');
+            return formatted;
+        }    
     }
 }())
 
-console.log('Initial');
-todoApp.prettyPrint();
+console.log('Initial', todoApp.prettyPrint());
 
 // add todos
 todoApp.add('Buy food');
@@ -4073,25 +4089,20 @@ todoApp.add('Buy beer');
 todoApp.add('Drink beer');
 
 // prettyPrint todos
-console.log('All set:');
-todoApp.prettyPrint();
+console.log('All set:', todoApp.prettyPrint());
+
 
 // complete todo
 const currentTodos = todoApp.list();
 todoApp.complete(currentTodos[1].id);
 
-console.log('Some completed:');
-todoApp.prettyPrint();
+console.log('Some completed:', todoApp.prettyPrint());
 
 // remove todos
 todoApp.remove(currentTodos[0].id);
 
 // list todos again
-console.log('Remaining:');
-todoApp.prettyPrint();
-
-
-
+console.log('Remaining:', todoApp.prettyPrint());
 
 
 </pre>
@@ -4304,7 +4315,6 @@ const castle=`
 Enemy | Poor people |..........|.......|.........|.......|
 
 `;
-console.log(castle);
 
 const outside = "Enemies at the gates";
 
@@ -4350,13 +4360,31 @@ console.log('Scopes\n======')
 const outsideScope = makeScope({ outside: "Enemy"});
 console.log(outsideScope);
 
-const outerWallScope = makeScope({ behindOuterWalls: "Poor people"}, outsideScope);
+
+
+const outerWallScope = makeScope({ behindOuterWalls: "Poor people"}, 
+                                    outsideScope);
 console.log(outerWallScope);
 
-const innerWallsScope = makeScope({ behindInnerWalls: "Noblemen"}, outerWallScope)
+
+
+
+
+
+const innerWallsScope = makeScope({ behindInnerWalls: "Noblemen"}, 
+                                    outerWallScope)
 console.log(innerWallsScope);
 
-const palaceWallsScope = makeScope({ behindPalaceWalls: "King"}, innerWallsScope)
+
+
+
+
+
+
+
+
+const palaceWallsScope = makeScope({ behindPalaceWalls: "King"}, 
+                                    innerWallsScope)
 console.log(palaceWallsScope);
 
 
@@ -4364,10 +4392,16 @@ function findValue(bindingName, scope) {
     return scope[bindingName] || findValue(bindingName, scope._outer);
 }
 
+
+
+
+
+
 const key = 'outside';
 console.log(`King see '${key}':`, findValue(key, palaceWallsScope));
 console.log(`Noblemen see '${key}':`, findValue(key, innerWallsScope));
 console.log(`Poor people see '${key}':`, findValue(key, outerWallScope));
+
 
 
 // Temporal dead zone
@@ -4994,15 +5028,14 @@ console.log('prototype', Object.getPrototypeOf(planet));
 ///// Data types Prototypes
 console.log('\n');
 
-console.log('Number.prototype', Object.getPrototypeOf(123));
-console.log('Boolean.prototype', Object.getPrototypeOf(true));
-console.log('String.prototype', Object.getPrototypeOf("abc"));
-console.log('Array.prototype', Object.getPrototypeOf(['a','b','c']));
-console.log('Function.prototype', Object.getPrototypeOf(console.log));
+console.log('Number.prototype', Object.getPrototypeOf(123).constructor);
+console.log('Boolean.prototype', Object.getPrototypeOf(true).constructor);
+console.log('String.prototype', Object.getPrototypeOf("abc").constructor);
+console.log('Array.prototype', Object.getPrototypeOf([1,2,3]).constructor);
+console.log('Function.prototype', Object.getPrototypeOf(() => {}).constructor);
 
 
 ///// Using custom prototypes
-console.log('\n');
 
 const protoPlanet = {
     toString: () => 'I\'m a planet',
@@ -5010,7 +5043,8 @@ const protoPlanet = {
 console.log('Proto toString', protoPlanet.toString());
 
 let aPlanet = {};
-console.log('Object.getPrototypeOf(aPlanet) === Object.prototype?', Object.getPrototypeOf(aPlanet) === Object.prototype )
+console.log('Object.getPrototypeOf(aPlanet) === Object.prototype?', 
+            Object.getPrototypeOf(aPlanet) === Object.prototype )
 console.log('Default toString:', aPlanet.toString());
 
 // create an object with a specific prototype
@@ -5093,25 +5127,25 @@ Asteroid.prototype = new SolarBody('asteroid');
 let ceres = new Asteroid('Ceres');
 let vesta = new Asteroid('Vesta');
 
-console.log(ceres, ceres.type, ceres.props);
-console.log(vesta, vesta.type, vesta.props);
+console.log(ceres.name, ceres.type, ceres.props);
+console.log(vesta.name, vesta.type, vesta.props);
 
-// All are affected
+// All objects with the same prototype are affected
 Object.getPrototypeOf(ceres).type = 'Dwaft Planet';
 
-console.log(ceres, ceres.type, ceres.props);
-console.log(vesta, vesta.type, vesta.props);
+console.log(ceres.name, ceres.type);
+console.log(vesta.name, vesta.type);
 
 // Never use arrays in prototypes
-console.log('\n This might be unexpected by some:');
+console.log('This might be unexpected by some:');
 
 ceres.props.push('945km diameter');
 ceres.props.push('largest in the belt');
 
 vesta.props.push('525km diameter');
 
-console.log(ceres, ceres.type, ceres.props);
-console.log(vesta, vesta.type, vesta.props);
+console.log(ceres.name, ceres.props);
+console.log(vesta.name, vesta.props);
 
 
 
@@ -5164,10 +5198,11 @@ console.log('\n');
 
 
 function findProperty(prop, object) {
-    console.log(`Looking for '${prop}' on`, object.toString());
-    if (object.hasOwnProperty(prop)) {
-        console.log(`Found '${object[prop]}'!\n\n`)
-    } else {
+    const found = object.hasOwnProperty(prop);
+    console.log(`Looking for '${prop}' on`, 
+                    object.toString(), 
+                    found? 'FOUND': '');
+    if(!found) {
         const proto = Object.getPrototypeOf(object);
         return proto && findProperty(prop, proto);
     }
@@ -5232,19 +5267,21 @@ console.log('DwarfPlanet?', planet instanceof DwarfPlanet);
 console.log('Asteroid?', planet instanceof Asteroid);
 console.log('SolarBody?', planet instanceof SolarBody);
 
-console.log(planet.constructor);
-console.log('\n');
+console.log('Is planet constructor DwarfPlanet?', 
+            planet.constructor === DwarfPlanet);
 
 
 function findProperty(prop, object) {
-    console.log(`Looking for '${prop}' on`, object.toString());
-    if (object.hasOwnProperty(prop)) {
-        console.log(`Found '${object[prop]}'!\n\n`)
-    } else {
+    const found = object.hasOwnProperty(prop);
+    console.log(`Looking for '${prop}' on`, 
+                    object.toString(), 
+                    found? 'FOUND': '');
+    if(!found) {
         const proto = Object.getPrototypeOf(object);
         return proto && findProperty(prop, proto);
     }
 }
+
 findProperty('diameter', planet);
 findProperty('name', planet);
 findProperty('type', planet);
@@ -5321,6 +5358,10 @@ console.log(original.i.color, 'vs', copy3.i.color);
 const deepClone = JSON.parse(JSON.stringify(original))
 console.log(deepClone);
 
+
+
+
+
 // But this method has some issues which might be important in some cases:
 
 // 1. Functions are not cloned
@@ -5335,8 +5376,6 @@ console.log(typeof(original.a), 'vs', typeof(deepClone.a));
 // 4. NaN, Infinity are copied as null
 console.log(original.b, 'vs', deepClone.b);
 console.log(original.h, 'vs', deepClone.h);
-
-        
         
 </pre>
 
@@ -5361,11 +5400,11 @@ console.log(original.h, 'vs', deepClone.h);
 
 */
 
-console.log('REGULAR FUNCTIONS\n')
+//////// REGULAR FUNCTIONS ///////
 
 // regular function 
 function area(width, height) {
-    console.log('area function context:', this);
+    console.log('area function context:', JSON.stringify(this));
     return width * height;
 }
 let areaAsFunction = area(10, 20);
@@ -5376,7 +5415,9 @@ const perimeter = (width, height) => width + height;
 let perimeterAsArrowFunction = perimeter(10, 20);
 console.log('Perimeter as arrow function:', perimeterAsArrowFunction);
 
-console.log('\n\nMETHODS\n')
+
+
+///////// METHODS //////////
 
 // method of an object
 const rectangle = {
@@ -5384,11 +5425,11 @@ const rectangle = {
     width : 20,
     height : 10,
     area: function() {
-        console.log('area method context:', this);
+        console.log('area method context:', JSON.stringify(this));
         return this.width * this.height
     },
     perimeter: () => {
-        console.log('perimeter method context:', this);
+        console.log('perimeter method context:', JSON.stringify(this));
         return this? this.width + this.height : 0
     }         
 }
@@ -5398,7 +5439,10 @@ console.log('Area as method:', areaAsMethod);
 let perimeterAsArrowMethod = rectangle.perimeter();
 console.log('Perimeter as arrow method:', perimeterAsArrowMethod);
 
-console.log('\n\nCONSTRUCTOR\n')
+
+
+
+////////// CONSTRUCTOR ////////////
 
 // constructor
 function Area(width, height) {
@@ -5407,14 +5451,15 @@ function Area(width, height) {
     this.height = height;    
 }
 Area.prototype.area = function() {
-    console.log('Area constructor context:', this);
+    console.log('Area constructor context:', JSON.stringify(this));
     return this.width * this.height
 }
 let areaAsConstructor = (new Area(10, 20)).area();
 console.log('Area as constructor:', areaAsConstructor);
 
 
-console.log('\n\nCALL & APPLY\n')
+
+////////// CALL & APPLY //////////////
 
 // call() and apply() 
 const square = { name: 'square', width: 10, height: 10}
@@ -5502,7 +5547,7 @@ const cube = {
 
 // uses 'this' => designed to be called with a context
 function volume() {
-    console.log('volume context:', this);
+    console.log('volume context:', JSON.stringify(this));
     return this.width * this.height * this.length
 }
 
@@ -5639,28 +5684,20 @@ for (const elem of set) {
 }
 
 
-console.log('\n\nCUSTOM OBJECT ITERATOR\n')
+///// CUSTOM OBJECT ITERATOR //////
 
-const unsolvedCase = {
-    name : "Dyatlov Pass Incident",
-    date : "February 2nd, 1959",
-    "case solved" : false,
-    location: {
-        country: "USSR",
-        place: "Northern Ural Mountains"
-    },
-    victims: [
-        { name: "Igor Dyatlov", born: 1936 },
-        { name: "Yuri Doroshenko", born: 1938 },
-        { name: "Lyudmila Dubinina", born: 1938 },
-        { name: "Yuri (Georgiy) Krivonischenko", born: 1935 },
-        { name: "Alexander Kolevatov", born: 1934 },
-        { name: "Zinaida Kolmogorova", born: 1937 },
-        { name: "Rustem Slobodin", born: 1936 },
-        { name: "Nicolai Thibeaux-Brignolles", born: 1935 },
-        { name: "Semyon (Alexander) Zolotariov", born: 1921 }
-    ],
-    survivors: []
+const movie = {
+    name : "The Shawshank Redemption",
+    year : 1994,
+    director: "Frank Darabont",
+    cast: [ "Tim Robbins", "Morgan Freeman"],
+    similarTitles: [
+        { name: "Forrest Gump", year: 1994 },
+        { name: "Fight Club", year: 1999 },
+        { name: "Pulp Fiction", born: 1994 },
+        { name: "Se7en", born: 1995 },
+        { name: "Inception", born: 2010 },
+    ]
 }
 
 // This will throw error
@@ -5668,28 +5705,31 @@ const unsolvedCase = {
 //    console.log(elem);
 //}
 
-unsolvedCase[Symbol.iterator] = function() {
+movie[Symbol.iterator] = function() {
     let i = 0;
-    const keys = Object.keys(this);
+    const keys = Object.keys(this).filter(key => key !== 'similarTitles')
 
     return {
         next: () => {
             const aKey = keys[i++];
             return aKey
-                ? { done: false, value: [ aKey, this[aKey] ]}
+                ? { done: false, value: aKey.toUpperCase() +': '+ this[aKey] }
                 : { done: true };
             }
     }
 }
 
 // Now this will work
-for (const elem of unsolvedCase) {
+for (const elem of movie) {
     console.log(elem);
 }
 
-console.log('\n\nLINKED LIST\n')
 
-////// Linked List /////
+
+
+////// LINKED LIST ////////
+
+
 /*
     Adding 
     [ 1, null ]
@@ -5809,9 +5849,15 @@ function* saySomething() {
 
 // Get iterator from generator
 const saySomethingIterator = saySomething();
-console.log(saySomethingIterator.next())
-console.log(saySomethingIterator.next())
-console.log(saySomethingIterator.next())
+console.log(saySomethingIterator.next());
+
+
+// get next value
+console.log(saySomethingIterator.next());
+
+
+// get next value
+console.log(saySomethingIterator.next());
 
 
 
@@ -6023,9 +6069,11 @@ try {
     console.log(string)
     
     // minimum area required by images
-    const minimumArea = images.reduce( (total, anImage) => total + anImage.width * anImage.height, 0);
+    const minimumArea = images.reduce( (total, anImage) => 
+                total + anImage.width * anImage.height, 0);
     const usedArea = width * height;
     const used = Math.floor(100 * minimumArea / usedArea);
+
     console.log(minimumArea, usedArea, used + '%');
     
 } catch(err) {
@@ -6100,7 +6148,7 @@ let handler = {
 dbProxy=new Proxy(db,handler); 
 
 let last = dbProxy[-1]; 
-console.log('Proxy Last', last);
+console.log('Proxy Last:', last);
 
 
 // Trap 'get' and 'set'
@@ -6147,16 +6195,27 @@ handler = {
 dbProxy = new Proxy(db,handler);
 
 const updatedLast = {...last, name: 'Plant 42' }
-console.log('Updated Proxy Last', updatedLast);
+console.log('Updated Proxy Last:', updatedLast);
+
+
+
+// update last
 dbProxy[-1] = updatedLast;
-console.log('Updated DB Last', db[db.length-1]);
+console.log('Updated DB Last:', db[db.length-1]);
 
+
+
+// set last to null
 dbProxy[-1] = null;
-console.log('DB Last after set to null', db[db.length-1]);
+console.log('DB Last after set to null:', db[db.length-1]);
 
+// add new 
 dbProxy.push({'name': 'Mount Weather'})
 last = dbProxy[-1];
-console.log('Proxy Last after push', last);
+console.log('Proxy Last after push:', last);
+
+
+
 
         
         </pre>

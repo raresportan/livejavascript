@@ -62,7 +62,7 @@ body.dark, body.dark #container {
     font-style: normal
 }
 
-#toolbar h1, #toolbar h2 {    
+#toolbar h1, #toolbar h2 {
     text-align: center;
     font-family: inherit;
     font-size: 1rem;
@@ -336,6 +336,28 @@ body.dark, body.dark #container {
     left: 775px;
     animation: fadein 1.0s forwards;
     font-family: Menlo, Consolas, Monaco, monospace;
+}
+
+.console-output p {
+    margin: 0;
+    padding: 0;
+    opacity: 0.6;
+}
+
+.console-output p:last-child {
+    opacity: 1;
+}
+
+.console-output p:nth-last-child(4) {
+    opacity: .7;
+}
+
+.console-output p:nth-last-child(3) {
+    opacity: .8;
+}
+
+.console-output p:nth-last-child(2) {
+    opacity: .9;
 }
 
 .console-output span {
