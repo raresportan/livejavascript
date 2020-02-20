@@ -250,6 +250,8 @@ console.error("Task failed successfully");
     data. Data can have different roles or meanings, it can be of different 
     types. A value is a piece of data of a specific type.
 
+    Values are things that are. Types are things that could be.
+
     Here are some examples:
 
     Type            Example Value
@@ -3494,6 +3496,46 @@ set.forEach(elem => console.log(elem));
 
 
 </pre>
+
+
+        <pre class="lesson" data-title="Boss request: Collect unique chars from strings"
+            data-subtitle="That would be great!">
+    'use strict'; 
+    
+    /* 
+    
+        Hey mate! The response is way to big for this font request 
+        https://fonts.googleapis.com/css?family=Inconsolata.
+        
+        We know the texts that should use that font so and we plan to call it:
+        https://fonts.googleapis.com/css?family=Inconsolata&text=OnlyTheCharsWeNeed
+        
+        You job is to collect all the chars we used in our texts and and return them.
+        By the way we need this ASAP, so if you can do it in a hour.. 
+        That would be great!
+
+    */ 
+    
+    // ['Abc'] => 'Abc'
+    // ['Abc', 'Ade'] => 'Adcde'
+    // ['Help', 'Yelp'] => 'HelpY'
+    function getUniqueCharsAsString(strings) {    
+        // add chars here
+        const uniqueChars = new Set();    
+
+
+        //// YOU CODE HERE ////
+
+
+        // return chars as string        
+
+    }
+    
+    console.log(getUniqueCharsAsString(['Abc'])); // logs 'Abc'
+    console.log(getUniqueCharsAsString(['Abc', 'Ade'])); // logs 'Adcde'
+    console.log(getUniqueCharsAsString(['Help', 'Yelp'])); // logs 'HelpY'
+    
+    </pre>
 
         <pre class="lesson" data-title="Regular expressions" data-subtitle="A language inside a language">
 'use strict';

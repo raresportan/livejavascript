@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Live JavaScript Tutorial</title>
+    <title>Live JavaScript</title>
     <meta name="description" content="Learn JavaScript. Live code. Total freedom and privacy.">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
     <meta charset="utf-8">
@@ -14,7 +14,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="logo180x180.png">
     <link rel="apple-touch-icon" sizes="167x167" href="logo167x167.png">
     <link href="lib/prism/prism.css" rel="stylesheet" />
-    <link href="styles.css" rel="stylesheet" />
+    <link href="home.css" rel="stylesheet" />
     <meta name="google-signin-client_id"
         content="331476770739-vehj7vv507vm8nevca46jh7rilppgfrf.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -28,15 +28,326 @@
 </head>
 
 <body>
-    <div style="display: flex; flex-direction: column; margin-top: 3rem; align-items: center; justify-content: center;">
-        <img src="logo167x167.png" alt="Live JavaScript" />
-        <h1>Live JavaScript Tutorial</h1>
+    <header id="home-header">
+        <img src="logo.svg" alt="Live JavaScript" />
+        <h1>Live JavaScript</h1>
+    </header>
+
+    <div style="display:flex; justify-content:center">
         <div class="signInFailure" style="display:none;color:red; margin: 1rem auto;">
             Currently this tutorial is available only to 3PG employees. <br />
             If you are a 3PG employee please login with your 3PG account.
         </div>
         <div id="my-signin2"></div>
     </div>
+
+
+    <section>
+        <h2>Do you want to <em>really</em> know JavaScript?</h2>
+        <div class="two-columns">
+            <p>
+                Did you ever wanted to learn JavaScript, but never had the chance to see what is it about?
+            </p>
+            <p>
+                Did you watch a bunch of videos about JavaScript, but when is time to write some code,
+                everything is kind of confusing?
+            </p>
+            <p>
+                Did you read a book or two about JavaScript, but got sidetracked in endless details you don't
+                care about?
+            </p>
+            <p>
+                Do you feel you should know JavaScript by now, but still find yourself browsing StackOverflow for
+                trivial how-tos?
+            </p>
+            <p>
+                Do you have any clue about what good JavaScript code is? And how to avoid the foot guns?
+            </p>
+            <p>
+                <em>
+                    Then you are in the right place. This course will make things clear for you.
+                </em>
+            </p>
+        </div>
+    </section>
+
+    <section id="logo-list">
+        <h2>No matter what you're using</h2>
+
+        <ul>
+            <li><img src="./logos/react.svg" alt="React" title="React"></li>
+            <li><img src="./logos/angular.svg" alt="Angular" title="Angular"></li>
+            <li><img src="./logos/vue.svg" alt="Vue" alt="Vue"></li>
+            <li><img src="./logos/svelte.svg" alt="Svelte" title="Svelte"></li>
+            <li><img src="./logos/nodejs.svg" alt="Node" title="Node"></li>
+            <li><img src="./logos/expressjs.svg" alt="Express" title="Express"></li>
+            <li><img src="./logos/nextjs.svg" alt="Next.js" title="Next.js"></li>
+            <li><img src="./logos/nuxt.svg" alt="Nuxt" title="Nuxt"></li>
+            <li><img src="./logos/gatsby.svg" alt="Gatsby" title="Gatsby"></li>
+            <li><img src="./logos/lambda.svg" alt="Cloud Functions" title="Cloud Functions"></li>
+        </ul>
+        <footer>
+            <div class="two-columns">
+                <p>At the core of all these is JavaScript. How far can you go till the lack of
+                    JavaScript knowledge will be a problem?
+                </p>
+                <p>
+                    What happens when you know React, Angular, Vue or Svelte and need to fix some Node.js code?
+                    Or the other way around? You run away?
+                </p>
+                <p>
+                    A good JavaScript developer is a full stack developer by default.
+                    Any good codebase keeps the core logic away from the framework boilerplate.
+                </p>
+                <p>
+                    Not even TypeScript can save you.
+                </p>
+                <p>
+                    Coding in TypeScript without knowing JavaScript is a bit dangerous.
+                    The code looks similar to other typed languages, like Java or C# so people
+                    expect it to work in the same way.
+                </p>
+                <p>
+                    But it doesn't. JavaScript is no Java or C#.
+                </p>
+            </div>
+        </footer>
+    </section>
+
+
+    <section id="htw">
+        <h2>How this works?</h2>
+        <article>
+            <div class="image-wrapper">
+                <img src="gifs/liveOutput.gif" alt="Code executed on the fly" loading="lazy" />
+                <div class="image-shadow"></div>
+            </div>
+            <div>
+                <h3>It's just you and a code editor</h3>
+                <em>No videos, no lengthy texts.</em>
+                <p>
+                    Each lesson has a big upfront comment that explains you what is
+                    the lesson about, how a particular feature works or what you
+                    have to do.
+                </p>
+                <p>
+                    Then there is a piece of code that shows the feature in action.
+                    The code is executed on the fly and is editable. You are
+                    expected to tinker with it to better understand how it works.
+                </p>
+                <p>
+                    Finally, there are exercises that can be solved using the knowledge gained in the lesson.
+                </p>
+            </div>
+        </article>
+
+        <article>
+            <div class="image-wrapper">
+                <img src="gifs/changeTheme.gif" alt="Light & Dark themes" loading="lazy" />
+                <div class="image-shadow"></div>
+            </div>
+            <div>
+                <h3>In browser storage</h3>
+                <p>
+                    Experiment freely, code changes and preferences are saved locally in your browser,
+                    nothing is sent over the network.
+                </p>
+                <h3>Infinite loop protection</h3>
+                <p>
+                    Since code is executed on the fly, while you're typing it,
+                    is possible to reach an infinite loop state, e.g. when using
+                    while or for loop. Don't worry, the code execution will stop
+                    and the browser will not block.
+                </p>
+                <h3>Light & Dark themes</h3>
+                <p>
+                    Do you preffer a light or a dark theme? We got you covered in both cases.
+                </p>
+            </div>
+        </article>
+
+        <article>
+            <div class="image-wrapper">
+                <img src="gifs/quiz.gif" alt="Optional A or B quick quizzes" loading="lazy" />
+                <div class="image-shadow"></div>
+            </div>
+            <div>
+                <h3>A / B Quizzes</h3>
+                <p>
+                    Every few lessons, a simple quiz will wait for you.
+                    You answer to a question by choosing one of two pieces of code,
+                    the correct one or the wrong one.
+                </p>
+
+                <h3>Boss Challenges</h3>
+                <p>
+                    If you could accept some challenges... That would be great!
+                </p>
+
+                <h3>Small Projects</h3>
+                <p>
+                    In which you are given the complete source code of a small
+                    project like "Hangman" game, "No more secrets" effect or
+                    "Sprite map generator" algorithm.
+                </p>
+            </div>
+        </article>
+    </section>
+
+    <!-- <section>
+        <h2>How it feels to write JavaScript?</h2>
+        <div style="column-count: 2;">
+            <p>
+                Some will say terrible things about JavaScript.<br />
+                Some of these things are true.
+            </p>
+            <p>
+                When you write something in JavaScript for the first time,
+                you can quickly despise it.
+            </p>
+            <p>
+                It will accept almost anything you typed but interpret it in a way
+                that was completely different from what you meant.
+            </p>
+            <p>
+                This, of course, means that you don't have a clue what are you doing,
+                but the real issue is that
+                <em>JavaScript is ridiculously liberal in what it allows.</em>
+            </p>
+            <p>
+                The initial idea was that it would make programming in JavaScript easier
+                for beginners. In reality, finding problems is harder
+                because nothing will point them out to you.
+            </p>
+            <p>
+                It will just try to make sense from what you tell it to do.
+            </p>
+            <p>
+                But this flexibility has its advantages though:
+                It leaves space for a lot of techniques that are impossible
+                in more rigid languages.
+            </p>
+            <p>
+                <em>After learning the language properly and working with it for a while,
+                    the chances are you will actually love JavaScript.</em>
+            </p>
+        </div>
+    </section> -->
+
+    <section id="toc">
+        <h2>Table of Contents</h2>
+<ol>
+<li>What is JavaScript?<span>It's a Long Way to the Top (If You Wanna Rock 'n' Roll)</span></li>
+<li>Just a bit of history<span>The root of all evil</span></li>
+<li>How it feels to write JavaScript?<span>The Good, the Bad and the Ugly</span></li>
+<li>use strict<span>I Have No Mouth, and I Must Scream</span></li>
+<li>Code Comments<span>Can anybody tell me what's going on?</span></li>
+<li>Logging<span>One thing I do know, that though I was blind, now I see</span></li>
+</ol>
+<header>Basic JavaScript</header>
+<ol>
+<li>Values<span>Let there be data</span></li>
+<li>Bindings<span>The Life of a Kraken</span></li>
+<li>Dynamic Types<span>A Mind Forever Voyaging</span></li>
+<li>Value is bound<span>Obvious is not?</span></li>
+<li>Names<span>Remember when everyone used to call you Stinky Pete?</span></li>
+<li>Keywords<span>I want you to notice when I am around</span></li>
+<li>Data types<span>Royale with Cheese</span></li>
+<li>Numb3rs<span>One-two-three-techno</span></li>
+<li>A number is 64 bits<span>9007199254740991</span></li>
+<li>Math<span>It's the Final Countdown</span></li>
+<li>Strings<span>Words don't come easy</span></li>
+<li>Working with strings<span>Tell me a story of whiskey and mystics and men</span></li>
+<li>Boss request: Media duration<span>That would be great!</span></li>
+<li>Booleans<span>The Truth, The Whole Truth and Nothing But The Truth</span></li>
+<li>Empty values<span>Butthole Surfers</span></li>
+<li>Symbol<span>No clones allowed</span></li>
+<li>Quiz Show<span>Let the games begin!</span></li>
+<li>Operators<span>Paranoid androids</span></li>
+<li>Automatic type conversion<span>The principle of most astonishment</span></li>
+<li>Avoid automatic type conversion<span>All are equal, but some are more equal than others</span></li>
+<li>Logical operators<span>I want it all, I want it now</span></li>
+<li>How to check for type<span>What are you?</span></li>
+<li>Flow control<span>Shortcut this way</span></li>
+<li>Boss request: Random number<span>That would be great!</span></li>
+<li>Checks<span>Wait, who are you again?</span></li>
+<li>Loops<span>99 bottles of beer on the wall</span></li>
+<li>Bit level operators<span>When crazy fast is more important than maintenance</span></li>
+<li>Quiz Show<span>Let the games begin!</span></li>
+<li>Functions<span>Below the surface of the machine, the program moves</span></li>
+<li>Declaration notation<span>The hoist of the century</span></li>
+<li>Arrow functions<span>Take me down to the Paradise city</span></li>
+<li>Function arguments<span>Careful with that axe, Eugene</span></li>
+<li>Project: Hangman<span></span></li>
+<li>Objects<span>From the small and trivial, the large and complex arise.</span></li>
+<li>Objects are mutable<span>Fire Walk with Me</span></li>
+<li>Working with mutable objects is hard<span>Burning down the house</span></li>
+<li>Primitive types are not objects<span>Looks like a duck, and quacks like a duck, still not a duck</span></li>
+<li>Use objects as primitives<span>I have a use for you</span></li>
+<li>Functions are objects<span>Here we are now, entertain us</span></li>
+<li>Maps<span>Alternative to plain objects</span></li>
+<li>Arrays<span>If I have a bag of rocks to carry as I go</span></li>
+<li>Immutable array operations<span>Can you give me sanctuary?</span></li>
+<li>Spread arrays<span>Who Let The Dogs Out?</span></li>
+<li>Strings to arrays and back<span>One of these days, I'm going to cut you into little pieces</span></li>
+<li>Arrays are objects<span>Sometimes I feel I'm gonna break down and cry</span></li>
+<li>Sets<span>Holding unique values</span></li>
+<li>Boss request: Collect unique chars from strings<span>That would be great!</span></li>
+<li>Regular expressions<span>A language inside a language</span></li>
+<li>JSON<span>Message in a bottle</span></li>
+<li>Dates<span>Never seem to find the time</span></li>
+<li>Errors<span>Uh, Houston, we've had a problem</span></li>
+<li>Asynchronicity<span>Waiting... Waiting... Waiting for you to come along</span></li>
+<li>Modules<span>Brothers In Arms</span></li>
+<li>Classes<span>Music for the Masses</span></li>
+</ol>
+<header>Advanced JavaScript</header>
+<ol>
+<li>Scopes<span>All in all it's just another brick in the wall</span></li>
+<li>Function scope<span>Through the Looking Glass</span></li>
+<li>Execution context and the call stack<span>Welcome to the machine</span></li>
+<li>Closures<span>Dragged by the force of some inner tide</span></li>
+<li>Dissection of a closure<span></span></li>
+<li>Other closure examples<span></span></li>
+<li>Project: No more secrets<span></span></li>
+<li>Constructors and Prototypes<span>The secret life of objects</span></li>
+<li>Prototype based Inheritance<span>The tree of life</span></li>
+<li>Syntactic Sugar over Prototypes<span>Awww that's so sweet</span></li>
+<li>Cloning objects<span>Hail to the hordes</span></li>
+<li>Function context<span>'This' is a problem</span></li>
+<li>Iterators<span>One by one, step by step</span></li>
+<li>Generators<span>Don't stop me now ('cause I'm having a good time)</span></li>
+<li>Project: Sprite map generator<span></span></li>
+<li>Proxies<span>It's a trap!</span></li>
+</ol>
+    </section>
+
+
+    <section class="about">
+        <div style="display: flex;">
+            <div class="image-wrapper">
+                <img src="./rares.jpg" alt="Rares" loading="lazy" />
+                <div class="image-shadow" style="box-shadow: inset 0 0 30px rgba(0,0,0,0.4);"></div>
+            </div>
+            <div style="text-align: left; flex-grow: 1;">
+                <p style="margin-left: 0; font-size: smaller; width: 100%; max-width: 300px;">
+                    My name is <a target="_blank" href="https://www.linkedin.com/in/rares-portan-56124950/">Rares
+                        Portan</a>, I am a professional software developer for more than 20 years.
+                    <br /><br />
+                    Most of these years I've been programming in JavaScript. And I still enjoy doing that.
+                    <br /><br />
+                    I love simple and straight code that creates fast and reliable software. Maybe too much.
+
+                    <br /><br />
+                    Thanks for your time.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer style="margin: 2rem auto; text-align: center;">
+        &copy; 2020 Rares Portan
+    </footer>
 
     <script>
 
