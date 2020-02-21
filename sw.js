@@ -22,6 +22,7 @@ function precache() {
             './logo167x167.png',
             './logo180x180.png',
             './logo512x512.png',
+            './rares.jpg',
             './sandbox.html',
             './lib/prism/prism.css',
             './lib/prism/prism.js',

@@ -23,6 +23,7 @@ minify sandbox.html > dist/sandbox.html
 
 minify settings.js evaluation.js lessons.js navigation.js menu.js editor.js quiz.js > dist/editor.js
 
+cp privacy.html dist/privacy.html
 cp index.html dist/index.html
 cp lessons.html dist/lessons.html
 sed -i '' '/settings.js/d' dist/lessons.html

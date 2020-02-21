@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Live JavaScript | Privacy polict</title>
+    <meta name="description" content="Learn JavaScript. Live code. Total freedom and privacy.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#282a36">
+    <link href="home.css" rel="stylesheet" />
+</head>
+
+<body>
+    <header id="home-header">
+        <img src="logo.svg" alt="Live JavaScript" />
+        <h1>Live JavaScript</h1>
+    </header>
+
+    <section id="policy">
+        <div class="waves-container">
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave-login"
+                        d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="parallax">
+                    <use xlink:href="#gentle-wave-login" x="48" y="0" fill="rgba(255,255,255,0.7)" />
+                    <use xlink:href="#gentle-wave-login" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                    <use xlink:href="#gentle-wave-login" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                    <use xlink:href="#gentle-wave-login" x="48" y="7" fill="#fff" />
+                </g>
+            </svg>
+        </div>
+        <h3>Privacy Policy</h3>
+        <div>
+            <p>
+                All the personal information you provide is kept confidential.<br />
+                <em>I respect everyone's privacy.</em>
+            </p>
+            <p>
+                Traffic data is registered anonymously using Google Analytics, <em>without tracking the IPs.</em>
+                All data is collected anonymously and can't be linked to your identity.
+            </p>
+            <p>
+                <em>Any collected data will not be sold to third parties.</em>
+            </p>
+        </div>
+
+        <h3>Data Controller Contact Information</h3>
+        <div>
+            <p>
+                The data controller of this website is:<br /> <em>Rares Portan, Timisoara, Romania,
+                    (rportan at gmail dot com)
+                </em>
+            </p>
+        </div>
+
+        <h3>Cookies</h3>
+        <div>
+            <p>
+                Some cookies will be placed in your browser, unless your browser settings prevents that.
+            </p>
+            <p>
+                Those cookies are used to gather statistical data about the visits to
+                this website using Google Analytics and to log you in with your Google Account.
+            </p>
+            <p>
+                Google Analytics can provide the collected data to third parties if they are legally obliged,
+                or when the data is processed by third parties on their behalf.
+            </p>
+            <p>
+                <em>For this website Google is not allowed to use the analytics data for other Google
+                    services.</em>
+            </p>
+        </div>
+
+    </section>
+
+    <footer style="margin: 2rem auto; text-align: center;">
+        &copy; 2020 Rares Portan
+    </footer>
+
+    <script>
+        var dnt = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+        if (dnt != "1" && dnt != "yes") {
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-158848327-1', 'auto');
+            ga('set', 'anonymizeIp', true);
+            ga('send', 'pageview');
+        } else {
+            console.debug("Respecting Do-Not-Track, not loading analytics.");
+        }
+    </script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/cookie-bar/cookiebar-latest.min.js?always=1&hideDetailsBtn=1&showPolicyLink=1&privacyPage=.%2Fprivacy.html"></script>
+</body>
+
+</html>

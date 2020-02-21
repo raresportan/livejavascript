@@ -324,6 +324,15 @@ ul {
     justify-content: center;
 }
 
+#policy h3 {
+    margin-top: 3rem;
+}
+
+#policy>*:not(.waves-container) {
+    max-width: 600px;
+    padding: 0 1rem;
+}
+
 @media screen and (max-width: 500px) {
     #about .image-wrapper {
         margin: 0 0 1rem 0;
