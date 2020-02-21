@@ -14,6 +14,7 @@ cp *.jpg dist/
 
 cp manifest.webmanifest dist/
 cp sw.js dist/
+cp robots.txt /dist
 
 minify styles.css > dist/styles.css
 minify home.css > dist/home.css

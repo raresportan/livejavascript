@@ -325,9 +325,6 @@ ul {
 }
 
 @media screen and (max-width: 500px) {
-    #about {
-        padding-left: 1rem;
-    }
     #about .image-wrapper {
         margin: 0 0 1rem 0;
     }
@@ -337,7 +334,7 @@ ul {
 }
 
 .waves-container {
-    margin-top: -96px;
+    margin-top: -95px;
     width: 100%;
 }
 
