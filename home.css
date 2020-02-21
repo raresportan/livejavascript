@@ -8,12 +8,19 @@ html, body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+}
+
 #home-header {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 7rem;
-    margin-bottom: 7rem;
+    background-color: #000022;
+    color: #fff;
+    padding-top: 7rem;
+    padding-bottom: 10rem;
 }
 
 #home-header img {
@@ -37,8 +44,15 @@ h2 {
 
 section {
     font-size: 1.2rem;
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 8rem;
+}
+
+section>*:not(.waves-container) {
     width: 90%;
-    margin: 4rem auto 6rem auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 p {
@@ -49,7 +63,7 @@ p {
 
 @media screen and (max-width: 500px) {
     #home-header {
-        margin: 2rem 1rem;
+        padding: 2rem 1rem;
     }
     section {
         width: 100%;
@@ -70,6 +84,18 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+#login .login-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -4rem;
+}
+
+#login, #intro {
+    padding-bottom: 2rem;
 }
 
 #logo-list h2 {
@@ -130,8 +156,8 @@ ul {
         font-size: 4rem;
     }
     #home-header {
-        margin-top: 5rem;
-        margin-bottom: 3rem;
+        padding-top: 5rem;
+        padding-bottom: 7rem;
     }
     .two-columns {
         column-count: 1;
@@ -159,7 +185,7 @@ ul {
     align-items: center;
 }
 
-.image-wrapper img {
+.image-wrapper img, .image-wrapper video {
     max-width: 100%;
 }
 
@@ -171,6 +197,18 @@ ul {
     width: 100%;
     min-width: 100%;
     top: 0;
+}
+
+#htw {
+    background-color: #F4D35E;
+    width: 100%;
+    margin: 0 auto;
+}
+
+#htw>*:not(.waves-container) {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #htw .image-wrapper {
@@ -216,8 +254,7 @@ ul {
     width: 100%;
     background: #282a36;
     color: #fff;
-    padding: 3rem 0;
-    margin-bottom: 0;
+    margin: 0 auto;
 }
 
 #toc ol {
@@ -265,12 +302,13 @@ ul {
     opacity: 0.7;
 }
 
-.about {
-    display: flex;
-    justify-content: center;
+#about {
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 3rem;
 }
 
-.about .image-wrapper {
+#about .image-wrapper {
     width: 220px;
     min-width: 220px;
     height: 220px;
@@ -278,14 +316,69 @@ ul {
     margin-right: 2rem;
 }
 
+#about .about-container {
+    margin: 0 auto;
+    display: flex;
+    padding: 4rem 0 2rem 0;
+    align-items: center;
+    justify-content: center;
+}
+
 @media screen and (max-width: 500px) {
-    .about {
+    #about {
         padding-left: 1rem;
     }
-    .about .image-wrapper {
+    #about .image-wrapper {
         margin: 0 0 1rem 0;
     }
-    .about>div {
+    #about>div {
         flex-direction: column;
+    }
+}
+
+.waves-container {
+    margin-top: -96px;
+    width: 100%;
+}
+
+.waves {
+    position: relative;
+    width: 100%;
+    height: 15vh;
+    margin-bottom: -7px;
+    min-height: 96px;
+    max-height: 96px;
+}
+
+.parallax>use {
+    animation: move-forever 25s cubic-bezier(.55, .5, .45, .5) infinite;
+}
+
+.parallax>use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 7s;
+}
+
+.parallax>use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 10s;
+}
+
+.parallax>use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+}
+
+.parallax>use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s;
+}
+
+@keyframes move-forever {
+    0% {
+        transform: translate3d(-90px, 0, 0);
+    }
+    100% {
+        transform: translate3d(85px, 0, 0);
     }
 }

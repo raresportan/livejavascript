@@ -6,6 +6,7 @@
     <meta name="description" content="Learn JavaScript. Live code. Total freedom and privacy.">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
     <meta charset="utf-8">
+    <meta name="theme-color" content="#282a36">
     <link rel='manifest' href='/manifest.webmanifest'>
     <link rel="icon" type="image/x-icon" href="logo.svg">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -33,16 +34,34 @@
         <h1>Live JavaScript</h1>
     </header>
 
-    <div style="display:flex; justify-content:center">
-        <div class="signInFailure" style="display:none;color:red; margin: 1rem auto;">
-            Currently this tutorial is available only to 3PG employees. <br />
-            If you are a 3PG employee please login with your 3PG account.
+
+
+    <section id="login">
+        <div class="waves-container">
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave-login"
+                        d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="parallax">
+                    <use xlink:href="#gentle-wave-login" x="48" y="0" fill="rgba(255,255,255,0.7)" />
+                    <use xlink:href="#gentle-wave-login" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                    <use xlink:href="#gentle-wave-login" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                    <use xlink:href="#gentle-wave-login" x="48" y="7" fill="#fff" />
+                </g>
+            </svg>
         </div>
-        <div id="my-signin2"></div>
-    </div>
+        <div class="login-container">
+            <div class="signInFailure" style="display:none;color:#e33a2c; margin: 1rem auto;">
+                Currently this tutorial is available only to 3PG employees. <br />
+                If you are a 3PG employee please login with your 3PG account.
+            </div>
+            <div id="my-signin2"></div>
+        </div>
+    </section>
 
-
-    <section>
+    <section id="intro">
         <h2>Do you want to <em>really</em> know JavaScript?</h2>
         <div class="two-columns">
             <p>
@@ -116,10 +135,28 @@
 
 
     <section id="htw">
+        <div class="waves-container">
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave-htw"
+                        d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="parallax">
+                    <use xlink:href="#gentle-wave-htw" x="48" y="0" fill="rgba(244,211,94,0.7)" />
+                    <use xlink:href="#gentle-wave-htw" x="48" y="3" fill="rgba(244,211,94,0.5)" />
+                    <use xlink:href="#gentle-wave-htw" x="48" y="5" fill="rgba(244,211,94,0.3)" />
+                    <use xlink:href="#gentle-wave-htw" x="48" y="7" fill="#F4D35E" />
+                </g>
+            </svg>
+        </div>
         <h2>How this works?</h2>
         <article>
             <div class="image-wrapper">
-                <img src="gifs/liveOutput.gif" alt="Code executed on the fly" loading="lazy" />
+                <video autoplay loop muted playsinline>
+                    <source src="gifs/liveOutput.webm" type="video/webm">
+                    <source src="gifs/liveOutput.mp4" type="video/mp4">
+                </video>
                 <div class="image-shadow"></div>
             </div>
             <div>
@@ -143,7 +180,10 @@
 
         <article>
             <div class="image-wrapper">
-                <img src="gifs/changeTheme.gif" alt="Light & Dark themes" loading="lazy" />
+                <video autoplay loop muted playsinline>
+                    <source src="gifs/changeTheme.webm" type="video/webm">
+                    <source src="gifs/changeTheme.mp4" type="video/mp4">
+                </video>
                 <div class="image-shadow"></div>
             </div>
             <div>
@@ -168,7 +208,10 @@
 
         <article>
             <div class="image-wrapper">
-                <img src="gifs/quiz.gif" alt="Optional A or B quick quizzes" loading="lazy" />
+                <video autoplay loop muted playsinline>
+                    <source src="gifs/quiz.webm" type="video/webm">
+                    <source src="gifs/quiz.mp4" type="video/mp4">
+                </video>
                 <div class="image-shadow"></div>
             </div>
             <div>
@@ -194,47 +237,22 @@
         </article>
     </section>
 
-    <!-- <section>
-        <h2>How it feels to write JavaScript?</h2>
-        <div style="column-count: 2;">
-            <p>
-                Some will say terrible things about JavaScript.<br />
-                Some of these things are true.
-            </p>
-            <p>
-                When you write something in JavaScript for the first time,
-                you can quickly despise it.
-            </p>
-            <p>
-                It will accept almost anything you typed but interpret it in a way
-                that was completely different from what you meant.
-            </p>
-            <p>
-                This, of course, means that you don't have a clue what are you doing,
-                but the real issue is that
-                <em>JavaScript is ridiculously liberal in what it allows.</em>
-            </p>
-            <p>
-                The initial idea was that it would make programming in JavaScript easier
-                for beginners. In reality, finding problems is harder
-                because nothing will point them out to you.
-            </p>
-            <p>
-                It will just try to make sense from what you tell it to do.
-            </p>
-            <p>
-                But this flexibility has its advantages though:
-                It leaves space for a lot of techniques that are impossible
-                in more rigid languages.
-            </p>
-            <p>
-                <em>After learning the language properly and working with it for a while,
-                    the chances are you will actually love JavaScript.</em>
-            </p>
-        </div>
-    </section> -->
-
     <section id="toc">
+        <div class="waves-container">
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave-toc"
+                        d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="parallax">
+                    <use xlink:href="#gentle-wave-toc" x="48" y="0" fill="rgba(40,42,54,0.7)" />
+                    <use xlink:href="#gentle-wave-toc" x="48" y="3" fill="rgba(40,42,54,0.5)" />
+                    <use xlink:href="#gentle-wave-toc" x="48" y="5" fill="rgba(40,42,54,0.3)" />
+                    <use xlink:href="#gentle-wave-toc" x="48" y="7" fill="#282a36" />
+                </g>
+            </svg>
+        </div>
         <h2>Table of Contents</h2>
 <ol>
 <li>What is JavaScript?<span>It's a Long Way to the Top (If You Wanna Rock 'n' Roll)</span></li>
@@ -323,15 +341,31 @@
     </section>
 
 
-    <section class="about">
-        <div style="display: flex;">
+    <section id="about">
+        <div class="waves-container">
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave-about"
+                        d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="parallax">
+                    <use xlink:href="#gentle-wave-about" x="48" y="0" fill="rgba(255,255,255,0.7)" />
+                    <use xlink:href="#gentle-wave-about" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                    <use xlink:href="#gentle-wave-about" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                    <use xlink:href="#gentle-wave-about" x="48" y="7" fill="#fff" />
+                </g>
+            </svg>
+        </div>
+        <div class="about-container">
             <div class="image-wrapper">
                 <img src="./rares.jpg" alt="Rares" loading="lazy" />
                 <div class="image-shadow" style="box-shadow: inset 0 0 30px rgba(0,0,0,0.4);"></div>
             </div>
-            <div style="text-align: left; flex-grow: 1;">
+            <div style="text-align: left;">
                 <p style="margin-left: 0; font-size: smaller; width: 100%; max-width: 300px;">
-                    My name is <a target="_blank" href="https://www.linkedin.com/in/rares-portan-56124950/">Rares
+                    My name is <a target="_blank" rel="noreferrer"
+                        href="https://www.linkedin.com/in/rares-portan-56124950/">Rares
                         Portan</a>, I am a professional software developer for more than 20 years.
                     <br /><br />
                     Most of these years I've been programming in JavaScript. And I still enjoy doing that.
