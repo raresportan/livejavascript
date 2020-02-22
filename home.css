@@ -388,3 +388,22 @@ ul {
         transform: translate3d(85px, 0, 0);
     }
 }
+
+#cookie-bar {
+    background-color: #282a36 !important;
+    padding: 0.5rem !important;
+    font-family: inherit !important;
+}
+
+#cookie-bar p {
+    font-family: inherit !important;
+}
+
+#cookie-bar-button, #cookie-bar-button-no {
+    text-shadow: none !important;
+    font-size: 1rem;
+    padding: 0.5rem 1rem !important;
+    border-radius: 2px !important;
+    margin-right: 1rem !important;
+    font-weight: 400 !important;
+}
