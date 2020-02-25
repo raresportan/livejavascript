@@ -407,3 +407,7 @@ ul {
     margin-right: 1rem !important;
     font-weight: 400 !important;
 }
+
+#cookie-bar-button-no {
+    background-color: none;
+}
