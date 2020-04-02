@@ -64,19 +64,19 @@
         <pre class="lesson" data-title="Just a bit of history" data-subtitle="The root of all evil">
 /*
     
-    JavaScript was created in 1995 for Netscape Navigator by Brendan Eich.
-    It was implemented in 10 days. As you can guess it was not perfect.
+    Brendan Eich created JavaScript in 1995, while working at Netscape.
+    He implemented JavaScript in 10 days. As you can guess it was not perfect.
 
-    It has almost nothing to do with Java.
-    The similar name is a marketing gimmick rather than good judgment.
+    JavaScript has (almost) nothing to do with Java:
+    1. The similar name is a marketing gimmick rather than good judgment.
+    2. Due to the same marketing reasons, he was pressed to make JavaScript 
+    a bit more "Java like."
 
-    Microsoft reversed engineered the language for Internet Explorer
-    - as it was at that time, with all the problems - adding their own little 
-    mutations like they always do. 
-    
-    Netscape tried to maintain control of the language changes by
-    standardizing it as ECMAScript. But it was too late, broken parts
-    could not be fixed anymore.   
+    Microsoft reversed engineered the language, as it was at that time, with all
+    the problems. Then they added it in Internet Explorer,
+
+    Netscape was horrified. They tried to maintain control by standardising 
+    JavaScript as ECMAScript. But it was too late, broken parts remained.
 
     It would take years to fix some of them.
 
@@ -538,7 +538,7 @@ y     ->              |
     - Symbol
     - BigInt
 
-    Everything else is an object, including arrays.
+    Everything else is an object, including arrays and *functions*.
 
     We can use "typeof" operator to find the type of a value,
     but sadly is not working very for some types, so in practice we use special
@@ -779,6 +779,14 @@ console.log(BigInt(Number.MAX_SAFE_INTEGER) * 323234n );
     Math.sqrt(x) // Positive square root of x
     Math.trunc(x) // Integer part of x, removing any fractional digits.
 
+
+    --------------------------------------------------------
+    NOTE: Math is not a data type like Number, String, Date etc.
+    So while all those are functions(contructors), Math is an object not a 
+    function. This is Java influence, normally those functions should be number 
+    methods, like toPrecision() is.
+    --------------------------------------------------------
+
 */
 
 console.log(Math.PI);
@@ -815,7 +823,7 @@ console.log(Math.sqrt(2));
     - length
     - indexOf 
     - substring 
-    - toLowerCase
+    - toLowerCase & toUpperCase    
 
     There's no char type, but you can work with a string's chars.
 
@@ -827,6 +835,10 @@ console.log(fix);
 // strings have methods
 console.log(fix.toUpperCase()); 
 console.log(fix.length); 
+
+// to combine several string into one you can use +
+const abc = "a" + "b" + "c";
+console.log(abc);
 
 const stringFromNumber = 1 + ""; 
 console.log(stringFromNumber); 
@@ -858,11 +870,27 @@ console.log(interpolated);
 
 // -- Exercises --
 
-// Format a phone number to a readable version: 0742552233 -> 0742.552.233
+// Format a 10 digit phone number to a readable version: 0742552233 -> 0742.552.233
+// using substring 
+const formatPhoneNumber = phoneNumber => {
+    let result = '';
+    // your code here
 
-// Black out word:
-// Given a phrase and a word, replace each word's chars with *, leave all other
-// words as they are.
+
+    return result;
+}
+console.log(formatPhoneNumber("0742552233")) // 0742.552.233
+
+
+// Black out word: Given a phrase and a word, replace each word's chars with *, 
+// leave all other words as they are. Use indexOf and substring
+const censor = (phrase, word) => {
+    let result = '';
+    // your code here
+
+    return result;
+}
+console.log(censor('JFK was killed by KGB', 'KGB')) // JFK was killed by ***
 
 
 </pre>
@@ -910,7 +938,7 @@ console.log(opinion)
 // -- Exercises --
 
 // implement the capitalize function that will take a string and return 
-// the same string with the first letter uppercase
+// the same string with the first letter uppercase, e.g. joe => Joe
 const capitalize = (str) => {
     let result = '';
     // your code here
@@ -918,6 +946,7 @@ const capitalize = (str) => {
 
     return result;
 }
+console.log(capitalize('jane'));
 
 
 
@@ -935,8 +964,8 @@ const capitalize = (str) => {
     The format is "hh:mm:ss" where hh is number of hours, mm is number of minutes, ss 
     is number of seconds. Easy, right?
     
-    We need the fix ASAP.
-    If you could fix it before you go home... That would be great!
+    Yeah, I'm gonna need you to fix it ASAP.
+    So if you could ahead and do that... That would be great!
     
 */ 
 
@@ -1035,7 +1064,7 @@ if("0") console.log(" '0' string is truthy!");
 
     'null' represents intentional absence of value.
 
-    The difference in meaning between 'undefined' and 'null' is an accident 
+    The difference in meaning between 'undefined' and 'null' is a (Java) accident 
     of JavaScript’s design, and it doesn’t matter most of the time. 
     Treat them as mostly interchangeable.
 
@@ -1051,50 +1080,50 @@ console.log(notInitialized);
 // But please don't do this!
 //let undefined = 2; console.log('undefined:', undefined);
 
-// You can null or undefined when you want to clear a variable value
+// You can use null or undefined when you want to clear a variable value
 // but I recommend to use undefined
 let name = "John Resig";
 name = undefined;
 console.log('name:',name);
 
-name = "John Resig"
-if(name !== null) console.log("Name not null")
+name = "John Resig";
+if(name !== null) console.log("Name not null");
 
-name = null
+name = null;
 if(name !== null && name !== undefined) {
-
+    console.log('Whatever');
 } else {
-    console.log("Name null or undefined")
+    console.log("Name null or undefined");
 }     
 
-name = undefined
+name = undefined;
 if(name !== null && name !== undefined) {
-    console.log("Name not null or undefined")
+    console.log("Name not null or undefined");
 } else {
-    console.log("Name null or undefined")
+    console.log("Name null or undefined");
 }
 
 
-// You can use != (with a single =) to use type coersion and check for
-// both null and undefined
+// You can use != (with a single =) to use type coercion(conversion) and check 
+// for both null and undefined
 
-name = null
-if(name != null) console.log("Name is not null")
+name = null;
+if(name != null) console.log("Name is not null");
 
-name = undefined
-if(name != null) console.log("Name is not undefined")
+name = undefined;
+if(name != null) console.log("Name is not undefined");
 
-name = false
-if(name != null) console.log("Name false")
+name = false;
+if(name != null) console.log("Name false");
 
-name = 0
-if(name != null) console.log("Name 0")
+name = 0;
+if(name != null) console.log("Name 0");
 
-name = ''
-if(name != null) console.log("Name empty string")
+name = '';
+if(name != null) console.log("Name empty string");
 
-name = NaN
-if(name != null) console.log("Name NaN")
+name = NaN;
+if(name != null) console.log("Name NaN");
 
 
 </pre>
@@ -1384,11 +1413,14 @@ console.log(fix);
 /* 
 
     Operators can be grouped by the number of values they operate on: 
+    ----------------------
     Unary: typeof, -, void, !
     Binary: +, -, 
     Tertiary: x ? y : z
     
+
     Most common operators, grouped by type:  
+    ----------------------
     Arithmetic: + - / * % **
     Assignment: = += -= *= /= ++ --
     Comparison: < > <= >= == != === !==
@@ -1481,7 +1513,7 @@ console.log("0 == false:", 0 == false);
 
 ///////////////// The lunatic is on the grass
 ///////////////// Writing JS with only 6 chars
-console.log('\n====== !+()[] ======')
+console.log('====== !+()[] ======')
 
 
 // booleans
@@ -1597,6 +1629,16 @@ console.log("'5' === [5]", '5' === [5])
 console.log("5 == ['0' + '5']", 5 == ['0' + '5'])
 console.log("5 === ['0' + '5']", 5 === ['0' + '5'])
 
+// Another way to check if two things are the same is Object.is()
+// which works almost exactly like === except NaN and +0 -0
+
+console.log("NaN === NaN", NaN === NaN )
+console.log("Object.is(NaN, NaN)", Object.is(NaN, NaN))
+
+console.log("+0 === -0", +0 === -0 )
+console.log("Object.is(+0, -0)", Object.is(+0, -0))
+
+// for anything else Object.is(v1, v2) is the same as v1 === v2
 
 </pre>
 
@@ -1686,7 +1728,7 @@ const notNotResult = !!result; // true if result is truty, false otherwise
 /*
     
     A classic problem in JavaScript is to check if a binding is of a certain type.        
-    Since typeof returns unexepected values for some of the types, here is what
+    Since typeof returns unexpected values for some of the types, here is what
     you need to use in practice:        
 
 */
@@ -1758,8 +1800,15 @@ function isDate (value) {
     A fragment of code that produces a value is called an "expression."
     An expression can be composed from several expressions.
 
-    A "statement" is a piece of code made from one or more expressions 
-    ending with a (optional) semicolon (;).
+    A "statement" is a piece of code that can be executed and performs some 
+    kind of action, usually made from one or more expressions and ending with 
+    a (optional) semicolon (;).
+
+    There are several types of statements:
+    * expression statements (expressions by there own)
+    * declaration statements (bindings, function, class, etc)
+    * control flow statements (if, switch, for, throw, try, catch, etc)
+    * miscellaneous statements (debugger, import, label, with, etc)
 
     A JavaScript program is a list of statements.
     Normally, these statements are executed one after the other from top to bottom. 
@@ -2714,6 +2763,20 @@ console.log('currentStatus:', currentStatus);
 droneShip.updateStatus('On the move');
 currentStatus = droneShip.status;
 console.log('currentStatus:', currentStatus);
+
+
+
+
+// Methods can be defined using a shorter way also
+const asteroid = {
+    distanceFromSun: 168.14 * 1_000_000, // km
+    speed: 87.3, // km/s
+    daysTillImpact() {
+        return (this.distanceFromSun / this.speed) / (60 * 60 * 24)
+    }
+}
+console.log(asteroid.daysTillImpact(), 'days');
+
 
 
 // -- Exercises --
@@ -6295,7 +6358,7 @@ console.log('Proxy Last after push:', last);
                         const googleUser = auth2.currentUser.get();
                         const profile = googleUser.getBasicProfile();
                         const email = profile.getEmail();
-                        if (email && /3pillarglobal.com/g.test(email)) {
+                        if (email) { // && /3pillarglobal.com/g.test(email)) {
                             console.log('Sign in', email);
                         } else {
                             window.location.href = '/';

@@ -53,7 +53,7 @@ while(1) { }
     editor.setOptions({
         enableBasicAutocompletion: true,
         fixedWidthGutter: true,
-        fontSize: "12pt",
+        fontSize: "11pt",
         theme: "ace/theme/sqlserver"
     });
     editor.focus();

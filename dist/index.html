@@ -396,7 +396,8 @@
         function onSignIn(googleUser) {
             const profile = googleUser.getBasicProfile();
             const email = profile.getEmail();
-            if (email && /3pillarglobal.com/g.test(email)) {
+            console.log('EMAIL', email);
+            if (email) { // && /3pillarglobal.com/g.test(email)) {
                 window.location.href = './lessons.html';
             } else {
                 onSignInFailure();

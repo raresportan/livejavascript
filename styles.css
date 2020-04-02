@@ -333,7 +333,7 @@ body.dark, body.dark #container {
 .console-output {
     position: absolute;
     top: 0;
-    left: 775px;
+    left: 710px;
     animation: fadein 1.0s forwards;
     font-family: Menlo, Consolas, Monaco, monospace;
 }

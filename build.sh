@@ -6,7 +6,10 @@ rm -R dist/*
 
 cp -R lib dist/
 cp -R logos dist/
-cp -R gifs dist/
+
+mkdir dist/gifs
+cp gifs/*.mp4 dist/gifs/
+cp gifs/*.webm dist/gifs/
 
 cp *.svg dist/
 cp *.png dist/

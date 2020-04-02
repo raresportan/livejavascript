@@ -50,7 +50,7 @@
                             const lineParts = line.split(':');
                             const lineNumber = lineParts[lineParts.length-2] - 3;
                             const isObject = p => p && typeof p === 'object' && p.constructor === Object;
-                            postMessage({lineNumber, type: prop, params: Array.from(arguments).map(p => isObject(p) ? JSON.stringify(p, null, '\t') : Array.isArray(p) ? '['+p.join(', ')+']' : (p && p.toString ? p.toString() : p))});                            
+                            postMessage({lineNumber, type: prop, params: Array.from(arguments).map(p => isObject(p) ? JSON.stringify(p, null, '  ') : Array.isArray(p) ? '['+p.join(', ')+']' : (p && p.toString ? p.toString() : p))});                            
                             //postMessage({lineNumber, type: prop, params: Array.from(arguments)});                            
                             //postMessage({lineNumber, type: prop, params: Array.from(arguments).map(p => p && p.toString? p.toString(): p)});                            
                         }
