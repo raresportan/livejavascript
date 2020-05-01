@@ -51,7 +51,6 @@
             return button;
         }).forEach(aButton => settings.appendChild(aButton))
 
-        console.log('CREATE LOGOUT BUTTON')
         const button = document.createElement('button');
         button.className = 'logout';
         button.innerText = 'Log out';
