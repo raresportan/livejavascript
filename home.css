@@ -91,7 +91,9 @@ ul {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-top: -4rem;
+    margin-top: -2rem;
+    position: absolute;
+    width: 100%;
 }
 
 #login, #intro {
@@ -410,4 +412,18 @@ ul {
 
 #cookie-bar-button-no {
     background-color: none;
+}
+
+a.netlify-identity-button {
+    padding: 0.5rem 3rem;
+    background: #e33a2c;
+    color: #fff;
+    min-width: 100%;
+    text-decoration: none;
+    border-radius: 0.2rem;
+    transition: all 0.3s ease-in-out;
+}
+
+a.netlify-identity-button:hover, a.netlify-identity-button:focus {
+    background: #D81E5B;
 }

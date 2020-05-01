@@ -16,9 +16,7 @@
     <link rel="apple-touch-icon" sizes="167x167" href="logo167x167.png">
     <link href="lib/prism/prism.css" rel="stylesheet" />
     <link href="home.css" rel="stylesheet" />
-    <meta name="google-signin-client_id"
-        content="331476770739-vehj7vv507vm8nevca46jh7rilppgfrf.apps.googleusercontent.com">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script>
         if ("serviceWorker" in navigator) {
             if (!navigator.serviceWorker.controller) {
@@ -53,11 +51,11 @@
             </svg>
         </div>
         <div class="login-container">
-            <div class="signInFailure" style="display:none;color:#e33a2c; margin: 1rem auto;">
+            <!-- <div class="signInFailure" style="display:none;color:#e33a2c; margin: 1rem auto;">
                 Currently this tutorial is available only to 3PG employees. <br />
                 If you are a 3PG employee please login with your 3PG account.
-            </div>
-            <div id="my-signin2"></div>
+            </div> -->
+            <div data-netlify-identity-button></div>
         </div>
     </section>
 
@@ -267,7 +265,6 @@
 <li>Keywords<span>I want you to notice when I am around</span></li>
 <li>Data types<span>Royale with Cheese</span></li>
 <li>Numb3rs<span>One-two-three-techno</span></li>
-<li>A number is 64 bits<span>9007199254740991</span></li>
 <li>Math<span>It's the Final Countdown</span></li>
 <li>Strings<span>Words don't come easy</span></li>
 <li>Working with strings<span>Tell me a story of whiskey and mystics and men</span></li>
@@ -278,10 +275,12 @@
 <li>Quiz Show<span>Let the games begin!</span></li>
 <li>Operators<span>Paranoid androids</span></li>
 <li>Automatic type conversion<span>The principle of most astonishment</span></li>
+<li>Plus operator<span>Let's come together</span></li>
 <li>Avoid automatic type conversion<span>All are equal, but some are more equal than others</span></li>
 <li>Logical operators<span>I want it all, I want it now</span></li>
 <li>How to check for type<span>What are you?</span></li>
 <li>Flow control<span>Shortcut this way</span></li>
+<li>Semicolons<span>Should I stay or should I go?</span></li>
 <li>Boss request: Random number<span>That would be great!</span></li>
 <li>Checks<span>Wait, who are you again?</span></li>
 <li>Loops<span>99 bottles of beer on the wall</span></li>
@@ -311,11 +310,13 @@
 <li>Dates<span>Never seem to find the time</span></li>
 <li>Errors<span>Uh, Houston, we've had a problem</span></li>
 <li>Asynchronicity<span>Waiting... Waiting... Waiting for you to come along</span></li>
-<li>Modules<span>Brothers In Arms</span></li>
 <li>Classes<span>Music for the Masses</span></li>
+<li>Classic Modules<span>Brothers In Arms</span></li>
+<li>ES Modules<span>Habemus papam</span></li>
 </ol>
 <header>Advanced JavaScript</header>
 <ol>
+<li>A number is 64 bits<span>9007199254740991</span></li>
 <li>Scopes<span>All in all it's just another brick in the wall</span></li>
 <li>Function scope<span>Through the Looking Glass</span></li>
 <li>Execution context and the call stack<span>Welcome to the machine</span></li>
@@ -332,6 +333,7 @@
 <li>Generators<span>Don't stop me now ('cause I'm having a good time)</span></li>
 <li>Project: Sprite map generator<span></span></li>
 <li>Proxies<span>It's a trap!</span></li>
+<li>JavaScript in 6 characters<span>The lunatic is on the grass</span></li>
 </ol>
     </section>
 
@@ -379,18 +381,12 @@
     </footer>
 
     <script>
+        const user = netlifyIdentity.currentUser();
 
-        function renderButton() {
-            gapi.signin2.render('my-signin2', {
-                'scope': 'profile email',
-                'width': 240,
-                'height': 50,
-                'longtitle': true,
-                'theme': 'dark',
-                'onsuccess': onSignIn,
-                'onfailure': onSignInFailure
-            });
-        }
+        // Bind to events
+        netlifyIdentity.on('login', user => {
+            window.location.href = './lessons';
+        });
 
 
         function onSignIn(googleUser) {
@@ -398,7 +394,7 @@
             const email = profile.getEmail();
             console.log('EMAIL', email);
             if (email) { // && /3pillarglobal.com/g.test(email)) {
-                window.location.href = './lessons.html';
+                window.location.href = './lessons';
             } else {
                 onSignInFailure();
             }
@@ -414,7 +410,6 @@
             });
         }
 
-        window.onload = renderButton;
 
         var dnt = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
         if (dnt != "1" && dnt != "yes") {

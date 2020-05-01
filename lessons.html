@@ -14,7 +14,7 @@
     <link rel="icon" href="logo16x16.png" type="image/png" sizes="16x16">
     <link href="lib/prism/prism.css" rel="stylesheet" />
     <link href="styles.css" rel="stylesheet" />
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script>
         if ("serviceWorker" in navigator) {
             if (!navigator.serviceWorker.controller) {
@@ -591,7 +591,7 @@ console.log("Type of typeof an array:", typeof(typeof [1, 2, 3]));
 
     JavaScript has a two types for all the numbers, integers, 
     floating point numbers, etc.:
-    1. Number - 64-bit floating point, safe integer
+    1. Number - 64-bit floating point doubles
     2. BigInt - double-precision floating point approximation of the integer values
 
     Special numbers are NaN (Not a Number), Infinity and -Infinity.
@@ -620,6 +620,13 @@ console.log("Dollars:", dollars);
 
 // Numbers have some methods even if they are primitives
 console.log("Dollars with precision:", dollars.toPrecision(1));
+// You cannot use methods on literal numbers but you cand do this:
+// 7.toString // throws error
+7.0.toString();
+(7).toString();
+7..toString();
+7 .toString();
+
 
 // Transform string to numbers
 const minutes = parseInt("08");
@@ -693,68 +700,7 @@ console.log(red);
 
 </pre>
 
-        <pre class="lesson" data-title="A number is 64 bits" data-subtitle="9007199254740991">
-'use strict'; 
 
-/*
-
-    Decimal    Binary     Memory 
-    -----------------------------
-    0             0       1 bit     
-    1             1       1 bit
-    2            10       2 bits 
-    3            11       2 bits
-    4           100       3 bits
-    5           101       3 bits 
-    6           110       3 bits
-    7           111       3 bits
-    8          1000       4 bits
-    9          1001       4 bits
-
-    4 bits are used for each digit. 
-    A number can have maximum 64 / 4 = 16 digits 
-
-*/
-
-// Max int 11111 11111111 11111111 11111111 11111111 11111111 11111111 (2 ** 53 -1)
-console.log(Number.MAX_SAFE_INTEGER, (Number.MAX_SAFE_INTEGER+'').length);
-
-// Max int binary 
-console.log(BigInt('0b11111111111111111111111111111111111111111111111111111'));
-
-// So where are the remaining 64 - 53 = 11 bits used for?
-// 1 bit is used for sign
-// 10 bits are used for exponent 
-
-// sign(1) exponent(10)                                                    fraction(53)
-//  [.][..........][.........................................................................................................]
-
-// Max value in JS is 2 ** 1024 - as you can see is a fraction with an exponent
-console.log(Number.MAX_VALUE);
-
-// Or using big ints
-console.log(2n ** 1024n);
-
-/*
-1797693134862315907729305190789024733617976978942306572734300811577326758055009
-6313270847732240753602112011387987139335765878976881441662249284743063947412437
-7767893424865485276302219601246094119453082952085005768838150682342462881473913
-110540827237163350510684586298239947245938479716304835356329624224137216n
-*/
-
-console.log(Number.MAX_SAFE_INTEGER + 1); // should be 9007199254740992
-console.log(Number.MAX_SAFE_INTEGER + 2); // should be 9007199254740993
-console.log(Number.MAX_SAFE_INTEGER + 3); // should be 9007199254740994
-
-// If you need to work with bigger integers, use big int 
-console.log(Number.MAX_SAFE_INTEGER * 323234 );
-console.log(BigInt(Number.MAX_SAFE_INTEGER) * 323234n );
-
-
-
-
-
-</pre>
 
         <pre class="lesson" data-title="Math" data-subtitle="It's the Final Countdown">
 'use strict';            
@@ -1023,12 +969,27 @@ else console.log("Never ever");
     A 'falsy' value is a value converted to false.
     A 'truthy' value is a value converted to true.
 
-    Falsy values : false / null / undefined / 0 / "" (empty string) / NaN
+    Falsy values : 
+        1. false          boolean
+        2. null           null type
+        3. undefined      undefined type
+        4. 0              number 
+        5. NaN            number
+        6. ""             (empty) string
     Truthy values : everything else
 
     If the result of an expression is one of the above falsy values,
     a condition using that result will execute the 'false' block.
 */
+
+let value;
+
+// The following 3 lines are equivalent:
+if (value) { }
+if (value === true) { }
+if (Boolean(value) === true) { }
+
+
 
 if(null) console.log("null is truthy!");
 else console.log("null is falsy!");
@@ -1510,85 +1471,83 @@ console.log("0 == false:", 0 == false);
 
 
 
+</pre>
 
-///////////////// The lunatic is on the grass
-///////////////// Writing JS with only 6 chars
-console.log('====== !+()[] ======')
+        <pre class="lesson" data-title="Plus operator" data-subtitle="Let's come together">
+'use strict';            
+
+/*
+    
+    One of the most used operators is +. It works with only strings and numbers. 
+    Any other types to are converted to strings or numbers following these rules:
+
+    1. It converts all operands to primitive values (usually using .toString()
+    method of objects)
+
+    2. Enters on of the two modes:
+    
+    2.1 "String mode"
+    If one of the two primitive values is a string, then it converts the other 
+    one to string, concatenates the strings, and returns the result.
+
+    2.2 "Number mode"
+    If none are strings, it converts both operands to numbers, adds them, 
+    and returns the result.
+
+    When used as a unary operator, it works only with numbers.
+
+*/
+
+const addedArrays = [4,8,15] + [16,23]; 
+console.log(addedArrays);
+
+const addedObjects = { lo: 4 } + { st: 8 }; 
+console.log(addedObjects);
+
+const arrayAndObject = [] + {}; 
+console.log(arrayAndObject);
 
 
-// booleans
-const false_ = ![]; // Boolean([]) = true
-const true_ = !![]; // !false = true
-console.log(false_ , true_);
+// one is string
+console.log('abc' + null)
+console.log('abc' + undefined)
+console.log('abc' + true)
+console.log('abc' + 123)
+console.log('abc' + [])
+console.log('abc' + {})
 
-// undefined
-const undefined_ = [][[]];
-console.log(undefined_);
+// one is number
+console.log(23 + null, typeof(23 + null))
+console.log(23 + undefined, typeof(23 + undefined))
+console.log(23 + true, typeof(23 + true))
+console.log(23 + [], typeof(23 + []))
+console.log(23 + {}, typeof(23 + {}))
 
-// numbers
-const zero = +[];
-const one = +!![]; // +true = 1,  Number(true) = 1
-const two = (+!![]) + (+!![]); // 1 + 1
-// ... and so on to 9
-console.log(zero, one, two);
 
-// strings
-const emptyString = [] + [];
-const trueString = !![] + [];
-const falseString = ![] + [];
-const undefinedString = [][[]] + [];
-console.log(trueString, falseString, undefinedString);
+// + can also be a unary operator, works only with numbers
+// so in this case it convers the operand to a number 
 
-// chars
-// so far we can get a, d, e, f, i, l, n, r, s, t, u from abcdefghijklmnopqrstuvwxyz
-const letterF = (![] + [])[+[]]; // "false"[0]
-const letterL = (![] + [])[(+!![]) + (+!![])]; // "false"[2]
-// "undefined"[5]
-const letterI = ([][[]] + [])[(+!![]) + (+!![]) + (+!![]) + (+!![]) + (+!![])];
-console.log(letterF, letterL, letterI);
+console.log( + null)
+console.log( + undefined)
+console.log( + true)
+console.log( + false)
+console.log( + 8)
+console.log( + [])
+console.log( + {})
+console.log( + 'abc')
+console.log( + '15')
 
-// letterF + letterI + letterL + letterL
-const fillString = (![] + [])[+[]] + 
-                    ([][[]] + [])[(+!![]) + (+!![]) + (+!![]) + (+!![]) + (+!![])] + 
-                    (![] + [])[(+!![]) + (+!![])] + (![] + [])[(+!![]) + (+!![])];
-console.log(fillString);
-
-// array has a fill method
-// calling []['fill'] + '' gives "function fill() { [native code] }"
-// which gives us more characters 
-const fillFunctionToString = [][
-            (![] + [])[+[]] +
-            ([][[]] + [])[(+!![]) + (+!![]) + (+!![]) + (+!![]) + (+!![])] +
-            (![] + [])[(+!![]) + (+!![])] + (![] + [])[(+!![]) + (+!![])]] + []
-console.log(fillFunctionToString);
-
-// so no we have a, c, d, e, f, i, l, n, o, r, s, t, u, v
-// which can be used to make "constructor" which is way to long.. in !+[]()
-
-// we can get the String's constructor using ''['constructor'] + '' 
-console.log(''['constructor'] + '')
-
-// now that we have access to 'S' we can create 'toString'
-// Number.toString(base) allows an optional base argument (between 2 and 36)
-const chars = []
-for(let i=0; i < 36; i++){
-    chars.push( i['toString'](36) )
+// also works with objects that have a valueOf() that retunrns a number 
+const numberLike = {
+    valueOf: () => 815
 }
-console.log(chars.join(','))
-// now we cat get all lower case letters
-
-// calling functions
-// Function('code') creates a new function with the 'code' body
-const functionConstructor = []['fill']['constructor'];
-console.log(functionConstructor);
-
-const createNewFunction = functionConstructor('console.log("You are hacked!")');
-createNewFunction();
-
+console.log(+numberLike)
 
 
 
 </pre>
+
+
 
         <pre class="lesson" data-title="Avoid automatic type conversion"
             data-subtitle="All are equal, but some are more equal than others">
@@ -1713,7 +1672,9 @@ const notNotTrue = !!true; // true;
 const notNotFalse = !!false; // false;
 
 const notNotCat = !!"Cat"; // true;
+// const notNotCat = Boolean("Cat"); // same as above
 const notNot0 = !!0; // false;
+// const notNot0 = Boolean(0); // same as above
 
 let result;
 const notNotResult = !!result; // true if result is truty, false otherwise
@@ -1801,8 +1762,7 @@ function isDate (value) {
     An expression can be composed from several expressions.
 
     A "statement" is a piece of code that can be executed and performs some 
-    kind of action, usually made from one or more expressions and ending with 
-    a (optional) semicolon (;).
+    kind of action and ending with a (optional) semicolon (;).
 
     There are several types of statements:
     * expression statements (expressions by there own)
@@ -1869,6 +1829,44 @@ switch (wheater) {
 // In all other cases he says "Whatever."
 
 
+
+</pre>
+
+        <pre class="lesson" data-title="Semicolons" data-subtitle="Should I stay or should I go?">
+'use strict';
+
+/*
+
+    Each statement is terminated by a semicolon, except statements ending 
+    with blocks { }.
+
+    Semicolons are optional because there is a mechanism that does it for you, 
+    called automatic semicolon insertion (ASI).
+
+    Sadly:
+    * in some cases ASI is triggered unexpectedly 
+    * and sometimes ASI unexpectedly is not triggered.
+
+    If you don't like to add semicolons, you need to configure your linter to
+    spot these unexpected cases for you.
+    
+*/
+
+// shouldn't but does inserts ;
+const whatsTheSecret = function () {
+    return
+    {
+        secretOfLife: 42
+    }
+}
+console.log('Secret is:', whatsTheSecret());
+
+
+// should but doesn't insert ;
+let sum, a = 1, b = 2;
+sum = a + b
+// (function(x){ console.log(x) })('Hi')
+// /hi/g.exec('hi').map(console.log)
 
 </pre>
 
@@ -2598,6 +2596,18 @@ test( 1, 2, 3, 4, 5 );   // 1 2 3 [ 4, 5 ]
 
 
 
+////////// How to check if an argument was provided ////////////
+
+function double(x) {
+    if(x === undefined) {
+        throw new Error('Missing parameter x');
+    }
+    return x * 2;
+}
+console.log(double(2))
+console.log(double())
+
+
 
 </pre>
 
@@ -2778,6 +2788,15 @@ const asteroid = {
 console.log(asteroid.daysTillImpact(), 'days');
 
 
+// How to check if the object has a property
+
+if (! ('speed' in asteroid)) {
+   console.log('No speed property') 
+}
+if (! ('acceleration' in asteroid)) {
+    console.log('No acceleration property') 
+}
+ 
 
 // -- Exercises --
 
@@ -2921,12 +2940,12 @@ console.log(zz);
 
 function copyDoc(originalDoc) {
     if (!originalDoc) {
-    throw new Error('You need to provide a doc.');
+        throw new Error('You need to provide a doc.');
     }  
 
     let copy = {
-    author: originalDoc.author,
-    metadata: originalDoc.metadata,
+        author: originalDoc.author,
+        metadata: originalDoc.metadata,
     };
 
     copy.metadata.title = 'Copy of ' + originalDoc.metadata.title;
@@ -4096,8 +4115,170 @@ catch(err) {
 
 </pre>
 
+        <pre class="lesson" data-title="Classes" data-subtitle="Music for the Masses">
+'use strict';            
 
-        <pre class="lesson" data-title="Modules" data-subtitle="Brothers In Arms">
+/*
+
+    Most of the time you'll create objects using the object literal notation. 
+    But you can also use classes to make new types.
+
+    There are no private properties.
+    There are not abstract classes in JavaScript.
+    There are no interfaces in JavaScript.
+
+*/
+
+// object literal
+const song = {
+    "name": "Eye of the Tiger",
+    "artist" : "Survivor",    
+    "genre" : "Rock"
+}
+
+////// Defining a class ///////
+
+class Song {
+
+    // Cannot declare props other then functions
+    // writer = ''
+
+    constructor(name, artist = '', genre = '') {
+        this.name = name;
+        this.artist = artist;
+        this.genre = genre;
+    }
+
+    info() {
+        return `Name: ${this.name} \nArtist: ${this.artist} \nGenre: ${this.genre}`
+    }
+
+    static fromJSON({name, artist, genre}) {
+        return new Song(name, artist, genre);
+    }
+}
+
+const eyeOfTheTiger = new Song("Eye of the Tiger", "Survivor", "Rock");
+console.log(eyeOfTheTiger);
+console.log(eyeOfTheTiger.info());
+
+const somebodyToLove = new Song("Somebody to Love", 
+                            "Jefferson Airplane", "Psychedelic rock");
+
+                                
+console.log(somebodyToLove.info());
+
+// Objects are mutable, of course 
+somebodyToLove.genre = "Rock";
+console.log(somebodyToLove.info());
+
+
+// Static methods
+const songFromJSON = Song.fromJSON({name:'The End', 
+                                    artist:'The Doors', 
+                                    genre:'Rock'})
+console.log(songFromJSON.info());
+
+
+// Find out what is it
+console.log('Type:',typeof somebodyToLove);
+console.log('Song?', somebodyToLove instanceof Song);
+
+
+//////  Extending another class /////
+
+
+class Single extends Song {
+    
+    constructor(label, name, artist = '', genre = '') {
+        // must call super 
+        super(name, artist, genre);
+        this.label = label;
+    }
+
+    // extending methods
+    info() {
+        let songInfo = super.info();
+        return `${songInfo} \nLabel: ${this.label}`
+    }
+
+    // new methods
+    tagline() {
+        return `${this.label} presents ${this.name} by ${this.artist}`
+    }
+    
+    // static methods
+    static clone(single) {
+        return new Single(single.label, single.name, single.artist, single.genre);
+    }
+}
+
+const bohemianRhapsodySingle = new Single("EMI", "Bohemian Rhapsody", "Queen", "Rock");
+
+// new method
+console.log(bohemianRhapsodySingle.tagline());
+
+// overriden method
+console.log(bohemianRhapsodySingle.info());
+
+
+
+
+console.log('Single?', bohemianRhapsodySingle instanceof Single)
+console.log('Song?', bohemianRhapsodySingle instanceof Song)
+
+
+// using static method clone
+const clone = Single.clone(bohemianRhapsodySingle);
+console.log(clone.tagline());
+
+
+
+
+///////// Private members with Closures /////////
+
+
+const Album = (function() {
+
+    const nameSymbol = Symbol("name");
+    const artistSymbol = Symbol("artist");
+
+    class Album {
+
+        constructor(name, artist) {
+            this[nameSymbol] = name;
+            this[artistSymbol] = artist
+        }
+
+        get name(){ return this[nameSymbol] }
+        get artist(){ return this[artistSymbol] }
+    }
+
+    return Album;
+}())
+
+const theWallAlbum = new Album('The Wall', 'Pink Floyd');
+const ummagummaAlbum = new Album('Ummagumma', 'Pink Floyd');
+
+console.log(theWallAlbum.name, theWallAlbum.artist)
+console.log(ummagummaAlbum.name, ummagummaAlbum.artist)
+
+// Cannot change name anymore
+// theWallAlbum.name = 'X';
+
+// Symbols are unique, so you cannot "recreate" the nameSymbol
+console.log(theWallAlbum[Symbol("name")])
+
+
+
+
+
+            
+</pre>
+
+
+
+        <pre class="lesson" data-title="Classic Modules" data-subtitle="Brothers In Arms">
 'use strict';
 
 /*
@@ -4109,6 +4290,7 @@ catch(err) {
 */
 
 
+// usually each module stays in it's own file, e.g. utils.js
 const utils = (function() {
 
     const random = (min = 0, max = 1) => Math.random() * (max - min) + min;
@@ -4212,154 +4394,127 @@ console.log('Remaining:', todoApp.prettyPrint());
 
 </pre>
 
-        <pre class="lesson" data-title="Classes" data-subtitle="Music for the Masses">
-'use strict';            
+        <pre class="lesson" data-title="ES Modules" data-subtitle="Habemus papam">
+'use strict';
 
 /*
 
-    Most of the time you'll create objects using the object literal notation. 
-    But you can also use classes to make new types.
+    Initially, Javascript did not have a way to import/export modules. So people 
+    attempted to add modularity to Javascript. There were several of them CJS, 
+    AMD, UMD, and ESM. 
+    
+    Finally, ESM - ES Modules - were made the standard and are available now in 
+    both browsers and Node.js
 
-    There are no private properties.
-    There are not abstract classes in JavaScript.
-    There are no interfaces in JavaScript.
+    Each module is implemented in it's own file. Outside is available only the 
+    things you export. The exported things can then be imported.
+    
+    A ESM javascript file can be used in two ways:
+    * using .mjs extension 
+        &lt;script src= 'mymodule.mjs'&gt;&lt;/script&gt;
+
+    * using type=module
+        &lt;script src= 'mymodule.js' type="module"&gt;&lt;/script&gt;
 
 */
 
-// object literal
-const song = {
-    "name": "Eye of the Tiger",
-    "artist" : "Survivor",    
-    "genre" : "Rock"
+// utils.mjs 
+
+export function random(min = 0, max = 1){
+    return Math.random() * (max - min) + min;
+}    
+
+export function hashCode(s) {
+    let h;
+    for(let i = 0; i < s.length; i++) {
+            h = Math.imul(31, h) + s.charCodeAt(i) | 0;
+    }    
+    return h;
 }
 
-////// Defining a class ///////
+// main.js
+import { hashCode } from './utils.mjs'
 
-class Song {
 
-    // Cannot declare props other then functions
-    // writer = ''
+hashCode('abc');
 
-    constructor(name, artist = '', genre = '') {
-        this.name = name;
-        this.artist = artist;
-        this.genre = genre;
-    }
 
-    info() {
-        return `Name: ${this.name} \nArtist: ${this.artist} \nGenre: ${this.genre}`
-    }
 
-    static fromJSON({name, artist, genre}) {
-        return new Song(name, artist, genre);
-    }
+
+
+
+// counter.mjs
+
+let count = 0;
+
+export const counter = {
+    increase: () => count++,
+    decrease: () => count--,
+    getCounter: () => count
 }
 
-const eyeOfTheTiger = new Song("Eye of the Tiger", "Survivor", "Rock");
-console.log(eyeOfTheTiger);
-console.log(eyeOfTheTiger.info());
+// main.js
+import * as cntr from './counter.mjs'
 
-const somebodyToLove = new Song("Somebody to Love", 
-                            "Jefferson Airplane", "Psychedelic rock");
-
-                                
-console.log(somebodyToLove.info());
-
-// Objects are mutable, of course 
-somebodyToLove.genre = "Rock";
-console.log(somebodyToLove.info());
+cntr.increase();
 
 
-// Static methods
-const songFromJSON = Song.fromJSON({name:'The End', 
-                                    artist:'The Doors', 
-                                    genre:'Rock'})
-console.log(songFromJSON.info());
 
 
-// Find out what is it
-console.log('Type:',typeof somebodyToLove);
-console.log('Song?', somebodyToLove instanceof Song);
+
+// todos.mjs
 
 
-//////  Extending another class /////
+let id = 0; 
+const todosSymbol = Symbol("todos");
 
-
-class Single extends Song {
+class Todos {
     
-    constructor(label, name, artist = '', genre = '') {
-        // must call super 
-        super(name, artist, genre);
-        this.label = label;
+    constructor() {
+        this[todosSymbol] = [];
+    }
+    
+    addTodo(str) {
+        const newTodo = { text: str, done: false, id: ++id};
+        this[todosSymbol] = [...this[todosSymbol], newTodo];
     }
 
-    // extending methods
-    info() {
-        let songInfo = super.info();
-        return `${songInfo} \nLabel: ${this.label}`
+    removeTodo(id) {
+       this[todosSymbol] = [...this[todosSymbol].filter(aTodo => aTodo.id !== id)]
     }
 
-    // new methods
-    tagline() {
-        return `${this.label} presents ${this.name} by ${this.artist}`
+    completeTodo(id) {        
+        this[todosSymbol] = this[todosSymbol].map(aTodo => aTodo.id === id 
+                                    ? { ...aTodo, done: true } 
+                                    : aTodo);
     }
+    
+    todos() {
+        return this[todosSymbol].map(todo => ({ ...todo}))
+    }
+    
 }
 
-const bohemianRhapsodySingle = new Single("EMI", "Bohemian Rhapsody", "Queen", "Rock");
-
-// new method
-console.log(bohemianRhapsodySingle.tagline());
-
-// overriden method
-console.log(bohemianRhapsodySingle.info());
+export default Todos;
 
 
+// main.js
+import Todos from './todos.mjs'
 
+const todos = new Todos();
+todos.addTodo('Wash my hands ASAP');
+todos.addTodo('Use as mask');
+todos.addTodo('Buy toilet paper');
 
-console.log('Single?', bohemianRhapsodySingle instanceof Single)
-console.log('Song?', bohemianRhapsodySingle instanceof Song)
+const washHandsTodo = todos.todos()[0];
+todos.completeTodo(washHandsTodo.id);
 
-
-
-///////// Private members with Closures /////////
-
-
-const Album = (function() {
-
-    const nameSymbol = Symbol("name");
-    const artistSymbol = Symbol("artist");
-
-    class Album {
-
-        constructor(name, artist) {
-            this[nameSymbol] = name;
-            this[artistSymbol] = artist
-        }
-
-        get name(){ return this[nameSymbol] }
-        get artist(){ return this[artistSymbol] }
-    }
-
-    return Album;
-}())
-
-const theWallAlbum = new Album('The Wall', 'Pink Floyd');
-const ummagummaAlbum = new Album('Ummagumma', 'Pink Floyd');
-
-console.log(theWallAlbum.name, theWallAlbum.artist)
-console.log(ummagummaAlbum.name, ummagummaAlbum.artist)
-
-// Cannot change name anymore
-// theWallAlbum.name = 'X';
-
-// Symbols are unique, so you cannot "recreate" the nameSymbol
-console.log(theWallAlbum[Symbol("name")])
-
-
-
-
-
+todos.todos().map(t => {
+    console.log(JSON.stringify(t));    
+})
+ 
 </pre>
+
 
 
 
@@ -4390,6 +4545,70 @@ d88P     888  "Y88888   Y88P   "Y888888 888  888  "Y8888P "Y8888   "Y88888
 888P"                                                               888             
 
 */
+
+
+
+
+</pre>
+
+        <pre class="lesson" data-title="A number is 64 bits" data-subtitle="9007199254740991">
+'use strict'; 
+
+/*
+
+    Decimal    Binary     Memory 
+    -----------------------------
+    0             0       1 bit     
+    1             1       1 bit
+    2            10       2 bits 
+    3            11       2 bits
+    4           100       3 bits
+    5           101       3 bits 
+    6           110       3 bits
+    7           111       3 bits
+    8          1000       4 bits
+    9          1001       4 bits
+
+    4 bits are used for each digit. 
+    A number can have maximum 64 / 4 = 16 digits 
+
+*/
+
+// Max int 11111 11111111 11111111 11111111 11111111 11111111 11111111 (2 ** 53 -1)
+console.log(Number.MAX_SAFE_INTEGER, (Number.MAX_SAFE_INTEGER+'').length);
+
+// Max int binary 
+console.log(BigInt('0b11111111111111111111111111111111111111111111111111111'));
+
+// A number is represented internally like this:
+// * 1 bit for sign                                 [0, 1] 
+// * 11 bits for exponent                           [−1023, 1024]
+// * 52 bits for fraction (always has a leading 1)  [0, 2 ** 52 − 1]
+
+// sign(1) exponent(11)                                                    fraction(52)
+//  [.][..........][.........................................................................................................]
+
+// Max value in JS is 2 ** 1024 - as you can see is a fraction with an exponent
+console.log(Number.MAX_VALUE);
+
+// Or using big ints
+console.log(2n ** 1024n);
+
+/*
+1797693134862315907729305190789024733617976978942306572734300811577326758055009
+6313270847732240753602112011387987139335765878976881441662249284743063947412437
+7767893424865485276302219601246094119453082952085005768838150682342462881473913
+110540827237163350510684586298239947245938479716304835356329624224137216n
+*/
+
+console.log(Number.MAX_SAFE_INTEGER + 1); // should be 9007199254740992
+console.log(Number.MAX_SAFE_INTEGER + 2); // should be 9007199254740993
+console.log(Number.MAX_SAFE_INTEGER + 3); // should be 9007199254740994
+
+// If you need to work with bigger integers, use big int 
+console.log(Number.MAX_SAFE_INTEGER * 323234 );
+console.log(BigInt(Number.MAX_SAFE_INTEGER) * 323234n );
+
 
 
 
@@ -6326,6 +6545,88 @@ console.log('Proxy Last after push:', last);
         </pre>
 
 
+        <pre class="lesson" data-title="JavaScript in 6 characters" data-subtitle="The lunatic is on the grass">
+'use strict';      
+
+/*
+    
+    Because of the way types are converted in JavaScript, it is possible to 
+    write JavaScript code using only 6 characters:  !+()[]        
+
+*/
+
+// booleans
+const false_ = ![]; // Boolean([]) = true
+const true_ = !![]; // !false = true
+console.log(false_ , true_);
+
+// undefined
+const undefined_ = [][[]];
+console.log(undefined_);
+
+// numbers
+const zero = +[];
+const one = +!![]; // +true = 1,  Number(true) = 1
+const two = (+!![]) + (+!![]); // 1 + 1
+// ... and so on to 9
+console.log(zero, one, two);
+
+// strings
+const emptyString = [] + [];
+const trueString = !![] + [];
+const falseString = ![] + [];
+const undefinedString = [][[]] + [];
+console.log(trueString, falseString, undefinedString);
+
+// chars
+// so far we can get a, d, e, f, i, l, n, r, s, t, u from abcdefghijklmnopqrstuvwxyz
+const letterF = (![] + [])[+[]]; // "false"[0]
+const letterL = (![] + [])[(+!![]) + (+!![])]; // "false"[2]
+// "undefined"[5]
+const letterI = ([][[]] + [])[(+!![]) + (+!![]) + (+!![]) + (+!![]) + (+!![])];
+console.log(letterF, letterL, letterI);
+
+// letterF + letterI + letterL + letterL
+const fillString = (![] + [])[+[]] + 
+                ([][[]] + [])[(+!![]) + (+!![]) + (+!![]) + (+!![]) + (+!![])] + 
+                (![] + [])[(+!![]) + (+!![])] + (![] + [])[(+!![]) + (+!![])];
+console.log(fillString);
+
+// array has a fill method
+// calling []['fill'] + '' gives "function fill() { [native code] }"
+// which gives us more characters 
+const fillFunctionToString = [][
+        (![] + [])[+[]] +
+        ([][[]] + [])[(+!![]) + (+!![]) + (+!![]) + (+!![]) + (+!![])] +
+        (![] + [])[(+!![]) + (+!![])] + (![] + [])[(+!![]) + (+!![])]] + []
+console.log(fillFunctionToString);
+
+// so no we have a, c, d, e, f, i, l, n, o, r, s, t, u, v
+// which can be used to make "constructor" which is way to long.. in !+[]()
+
+// we can get the String's constructor using ''['constructor'] + '' 
+console.log(''['constructor'] + '')
+
+// now that we have access to 'S' we can create 'toString'
+// Number.toString(base) allows an optional base argument (between 2 and 36)
+const chars = []
+for(let i=0; i < 36; i++){
+    chars.push( i['toString'](36) )
+}
+console.log(chars.join(','))
+// now we cat get all lower case letters
+
+// calling functions
+// Function('code') creates a new function with the 'code' body
+const functionConstructor = []['fill']['constructor'];
+console.log(functionConstructor);
+
+const createNewFunction = functionConstructor('console.log("You are hacked!")');
+createNewFunction();
+            
+</pre>
+
+
     </div>
     <!--- End Lessons -->
     <div id="main">
@@ -6346,30 +6647,19 @@ console.log('Proxy Last after push:', last);
     <script>
 
         function checkSignin() {
-            gapi.load('auth2', () => {
-                gapi.auth2.init({
-                    client_id: '331476770739-vehj7vv507vm8nevca46jh7rilppgfrf.apps.googleusercontent.com',
-                    scope: 'profile email'
-                }).then(() => {
-                    const auth2 = gapi.auth2.getAuthInstance();
-                    const loggedIn = auth2.isSignedIn.get();
-
-                    if (loggedIn) {
-                        const googleUser = auth2.currentUser.get();
-                        const profile = googleUser.getBasicProfile();
-                        const email = profile.getEmail();
-                        if (email) { // && /3pillarglobal.com/g.test(email)) {
-                            console.log('Sign in', email);
-                        } else {
-                            window.location.href = '/';
-                        }
-                    } else {
-                        window.location.href = '/';
-                    }
-                })
-            });
+            const user = netlifyIdentity.currentUser();
+            if (!user) {
+                window.location.href = '/';
+            }
         }
 
+        function logout() {
+            console.log('Logout')
+            netlifyIdentity && netlifyIdentity.logout();
+            window.location.href = '/';
+        }
+
+        document.addEventListener('logoutRequested', logout);
         window.onload = checkSignin;
     </script>
 

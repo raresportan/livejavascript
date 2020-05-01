@@ -404,3 +404,13 @@ body.dark, body.dark #container {
 .ace_gutter-cell.ace_error {
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAQCAIAAACk6KkqAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AEXDxE2JpBEFgAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAATSURBVBjTY/zPgB0wMYxKDIAEAKgQAR/qZwqpAAAAAElFTkSuQmCC');
 } */
+
+.logout {
+    background: transparent;
+    border: 0;
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+    border-bottom: 3px solid #008b8b;
+    margin: 1rem;
+}
