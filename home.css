@@ -91,7 +91,7 @@ ul {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-top: -4rem;
+    margin-top: 100px;
 }
 
 #login, #intro {

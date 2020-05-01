@@ -16,9 +16,7 @@
     <link rel="apple-touch-icon" sizes="167x167" href="logo167x167.png">
     <link href="lib/prism/prism.css" rel="stylesheet" />
     <link href="home.css" rel="stylesheet" />
-    <meta name="google-signin-client_id"
-        content="331476770739-vehj7vv507vm8nevca46jh7rilppgfrf.apps.googleusercontent.com">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script>
         if ("serviceWorker" in navigator) {
             if (!navigator.serviceWorker.controller) {
@@ -53,11 +51,11 @@
             </svg>
         </div>
         <div class="login-container">
-            <div class="signInFailure" style="display:none;color:#e33a2c; margin: 1rem auto;">
+            <!-- <div class="signInFailure" style="display:none;color:#e33a2c; margin: 1rem auto;">
                 Currently this tutorial is available only to 3PG employees. <br />
                 If you are a 3PG employee please login with your 3PG account.
-            </div>
-            <div id="my-signin2"></div>
+            </div> -->
+            <div data-netlify-identity-button></div>
         </div>
     </section>
 
@@ -296,18 +294,12 @@
     </footer>
 
     <script>
+        const user = netlifyIdentity.currentUser();
+        console.log('USER', user);
 
-        function renderButton() {
-            gapi.signin2.render('my-signin2', {
-                'scope': 'profile email',
-                'width': 240,
-                'height': 50,
-                'longtitle': true,
-                'theme': 'dark',
-                'onsuccess': onSignIn,
-                'onfailure': onSignInFailure
-            });
-        }
+        // Bind to events
+        netlifyIdentity.on('init', user => console.log('init', user));
+        netlifyIdentity.on('login', user => console.log('login', user));
 
 
         function onSignIn(googleUser) {
