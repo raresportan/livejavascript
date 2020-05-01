@@ -14,7 +14,7 @@
     <link rel="icon" href="logo16x16.png" type="image/png" sizes="16x16">
     <link href="lib/prism/prism.css" rel="stylesheet" />
     <link href="styles.css" rel="stylesheet" />
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script>
         if ("serviceWorker" in navigator) {
             if (!navigator.serviceWorker.controller) {
@@ -6647,28 +6647,10 @@ createNewFunction();
     <script>
 
         function checkSignin() {
-            gapi.load('auth2', () => {
-                gapi.auth2.init({
-                    client_id: '331476770739-vehj7vv507vm8nevca46jh7rilppgfrf.apps.googleusercontent.com',
-                    scope: 'profile email'
-                }).then(() => {
-                    const auth2 = gapi.auth2.getAuthInstance();
-                    const loggedIn = auth2.isSignedIn.get();
-
-                    if (loggedIn) {
-                        const googleUser = auth2.currentUser.get();
-                        const profile = googleUser.getBasicProfile();
-                        const email = profile.getEmail();
-                        if (email) { // && /3pillarglobal.com/g.test(email)) {
-                            console.log('Sign in', email);
-                        } else {
-                            window.location.href = '/';
-                        }
-                    } else {
-                        window.location.href = '/';
-                    }
-                })
-            });
+            const user = netlifyIdentity.currentUser();
+            if (!user) {
+                window.location.href = '/';
+            }
         }
 
         window.onload = checkSignin;

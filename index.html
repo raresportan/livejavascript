@@ -299,7 +299,10 @@
 
         // Bind to events
         netlifyIdentity.on('init', user => console.log('init', user));
-        netlifyIdentity.on('login', user => console.log('login', user));
+        netlifyIdentity.on('login', user => {
+            console.log('login', user);
+            window.location.href = './lessons';
+        });
 
 
         function onSignIn(googleUser) {
@@ -323,7 +326,6 @@
             });
         }
 
-        window.onload = renderButton;
 
         var dnt = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
         if (dnt != "1" && dnt != "yes") {

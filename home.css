@@ -411,3 +411,15 @@ ul {
 #cookie-bar-button-no {
     background-color: none;
 }
+
+a.netlify-identity-button {
+    padding: 0.5rem 2rem;
+    background: #e33a2c;
+    color: #fff;
+    min-width: 100%;
+    text-decoration: none;
+}
+
+a.netlify-identity-button:hover, a.netlify-identity-button:focus {
+    background: #D81E5B;
+}
