@@ -6653,6 +6653,13 @@ createNewFunction();
             }
         }
 
+        function logout() {
+            console.log('Logout')
+            netlifyIdentity && netlifyIdentity.logout();
+            window.location.href = '/';
+        }
+
+        document.addEventListener('logoutRequested', logout);
         window.onload = checkSignin;
     </script>
 

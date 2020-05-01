@@ -6653,7 +6653,14 @@ createNewFunction();
             }
         }
 
-        window.onload = checkSignin;
+        function logout() {
+            console.log('Logout')
+            netlifyIdentity && netlifyIdentity.logout();
+            window.location.href = '/';
+        }
+
+        document.addEventListener('logoutRequested', logout);
+        //window.onload = checkSignin;
     </script>
 
     <script defer src="lib/ace/ace.js" type="text/javascript" charset="utf-8"></script>

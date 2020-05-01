@@ -51,6 +51,15 @@
             return button;
         }).forEach(aButton => settings.appendChild(aButton))
 
+        console.log('CREATE LOGOUT BUTTON')
+        const button = document.createElement('button');
+        button.className = 'logout';
+        button.innerText = 'Log out';
+        button.addEventListener('click', e => {
+            const event = new CustomEvent('logoutRequested');
+            document.dispatchEvent(event);
+        });
+        settings.appendChild(button);
 
         const img = document.createElement('img');
         img.className = 'logo';
