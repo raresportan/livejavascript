@@ -21,6 +21,7 @@ body {
     color: #fff;
     padding-top: 7rem;
     padding-bottom: 10rem;
+    min-height: 148px;
 }
 
 #home-header img {
@@ -96,7 +97,7 @@ ul {
     width: 100%;
 }
 
-#login, #intro {
+#login {
     padding-bottom: 2rem;
 }
 
