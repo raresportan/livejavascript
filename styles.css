@@ -413,4 +413,5 @@ body.dark, body.dark #container {
     cursor: pointer;
     border-bottom: 3px solid #008b8b;
     margin: 1rem;
+    display: none;
 }
