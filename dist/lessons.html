@@ -6648,7 +6648,7 @@ createNewFunction();
 
         function checkSignin() {
             const user = netlifyIdentity.currentUser();
-            if (!user) {
+            if (!user && !/[localhost:|file:]/ig.test(window.location.origin)) {
                 window.location.href = '/';
             }
         }
@@ -6660,7 +6660,7 @@ createNewFunction();
         }
 
         document.addEventListener('logoutRequested', logout);
-        window.onload = checkSignin;
+        //window.onload = checkSignin;
     </script>
 
     <script defer src="lib/ace/ace.js" type="text/javascript" charset="utf-8"></script>
