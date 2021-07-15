@@ -836,18 +836,6 @@ const formatPhoneNumber = phoneNumber => {
 }
 console.log(formatPhoneNumber("0742552233")) // 0742.552.233
 
-
-// Black out word: Given a phrase and a word, replace each word's chars with *, 
-// leave all other words as they are. Use indexOf and substring
-const censor = (phrase, word) => {
-    let result = '';
-    // your code here
-
-    return result;
-}
-console.log(censor('JFK was killed by KGB', 'KGB')) // JFK was killed by ***
-
-
 </pre>
 
 
@@ -945,7 +933,7 @@ function formatDuration(duration) {
 console.log(formatDuration(10)); // logs '00:00:10'
 console.log(formatDuration(60)); // logs '00:01:00'
 console.log(formatDuration(121)); // logs '00:02:01'
-console.log(formatDuration(3636)); // logs '02:00:36'
+console.log(formatDuration(3636)); // logs '01:00:36'
 
 </pre>
 
@@ -1871,11 +1859,9 @@ const whatsTheSecret = function () {
 console.log('Secret is:', whatsTheSecret());
 
 
-// should but doesn't insert ;
 let sum, a = 1, b = 2;
+// here a ; is inserted automatically
 sum = a + b
-// (function(x){ console.log(x) })('Hi')
-// /hi/g.exec('hi').map(console.log)
 
 </pre>
 
@@ -2910,7 +2896,7 @@ console.log(`Area: ${square.area}, side: ${square.side}`);
 
 
 
-        <pre class="lesson" data-title="Working with mutable objects is hard" data-subtitle="Burning down the house">
+        <pre class="lesson" data-title="Working with mutable objects is complicated" data-subtitle="Burning down the house">
 'use strict'; 
 
 /*
@@ -4029,8 +4015,9 @@ console.timeEnd('diff');
 // call a function later
 
 console.time('timeout');
-const callback = () => { console.timeEnd('timeout') };
 const after = 1000;
+const callback = () => { console.timeEnd(`timeout after ${after}`) };
+
 // execute 'callback' function after 1000 ms
 setTimeout(callback, after);
 
