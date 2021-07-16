@@ -779,6 +779,9 @@ console.log(Math.sqrt(2));
     - indexOf 
     - substring 
     - toLowerCase & toUpperCase    
+    - replace
+    - replaceAll
+    - repeat
 
     There's no char type, but you can work with a string's chars.
 
@@ -823,11 +826,31 @@ const interpolated = `
 console.log(interpolated);
 
 
+// IndexOf
+const indexOfDownload = interpolated.indexOf('download');
+console.log('indexOfDownload', indexOfDownload);
+
+const indexOfUSA = interpolated.indexOf('USA');
+console.log('indexOfUSA', indexOfUSA);
+
+
+// Replace 
+const replacements = interpolated
+                        .replace('jar', 'zip file')
+                        .replace(lang, 'WinZip')
+console.log(replacements);         
+
+// Repeat
+const chorus = 'Because I\'m happy.\n';
+console.log(chorus.repeat(3));
+
+
+
 // -- Exercises --
 
 // Format a 10 digit phone number to a readable version: 0742552233 -> 0742.552.233
-// using substring 
-const formatPhoneNumber = phoneNumber => {
+// using substring
+function formatPhoneNumber (phoneNumber) {
     let result = '';
     // your code here
 
@@ -847,6 +870,9 @@ console.log(formatPhoneNumber("0742552233")) // 0742.552.233
    
   Working with strings is relatively easy, the string API provides a lot 
   of common operations.  
+
+  What you need to remember is that each string operation gives back a new string,
+  you can't modify an exising string.
 
   See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
   for more details.
@@ -891,6 +917,17 @@ const capitalize = (str) => {
 }
 console.log(capitalize('jane'));
 
+
+
+// Black out word: Given a phrase and a word, replace each word's chars with *, 
+// leave all other words as they are. Use replaceAll and repeat
+const censor = (phrase, word) => {
+    let result = '';
+    // your code here
+
+    return result;
+}
+console.log(censor('JFK was killed by KGB', 'KGB')) // JFK was killed by ***
 
 
 </pre>
@@ -1534,7 +1571,7 @@ console.log( + {})
 console.log( + 'abc')
 console.log( + '15')
 
-// also works with objects that have a valueOf() that retunrns a number 
+// also works with objects that have a valueOf() that returns a number 
 const numberLike = {
     valueOf: () => 815
 }
@@ -1824,8 +1861,16 @@ switch (wheater) {
 // If you ask him a question he says "Sure."
 // If you yell at him he says "Woah, chill out!"
 // In all other cases he says "Whatever."
+function teenagerSays(conversation) {
+    let result;
+    // your code
 
 
+    return result;
+}
+console.log(teenagerSays("Are you OK?")) // Sure
+console.log(teenagerSays("Wake up! It's nearly noon")) // Woah, chill out!
+console.log(teenagerSays("Dinner is ready")) // Whatever
 
 </pre>
 
@@ -2367,7 +2412,7 @@ for(let char of str) {
 
 // Defining a function with a parameter "x" 
 // and a body "return x + 1"
-const increment = function (x) {
+function increment(x) {
     return x + 1;   
 }
 console.log("typeof increment:", typeof increment);
@@ -2378,12 +2423,12 @@ console.log("Two:", two);
 
 
 // A function without parameters 
-const rnd = function () {
+function rnd() {
     return Math.random();
 }
 
 // A function that doesn't return a value, returns undefined
-const log = function(str) {
+function log(str) {
     console.log(str);
 }
 const logResult = log("Captain's log, stardate 41153.7");
@@ -2399,14 +2444,14 @@ console.log("increment():", increment());
 
 
 // We can set default values for parameters
-const decrement = function(x = 1) {
+function decrement(x = 1) {
     return x - 1;
 }
 console.log("decrement():", decrement());
 // But default values are used only for missing arguments
 console.log("decrement(null):", decrement(null));
 
-const decrement2 = function(x = 1) {
+function decrement2(x) {
     x = x || 1;
     return x - 1;
 }
@@ -2416,7 +2461,7 @@ console.log("decrement2(null):", decrement2(null));
 
 
 // Use function as parameter
-const repeat = function(fun, times) {
+function repeat(fun, times) {
     for (let i=0; i < times; i++){
         console.log(fun());
     }
@@ -2424,7 +2469,7 @@ const repeat = function(fun, times) {
 repeat(rnd, 10);
 
 // Return function from function
-const operation = function(simbol) {
+function operation(simbol) {
     if(simbol === '+') return increment
     else if(simbol === '-') return decrement;
     else return undefined;
@@ -2441,7 +2486,8 @@ console.log("minus:", minus);
 // using the functions
 console.log("plus(1):", plus(1));
 console.log("minus(1):", minus(1));
-
+            
+            
 
 </pre>
 
@@ -2450,13 +2496,14 @@ console.log("minus(1):", minus(1));
 
 /*
 
-    Another way to create functions is with the "Declaration notation."
-    When functions are created this way they behave a little differently.
+    So far we've seen functions created with the "Declaration notation."
 
     Function declarations are not part of the regular top-to-bottom 
     flow of control. It's like they are declared at the top.
 
     This rearrangement is called "function hoisting".
+
+    There are also "function expressions" that are not hoisted.
 
 */
 
@@ -2468,6 +2515,20 @@ console.log("Five:", five);
 function increment(x) {
     return x + 1;   
 }
+
+
+
+// Call the function expression before it's initialized
+// const two = square(4);
+// const d = duplicate(3);
+
+// Function expression
+const square = function(x) { return x * x };
+
+// Function expression
+const duplicate = x => 2 * x;
+
+
 
 // Functions that are invoked when declared are called Immediate functions.
 (function (){
@@ -2489,10 +2550,15 @@ function increment(x) {
 
 /*
 
-    The best way to create functions is to use the "arrow notation."    
+    Another way to create functions is to use the "arrow notation."    
     In this case we don't use "function" keyword but "=>" instead.
 
     Functions declared this way behave a little differently also.
+
+    These functions:
+    - have no name, they are anonymous
+    - don't have its own bindings to this or super, and should not be used as methods.
+    - the { braces } and ( parentheses ) and "return" are optional
 
 */
 
@@ -4015,9 +4081,8 @@ console.timeEnd('diff');
 // call a function later
 
 console.time('timeout');
+const callback = () => { console.timeEnd('timeout') };
 const after = 1000;
-const callback = () => { console.timeEnd(`timeout after ${after}`) };
-
 // execute 'callback' function after 1000 ms
 setTimeout(callback, after);
 
@@ -4050,18 +4115,18 @@ promise.then( result => {
 
 
 /*
-    - Daddy, are there any people in space?
-    - I don't know know honey, but I *promise* you I'll find out.
+    - Daddy, can you tell me a joke?
+    - I don't know one now honey, but I *promise* you I'll find one.
     A bit later..
-    - Honey, I found them!
-    - Really? What did you find?
-    - There are some people on the International Space Station.
+    - Honey, I know a joke!
+    - Really? What which one?
+    - Why do bears have hairy coats? Fur protection.
 */
 
 // dad
 const Dad = (function() {    
     const promise = new Promise( (infoFound, cannotFindInfo) => {
-        const fetchPromise = fetch('http://api.open-notify.org/astros.json')
+        const fetchPromise = fetch('https://icanhazdadjoke.com/' , { headers: {'Accept': 'application/json' }})
 
         fetchPromise
             .then( (data) => { infoFound(data.json());})
@@ -4074,37 +4139,37 @@ const Dad = (function() {
 }());
 
 
-// honey
+
+// // honey
 const dadPromise = Dad.makesPromise();
 dadPromise
     .then( whatDaddyFound => {
         console.log('whatDaddyFound', whatDaddyFound);
     })
     .catch( error => {
-        console.log('Daddy couldn\'t find if there are people in space :( ');
+        console.log('Daddy couldn\'t find a joke :( ');
     })
 
 
 
-/////// async / await //////
-
-
-// Who is in space right now ?
-async function getSpacePeople() {
-    const data = await fetch('http://api.open-notify.org/astros.json')
-        .then(response => response.json());
+// /////// async / await //////
+async function getJoke() {
     
-    const people = data.people;
-    const result = people.map(x => x.name + ' aboard ' + x.craft)
-    console.log(' Who is space right now?\n =======================');
-    console.log('\n', result.join('\n '));   
+    const data = await fetch('https://icanhazdadjoke.com/', {headers: {'Accept': 'application/json' }})
+    .then(response => response.json());
+    
+    let joke = data.joke;
+    if(joke.length > 80) {
+        joke = joke.substring(0, 80)+'\n'+joke.substring(80)
+    }
+    console.log(joke);
 }
 
 try {
-    getSpacePeople();
+    getJoke();
 } 
 catch(err) {
-        console.log(err)
+    console.log(err)
 }     
 
 

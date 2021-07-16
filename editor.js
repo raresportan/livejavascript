@@ -60,7 +60,14 @@ while(1) { }
 
     // handle response, we'll just handle errors
     const evalCallback = data => {
-        const { msg, lineNo } = data;
+        let msg, lineNo;
+        if( data.message ) {
+            msg = data.message;
+            lineNo = data.lineno - 3;
+        } else {
+            msg = data.msg;
+            lineNo = data.lineNo;
+        }
         if (msg) {
             editor.session.setAnnotations([{
                 row: lineNo - 1,

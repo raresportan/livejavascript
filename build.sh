@@ -19,6 +19,7 @@ cp manifest.webmanifest dist/
 cp sw.js dist/
 cp robots.txt /dist
 
+# https://www.npmjs.com/package/minify
 minify styles.css > dist/styles.css
 minify home.css > dist/home.css
 
