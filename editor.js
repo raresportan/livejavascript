@@ -80,8 +80,19 @@ while(1) { }
 
     //const isObject = (value) => value && typeof value === 'object' && value.constructor === Object;
 
+    const timers = {};
+
     const consoleDataChangedCallback = data => {
         const { lineNumber, type, params } = data;
+
+        if(type === 'time' && params[0]) {
+            timers[params[0]] = performance && performance.now && performance.now();
+        } else if(type === 'timeEnd' && params[0] && timers[params[0]]) {
+            const now = performance && performance.now && performance.now();
+            const diff = now - timers[params[0]];
+            params.push(': '+diff+' ms');
+        }
+
         const elId = 'co' + lineNumber;
         const aLineElement = document.querySelector('.ace_line');
         const aLineHeight = parseFloat(aLineElement.style.height) || 21;
