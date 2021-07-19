@@ -211,6 +211,38 @@ console.error("Task failed successfully");
 
 </pre>
 
+
+<pre class="lesson" data-title="Functions"
+            data-subtitle="A very short intro">
+'use strict';     
+
+/*
+
+    We'll talk later about functions, but until then we use some
+    simple functions (because they are so useful).  
+
+    To create a function, you need to:  
+    * use the "function" keyword, 
+    * provide a function name
+    * between ( ) declare the function parameters separated by comma
+    * between { }  is the function body.
+    * use "return" keyword to return something from the function
+
+*/
+
+function function_name(parameter) {
+    // do something
+
+    return some_result;
+}
+
+// call the function
+function_name(815);
+
+
+
+</pre>
+
         <pre class="lesson" data-title="The Basics" data-module='Basic JavaScript'>
 /*
 
@@ -2672,11 +2704,264 @@ console.log(double())
 
 </pre>
 
+<div class="lesson quiz-slide" data-title="Quiz Show" data-subtitle="Let the games begin!">
+    <div class="quiz-container">
+
+    <article class="quiz">
+            <header>Which code executes the function?</header>
+            <div class="options">
+                <button>
+                    <pre><code class="language-javascript">   
+function acdc() {
+    console.log('For those about to rock, we salute you!')
+}
+acdc();
+        </code></pre>
+                    <div class="yes"></div>
+                </button>
+                <div class="or">OR</div>
+                <button>
+                    <pre><code class="language-javascript">   
+function acdc() {
+    console.log('For those about to rock, we salute you!')
+}
+acdc[];
+        </code></pre>
+                    <div class="no"></div>
+                </button>
+            </div>
+        </article>
+
+        <article class="quiz">
+            <header>Which code works?</header>
+            <div class="options">
+                <button>
+                    <pre>
+            <code class="language-javascript">            
+hello("Jon");
+
+function hello(str) {
+    return `Hello ${str}`;   
+}                </code></pre>
+                    <div class="yes"></div>
+                </button>
+                <div class="or">OR</div>
+                <button>
+                    <pre><code class="language-javascript">   
+hello("Jon");
+
+const hello = (str) => {
+    return `Hello ${str}`;   
+}            </code></pre>
+                    <div class="no"></div>
+                </button>
+            </div>
+        </article>
 
 
 
 
-        <pre class="lesson" data-title="Project: Hangman">
+        <article class="quiz">
+            <header>Which one is an arrow function?</header>
+            <div class="options">
+                <button>
+                    <pre><code class="language-javascript">    
+function square(x = 1){ 
+    return x * x
+};
+        </code></pre>
+                    <div class="no"></div>
+                </button>
+                <div class="or">OR</div>
+                <button>
+                    <pre><code class="language-javascript">   
+const square = (x = 1) => x * x;
+        </code></pre>
+                    <div class="yes"></div>
+                </button>
+            </div>
+        </article>
+
+
+
+        <article class="quiz">
+            <header>Which code prints 4?</header>
+            <div class="options">
+                <button>
+                    <pre><code class="language-javascript">     
+function square(x = 1){ x * x };
+console.log(square(2));
+
+        </code></pre>
+                    <div class="no"></div>
+                </button>
+                <div class="or">OR</div>
+                <button>
+                    <pre><code class="language-javascript">   
+const square = (x = 1) => x * x;
+console.log(square(2));
+        </code></pre>
+                    <div class="yes"></div>
+                </button>
+            </div>
+        </article>
+
+
+
+
+        <article class="quiz">
+            <header>Which one prints Hello?</header>
+            <div class="options">
+                <button>
+                    <pre><code class="language-javascript">     
+(function () {
+    console.log('Hello!')
+})()
+
+        </code></pre>
+                    <div class="yes"></div>
+                </button>
+                <div class="or">OR</div>
+                <button>
+                    <pre><code class="language-javascript">   
+(function () {
+    console.log('Hello!')
+})
+        </code></pre>
+                    <div class="no"></div>
+                </button>
+            </div>
+        </article>
+
+
+
+        <article class="quiz">
+            <header>Which code works?</header>
+            <div class="options">
+                <button>
+                    <pre><code class="language-javascript">    
+console.log(x);
+
+let x = 10;
+
+        </code></pre>
+                    <div class="no"></div>
+                </button>
+                <div class="or">OR</div>
+                <button>
+                    <pre><code class="language-javascript">   
+let x = 10;
+
+console.log(x);
+        </code></pre>
+                    <div class="yes"></div>
+                </button>
+            </div>
+        </article>
+
+
+
+        <article class="quiz">
+            <header>Which code prints "Jon Snow"?</header>
+            <div class="options">
+                <button>
+                    <pre><code class="language-javascript">   
+function getFullName(name, surname) {
+    return name+surname;
+}
+
+cosnt fullName = getFullName('Jon', 'Snow');
+console.log(fullName);
+        </code></pre>
+                    <div class="no"></div>
+                </button>
+                <div class="or">OR</div>
+                <button>
+                    <pre><code class="language-javascript">   
+function getFullName(name, surname) {
+    return name+' '+surname;
+}
+
+cosnt fullName = getFullName('Jon', 'Snow');
+console.log(fullName);
+        </code></pre>
+                    <div class="yes"></div>
+                </button>
+            </div>
+        </article>
+
+
+        <article class="quiz">
+            <header>How we add two numbers?</header>
+            <div class="options">
+                <button>
+                    <pre>
+            <code class="language-javascript">   
+const makeAdder = (x) => {
+    return y => x + y;
+}
+
+const adder = makeAdder(5);
+const result = adder(10);
+console.log(result);
+        </code></pre>
+                    <div class="yes"></div>
+                </button>
+                <div class="or">OR</div>
+                <button>
+                    <pre><code class="language-javascript">   
+const makeAdder = (x) => {
+    return y => x + y;
+}
+
+const adder = makeAdder(5);
+const result = adder + 10;
+console.log(result);
+        </code></pre>
+                    <div class="no"></div>
+                </button>
+            </div>
+        </article>
+
+
+        <article class="quiz">
+            <header>Which is the correct check for missing parameter?</header>
+            <div class="options">
+                <button>
+                    <pre><code class="language-javascript">   
+function power(x, y) {
+    if(x === undefined) {
+        throw new Error('Missing parameter x');
+    }
+    if(y === undefined) {
+        throw new Error('Missing parameter y');
+    }
+    return x ** y;
+}                        </code></pre>     
+                    <div class="yes"></div>
+                </button>
+                <div class="or">OR</div>
+                <button>
+                    <pre><code class="language-javascript">   
+function power(x, y) {
+    if(!x) {
+        throw new Error('Missing parameter x');
+    }
+    if(!y) {
+        throw new Error('Missing parameter y');
+    }
+    return x ** y;
+}                        </code></pre>
+                    <div class="no"></div>
+                </button>
+            </div>
+        </article> 
+
+    </div>
+</div>
+
+
+        <!-- <pre class="lesson" data-title="Project: Hangman">
 'use strict';            
 
 `
@@ -2767,7 +3052,7 @@ console.log(guess('b'));
 
 
 
-</pre>
+</pre> -->
 
         <pre class="lesson" data-title="Objects"
             data-subtitle="From the small and trivial, the large and complex arise.">
@@ -3643,40 +3928,40 @@ set.forEach(elem => console.log(elem));
 
         <pre class="lesson" data-title="Boss request: Collect unique chars from strings"
             data-subtitle="That would be great!">
-    'use strict'; 
+'use strict'; 
+
+/* 
+
+    Hey mate! The response is way to big for this font request 
+    https://fonts.googleapis.com/css?family=Inconsolata.
     
-    /* 
+    We know the texts that should use that font so and we plan to call it:
+    https://fonts.googleapis.com/css?family=Inconsolata&text=OnlyTheCharsWeNeed
     
-        Hey mate! The response is way to big for this font request 
-        https://fonts.googleapis.com/css?family=Inconsolata.
-        
-        We know the texts that should use that font so and we plan to call it:
-        https://fonts.googleapis.com/css?family=Inconsolata&text=OnlyTheCharsWeNeed
-        
-        You job is to collect all the chars we used in our texts and and return them.
-        By the way we need this ASAP, so if you can do it in a hour.. 
-        That would be great!
+    You job is to collect all the chars we used in our texts and and return them.
+    By the way we need this ASAP, so if you can do it in a hour.. 
+    That would be great!
 
-    */ 
-    
-    // ['Abc'] => 'Abc'
-    // ['Abc', 'Ade'] => 'Adcde'
-    // ['Help', 'Yelp'] => 'HelpY'
-    function getUniqueCharsAsString(strings) {    
-        // add chars here
-        const uniqueChars = new Set();    
+*/ 
+
+// ['Abc'] => 'Abc'
+// ['Abc', 'Ade'] => 'Adcde'
+// ['Help', 'Yelp'] => 'HelpY'
+function getUniqueCharsAsString(strings) {    
+    // add chars here
+    const uniqueChars = new Set();    
 
 
-        //// YOU CODE HERE ////
+    //// YOU CODE HERE ////
 
 
-        // return chars as string        
+    // return chars as string        
 
-    }
-    
-    console.log(getUniqueCharsAsString(['Abc'])); // logs 'Abc'
-    console.log(getUniqueCharsAsString(['Abc', 'Ade'])); // logs 'Adcde'
-    console.log(getUniqueCharsAsString(['Help', 'Yelp'])); // logs 'HelpY'
+}
+
+console.log(getUniqueCharsAsString(['Abc'])); // logs 'Abc'
+console.log(getUniqueCharsAsString(['Abc', 'Ade'])); // logs 'Adcde'
+console.log(getUniqueCharsAsString(['Help', 'Yelp'])); // logs 'HelpY'
     
     </pre>
 
@@ -6310,7 +6595,7 @@ const fibonacciGenerator = fib(10);
         
         </pre>
 
-        <pre class="lesson" data-title="Project: Sprite map generator" data-subtitle="">
+        <!-- <pre class="lesson" data-title="Project: Sprite map generator" data-subtitle="">
 'use strict';
 
 /*
@@ -6466,7 +6751,7 @@ try {
 }
 
 
-        </pre>
+        </pre> -->
 
         <pre class="lesson" data-title="Proxies" data-subtitle="It's a trap!">
 'use strict';
