@@ -4326,6 +4326,20 @@ console.log( parseData('[1,2,3]') )
 console.log( parseData('[1,2,3') )
 
 
+// Finally
+const parseJSON = str => {
+    try {
+        return JSON.parse(str);
+    }
+    finally {
+        // do cleanup here
+        // BUT DO NOT return 
+        return 0;
+    }
+}
+parseJSON('anything'); // 0 !!
+
+
 window.onerror = function (msg, url, lineNo, columnNo, error) {
     console.log('Worst case scenario error', msg, url, lineNo, columnNo, error);
 }
@@ -6564,6 +6578,25 @@ for(let i=0 ; i < 5; i++){
 }
 
 
+///// Stop the generator /////
+const counterStopped = counter.return();
+console.log(counterStopped);
+
+
+///// DO NOT RETURN FROM GENERATOR
+function* countToThree() {
+    yield 1;
+    yield 2;
+    return 3; // this is lost! 
+}
+const counter3 = countToThree();
+for(let i of counter3) {
+    console.log(i);
+}
+
+
+
+
 ////// Fibonacci Generator /////
 
 function* fib(n) {
@@ -6588,7 +6621,7 @@ const fibonacciGenerator = fib(10);
 (function loop() {
     const next = fibonacciGenerator.next();
     //if(!next.done) setTimeout(() => { console.log(next.value); loop()}, 10);
-    })();
+})();
 
 
 
