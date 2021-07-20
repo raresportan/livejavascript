@@ -3431,6 +3431,74 @@ adder.sayHi();
 
 </pre>
 
+<pre class="lesson" data-title="Spread and destructuring objects" data-subtitle="I need more details">
+'use strict';
+
+/*
+ 
+   Spread operator (...) and the destructuring asignment can be very useful to access object properties 
+   or to do some otherwise complicated operations.    
+    
+*/
+
+const person = {
+    name: "Jon",
+    surname: "Snow"
+}
+
+const address = {
+    city: "London",
+    street: "Whitehall no. 10",
+    country: "United Kingdom"
+}
+
+// make a copy
+const personCopy = { ...person };
+console.log(personCopy === person);
+console.log(personCopy);
+
+// merge objects 
+const personData = {
+    ...person,
+    ...address
+}
+console.log(personData);
+
+// creating new objects on update
+function updateInfo(info, prop, value) {
+    return {
+        ...info,
+        [prop]: value
+    }
+}
+let newInfo = updateInfo(personData, 'city', 'New York');
+newInfo = updateInfo(newInfo, 'country', 'USA');
+newInfo = updateInfo(newInfo, 'street', '620 Eighth Avenue');
+console.log(newInfo);
+
+
+
+
+
+// Destructuring
+
+// get specific values
+const { name, city } = personData;
+console.log(name, 'from', city);
+
+// get values and set different bindings
+const { name: personName, city: personCity } = personData;
+console.log(personName, 'from', personCity);
+
+// Destructuring arguments
+function printInfo( {name, surname, city}) {
+    console.log(name, surname, 'from', city);
+}
+printInfo(personData)
+
+
+
+</pre>
 
         <pre class="lesson" data-title="Maps" data-subtitle="Alternative to plain objects">
 'use strict';
