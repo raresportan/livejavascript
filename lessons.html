@@ -4574,8 +4574,8 @@ const song = {
 
 class Song {
 
-    // Cannot declare props other then functions
-    // writer = ''
+    // private props
+    #type = "Song"
 
     constructor(name, artist = '', genre = '') {
         this.name = name;
@@ -4583,8 +4583,12 @@ class Song {
         this.genre = genre;
     }
 
+    #format() {
+        return `Name: ${this.name} \nArtist: ${this.artist} \nGenre: ${this.genre}`;
+    }
+
     info() {
-        return `Name: ${this.name} \nArtist: ${this.artist} \nGenre: ${this.genre}`
+        return `[>${this.#type}<]\n${this.#format()}`
     }
 
     static fromJSON({name, artist, genre}) {
