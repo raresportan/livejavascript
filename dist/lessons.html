@@ -4273,7 +4273,7 @@ function whatDayIsOn(dayOfTheMonth) {
 }
 const dayOfMonth = 2;
 console.log(
-    `What day is on ${dayOfMonth} from now? 
+    `What day is ${dayOfMonth} days from now? 
     It's a ${whatDayIsOn(now.getDate() + dayOfMonth)}`);
 
 
@@ -4334,11 +4334,13 @@ console.log('1 + a:', sum2(1, 'a') );
 
 // v.3 Throw errors and handle them
 const sum3 = (a = 0, b = 0) => {
-    if(typeof a !== 'number' || typeof b !== 'number') {
+    const isNumber = value => typeof value === 'number' && isFinite(value);
+    if(!isNumber(a) || !isNumber(b)) {
         throw new Error('Invalid argument, expecting a number');
     }
     return a + b
 }
+
 console.log('1 + 2:', sum3(1, 2) );
 console.log('1 + 0:', sum3(1) );
 
@@ -4361,8 +4363,9 @@ function assert(condition, message) {
 }
 
 const sum4 = (a = 0, b = 0) => {
-    assert(typeof a === 'number', 'Expecting a number');
-    assert(typeof b === 'number', 'Expecting a number');
+    const isNumber = value => typeof value === 'number' && isFinite(value);
+    assert(isNumber(a), `Expecting a number but got ${a}`);
+    assert(isNumber(b), `Expecting a number but got ${b}`);
 
     return a + b
 }
@@ -4398,14 +4401,17 @@ console.log( parseData('[1,2,3') )
 const parseJSON = str => {
     try {
         return JSON.parse(str);
-    }
+    } 
+    catch(e) {
+        return null;
+    }   
     finally {
         // do cleanup here
         // BUT DO NOT return 
         return 0;
     }
 }
-parseJSON('anything'); // 0 !!
+console.log(parseJSON('anything')); // 0 !!
 
 
 window.onerror = function (msg, url, lineNo, columnNo, error) {
@@ -4979,7 +4985,7 @@ d88P     888  "Y88888   Y88P   "Y888888 888  888  "Y8888P "Y8888   "Y88888
 
 </pre>
 
-        <pre class="lesson" data-title="A number is 64 bits" data-subtitle="9007199254740991">
+        <!-- <pre class="lesson" data-title="A number is 64 bits" data-subtitle="9007199254740991">
 'use strict'; 
 
 /*
@@ -5041,7 +5047,7 @@ console.log(BigInt(Number.MAX_SAFE_INTEGER) * 323234n );
 
 
 
-</pre>
+</pre> -->
 
         <pre class="lesson" data-title="Scopes" data-subtitle="All in all it's just another brick in the wall">
 'use strict';            
@@ -5063,7 +5069,7 @@ const x = 1;
 const castle=`
                                     |~
                                 |  King |
-                    | Noblemen |.......|..Spies..|
+                    | Noblemen |.......|.........|
 Enemy | Poor people |..........|.......|.........|.......|
 
 `;
@@ -5073,17 +5079,14 @@ const outside = "Enemies at the gates";
 {
     const behindOuterWalls = "Poor people";
     console.log('Poor people see', outside);
-    console.log('> Poor people see', hiddenSomewhere);
     //console.log('Poor people don\'t see', behindInnerWalls);
     //console.log('Poor people don\'t see', behindPalaceWalls);
 
     {
         const behindInnerWalls = "Noblemen";        
-        var hiddenSomewhere = "Spies";
 
         console.log('Noblemen see', outside);
         console.log('Noblemen see', behindOuterWalls);
-        console.log('> Noblemen see', hiddenSomewhere);
         //console.log('Noblemen don\'t see', behindPalaceWalls);
 
         {
@@ -5091,12 +5094,9 @@ const outside = "Enemies at the gates";
             console.log('King sees', outside);
             console.log('King sees', behindOuterWalls);
             console.log('King sees', behindInnerWalls);
-            console.log('> King sees', hiddenSomewhere);            
         }
     }
 }
-
-console.log('Enemies see', hiddenSomewhere);
 
 
 function makeScope(bindings, outerScope) {
@@ -5166,9 +5166,8 @@ console.log(`Poor people see '${key}':`, findValue(key, outerWallScope));
     // console.log(x);
     let x = 2;
 }
-
-
-
+            
+        
 </pre>
 
         <pre class="lesson" data-title="Function scope" data-subtitle="Through the Looking Glass">
@@ -5179,17 +5178,12 @@ console.log(`Poor people see '${key}':`, findValue(key, outerWallScope));
     Functions create scope.     
 
     The difference is that in the function scope we also have the parameters.
-    Also the "var" bindings do not escape the function scope.
-
-    Let's just say that normal scopes are like wood walls, but function scopes
-    are like stone walls, impenetrable.
-
 */
 
 const castle=`
                                     |~
                                 |  King |
-                    | Noblemen |.......|..Spies..|
+                    | Noblemen |.......|.........|
 Enemy | Poor people |..........|.......|.........|.......|
 
 `;
@@ -5200,19 +5194,14 @@ function outerWalls() {
     const behindOuterWalls = "Poor people";
     console.log('Poor people see', outside);
 
-    // This is not working anymore
-    //console.log('> Poor people see', hiddenSomewhere);
-
     //console.log('Poor people don\'t see', behindInnerWalls);
     //console.log('Poor people don\'t see', behindPalaceWalls);
 
     function innerWalls() {
         const behindInnerWalls = "Noblemen";        
-        var hiddenSomewhere = "Spies";
 
         console.log('Noblemen see', outside);
         console.log('Noblemen see', behindOuterWalls);
-        console.log('> Noblemen see', hiddenSomewhere);
         //console.log('Noblemen don\'t see', behindPalaceWalls);
 
         function palaceWalls () {
@@ -5220,16 +5209,12 @@ function outerWalls() {
             console.log('King sees', outside);
             console.log('King sees', behindOuterWalls);
             console.log('King sees', behindInnerWalls);
-            console.log('> King sees', hiddenSomewhere);            
         }
 
         palaceWalls();
     }
     innerWalls();
 }
-
-// This is not working anymore
-//console.log('Enemies see', hiddenSomewhere);
 
 // Execute
 outerWalls(); 
@@ -5287,7 +5272,7 @@ const CallStack = (function(){
 const castle=`
                                     |~
                                 |  King |
-                    | Noblemen |.......|..Spies..|
+                    | Noblemen |.......|.........|
 Enemy | Poor people |..........|.......|.........|.......|
 
 `;
@@ -5376,7 +5361,7 @@ function recursive() {
 const castle=`
                                     |~
                                 |  King |
-                    | Noblemen |.......|..Spies..|
+                    | Noblemen |.......|.........|
 Enemy | Poor people |..........|.......|.........|.......|
 
 `;
@@ -5387,19 +5372,14 @@ function outerWalls() {
     const behindOuterWalls = "Poor people";
     console.log('Poor people see', outside);
 
-    // This is not working anymore
-    //console.log('> Poor people see', hiddenSomewhere);
-
     //console.log('Poor people don\'t see', behindInnerWalls);
     //console.log('Poor people don\'t see', behindPalaceWalls);
     
     function innerWalls() {
         const behindInnerWalls = "Noblemen";        
-        var hiddenSomewhere = "Spies";
 
         console.log('Noblemen see', outside);
         console.log('Noblemen see', behindOuterWalls);
-        console.log('> Noblemen see', hiddenSomewhere);
         //console.log('Noblemen don\'t see', behindPalaceWalls);
 
         function palaceWalls () {
@@ -5407,7 +5387,6 @@ function outerWalls() {
             console.log('King sees', outside);
             console.log('King sees', behindOuterWalls);
             console.log('King sees', behindInnerWalls);
-            console.log('> King sees', hiddenSomewhere);            
         }
 
         // Return, not execute
@@ -5523,7 +5502,6 @@ bot = null;
 
 
 ////////////// Inner bindings can change ///////////////
-console.log('\n')
 
 function makeAdjustableBot() {
     ///////// makeAdjustableBot starts, a new scope is created
@@ -5569,7 +5547,6 @@ console.log(botName);
 
 
 //////////// Works for parameters also /////////////////
-console.log('\n')
 
 
 function makeBotWithName(name) {
@@ -5600,7 +5577,6 @@ console.log(botName);
 
 
 //////////// Each function has it's own scope /////////////////
-console.log('\n')
 
 
 let botOne = makeBotWithName('Bot One');
@@ -5620,16 +5596,7 @@ console.log('BotOne:', botOneName, ', BotTwo:', botTwoName);
 
 
 /////////// Closures and loops /////////////////
-console.log('\n')
 
-// Don't use var in loops, they will cause your closures to behave unexpectedly
-for(var i = 0;  i < 3; i++) {
-    setTimeout( function() {
-        console.log('Closure see var index:', i);
-    }, 100)
-}
-
-// Use 'let' instead 
 for(let i = 0;  i < 3; i++) {
     setTimeout( function() {
         console.log('Closure see let index:', i);
