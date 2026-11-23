@@ -1,5 +1,6 @@
 #!/bin/zsh
 
+set -e
 echo Starting build..
 
 rm -R dist/*
@@ -17,15 +18,15 @@ cp *.jpg dist/
 
 cp manifest.webmanifest dist/
 cp sw.js dist/
-cp robots.txt /dist
+cp robots.txt dist/
 
-# https://www.npmjs.com/package/minify
-minify styles.css > dist/styles.css
-minify home.css > dist/home.css
+# https://www.npmjs.com/package/minify (pinned: v14 produces a broken editor.js)
+npx --yes minify@6.0.1 styles.css > dist/styles.css
+npx --yes minify@6.0.1 home.css > dist/home.css
 
-minify sandbox.html > dist/sandbox.html
+npx --yes minify@6.0.1 sandbox.html > dist/sandbox.html
 
-minify settings.js evaluation.js lessons.js navigation.js menu.js editor.js quiz.js > dist/editor.js
+npx --yes minify@6.0.1 settings.js evaluation.js lessons.js navigation.js menu.js editor.js quiz.js > dist/editor.js
 
 cp privacy.html dist/privacy.html
 cp index.html dist/index.html

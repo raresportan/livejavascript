@@ -5,6 +5,9 @@ self.addEventListener('install', function (evt) {
 });
 
 self.addEventListener('fetch', function (evt) {
+    // Only GET requests can be cached. Let everything else (e.g. analytics
+    // POSTs) go straight to the network, untouched and sent exactly once.
+    if (evt.request.method !== 'GET') return;
     evt.respondWith(fromCacheOrNetwork(evt.request));
     evt.waitUntil(update(evt.request));
 });
